@@ -1,0 +1,413 @@
+{
+ "A_cash_open_step": [
+  {
+   "week": "winter 2025-01-13",
+   "days": 5,
+   "argmax_server": "14:30",
+   "top3": [
+    [
+     "14:30",
+     2.54
+    ],
+    [
+     "13:29",
+     2.54
+    ],
+    [
+     "13:28",
+     2.43
+    ]
+   ],
+   "predicted": {
+    "UTC_fixed": "14:30",
+    "London": "14:30",
+    "ET+5": "14:30",
+    "NY_close_ET+7": "16:30"
+   }
+  },
+  {
+   "week": "summer 2025-07-14",
+   "days": 5,
+   "argmax_server": "14:27",
+   "top3": [
+    [
+     "14:27",
+     3.62
+    ],
+    [
+     "14:29",
+     3.47
+    ],
+    [
+     "14:28",
+     3.46
+    ]
+   ],
+   "predicted": {
+    "UTC_fixed": "13:30",
+    "London": "14:30",
+    "ET+5": "14:30",
+    "NY_close_ET+7": "16:30"
+   }
+  },
+  {
+   "week": "mismatch Mar 2025-03-17",
+   "days": 5,
+   "argmax_server": "13:27",
+   "top3": [
+    [
+     "13:27",
+     2.68
+    ],
+    [
+     "13:28",
+     2.34
+    ],
+    [
+     "13:25",
+     2.34
+    ]
+   ],
+   "predicted": {
+    "UTC_fixed": "13:30",
+    "London": "13:30",
+    "ET+5": "14:30",
+    "NY_close_ET+7": "16:30"
+   }
+  },
+  {
+   "week": "mismatch Oct 2024-10-28",
+   "days": 5,
+   "argmax_server": "13:29",
+   "top3": [
+    [
+     "13:29",
+     3.31
+    ],
+    [
+     "13:24",
+     3.16
+    ],
+    [
+     "13:25",
+     3.1
+    ]
+   ],
+   "predicted": {
+    "UTC_fixed": "13:30",
+    "London": "13:30",
+    "ET+5": "14:30",
+    "NY_close_ET+7": "16:30"
+   }
+  },
+  {
+   "week": "mismatch Mar 2026-03-16",
+   "days": 5,
+   "argmax_server": "13:24",
+   "top3": [
+    [
+     "13:24",
+     2.38
+    ],
+    [
+     "13:29",
+     2.22
+    ],
+    [
+     "13:30",
+     2.2
+    ]
+   ],
+   "predicted": {
+    "UTC_fixed": "13:30",
+    "London": "13:30",
+    "ET+5": "14:30",
+    "NY_close_ET+7": "16:30"
+   }
+  },
+  {
+   "week": "UTC-era summer 2021-07-12",
+   "days": 5,
+   "argmax_server": "13:30",
+   "top3": [
+    [
+     "13:30",
+     4.46
+    ],
+    [
+     "13:29",
+     4.37
+    ],
+    [
+     "13:28",
+     3.85
+    ]
+   ],
+   "predicted": {
+    "UTC_fixed": "13:30",
+    "London": "14:30",
+    "ET+5": "14:30",
+    "NY_close_ET+7": "16:30"
+   }
+  },
+  {
+   "week": "London-era summer 2022-07-11",
+   "days": 5,
+   "argmax_server": "14:29",
+   "top3": [
+    [
+     "14:29",
+     3.41
+    ],
+    [
+     "14:28",
+     3.2
+    ],
+    [
+     "14:27",
+     3.1
+    ]
+   ],
+   "predicted": {
+    "UTC_fixed": "13:30",
+    "London": "14:30",
+    "ET+5": "14:30",
+    "NY_close_ET+7": "16:30"
+   }
+  },
+  {
+   "week": "winter 2023-01-09",
+   "days": 5,
+   "argmax_server": "14:30",
+   "top3": [
+    [
+     "14:30",
+     3.32
+    ],
+    [
+     "14:29",
+     2.98
+    ],
+    [
+     "14:26",
+     2.87
+    ]
+   ],
+   "predicted": {
+    "UTC_fixed": "14:30",
+    "London": "14:30",
+    "ET+5": "14:30",
+    "NY_close_ET+7": "16:30"
+   }
+  }
+ ],
+ "B_fomc": [
+  {
+   "date": "2022-03-16",
+   "max_range_minute_server": "18:01",
+   "range_pts": 106.17000000000007,
+   "x_median_16:00-17:30": 10.9,
+   "x_at_18:00-18:02": 10.9,
+   "x_at_19:00-19:02": 3.7,
+   "x_at_18:30-18:32": 3.3,
+   "x_at_19:30-19:32": 2.8,
+   "pred_London": "18:00",
+   "pred_ET+5": "19:00",
+   "pred_UTC_fixed": "18:00"
+  },
+  {
+   "date": "2023-03-22",
+   "max_range_minute_server": "18:00",
+   "range_pts": 76.80000000000109,
+   "x_median_16:00-17:30": 15.0,
+   "x_at_18:00-18:02": 15.0,
+   "x_at_19:00-19:02": 8.8,
+   "x_at_18:30-18:32": 10.9,
+   "x_at_19:30-19:32": 7.4,
+   "pred_London": "18:00",
+   "pred_ET+5": "19:00",
+   "pred_UTC_fixed": "18:00"
+  },
+  {
+   "date": "2024-03-20",
+   "max_range_minute_server": "18:00",
+   "range_pts": 59.75,
+   "x_median_16:00-17:30": 11.8,
+   "x_at_18:00-18:02": 11.8,
+   "x_at_19:00-19:02": 5.5,
+   "x_at_18:30-18:32": 6.8,
+   "x_at_19:30-19:32": 2.0,
+   "pred_London": "18:00",
+   "pred_ET+5": "19:00",
+   "pred_UTC_fixed": "18:00"
+  },
+  {
+   "date": "2025-03-19",
+   "max_range_minute_server": "18:00",
+   "range_pts": 112.61999999999898,
+   "x_median_16:00-17:30": 11.1,
+   "x_at_18:00-18:02": 11.1,
+   "x_at_19:00-19:02": 2.3,
+   "x_at_18:30-18:32": 3.5,
+   "x_at_19:30-19:32": 3.2,
+   "pred_London": "18:00",
+   "pred_ET+5": "19:00",
+   "pred_UTC_fixed": "18:00"
+  },
+  {
+   "date": "2022-11-02",
+   "max_range_minute_server": "18:36",
+   "range_pts": 178.75,
+   "x_median_16:00-17:30": 37.6,
+   "x_at_18:00-18:02": 32.5,
+   "x_at_19:00-19:02": 8.5,
+   "x_at_18:30-18:32": 12.3,
+   "x_at_19:30-19:32": 5.2,
+   "pred_London": "18:00",
+   "pred_ET+5": "19:00",
+   "pred_UTC_fixed": "18:00"
+  },
+  {
+   "date": "2023-11-01",
+   "max_range_minute_server": "18:38",
+   "range_pts": 44.0,
+   "x_median_16:00-17:30": 6.5,
+   "x_at_18:00-18:02": 6.4,
+   "x_at_19:00-19:02": 4.0,
+   "x_at_18:30-18:32": 3.7,
+   "x_at_19:30-19:32": 1.5,
+   "pred_London": "18:00",
+   "pred_ET+5": "19:00",
+   "pred_UTC_fixed": "18:00"
+  },
+  {
+   "date": "2025-10-29",
+   "max_range_minute_server": "18:35",
+   "range_pts": 120.79999999999927,
+   "x_median_16:00-17:30": 19.6,
+   "x_at_18:00-18:02": 6.1,
+   "x_at_19:00-19:02": 6.2,
+   "x_at_18:30-18:32": 3.9,
+   "x_at_19:30-19:32": 5.0,
+   "pred_London": "18:00",
+   "pred_ET+5": "19:00",
+   "pred_UTC_fixed": "18:00"
+  },
+  {
+   "date": "2024-07-31",
+   "max_range_minute_server": "21:05",
+   "range_pts": 103.25,
+   "x_median_16:00-17:30": 9.0,
+   "x_at_18:00-18:02": 1.4,
+   "x_at_19:00-19:02": 4.8,
+   "x_at_18:30-18:32": 3.5,
+   "x_at_19:30-19:32": 2.4,
+   "pred_London": "19:00",
+   "pred_ET+5": "19:00",
+   "pred_UTC_fixed": "18:00"
+  },
+  {
+   "date": "2025-07-30",
+   "max_range_minute_server": "21:02",
+   "range_pts": 121.39999999999782,
+   "x_median_16:00-17:30": 20.8,
+   "x_at_18:00-18:02": 1.0,
+   "x_at_19:00-19:02": 4.0,
+   "x_at_18:30-18:32": 0.8,
+   "x_at_19:30-19:32": 3.0,
+   "pred_London": "19:00",
+   "pred_ET+5": "19:00",
+   "pred_UTC_fixed": "18:00"
+  },
+  {
+   "date": "2024-12-18",
+   "max_range_minute_server": "20:40",
+   "range_pts": 89.0,
+   "x_median_16:00-17:30": 9.9,
+   "x_at_18:00-18:02": 0.8,
+   "x_at_19:00-19:02": 6.9,
+   "x_at_18:30-18:32": 1.0,
+   "x_at_19:30-19:32": 5.9,
+   "pred_London": "19:00",
+   "pred_ET+5": "19:00",
+   "pred_UTC_fixed": "19:00"
+  },
+  {
+   "date": "2025-01-29",
+   "max_range_minute_server": "21:00",
+   "range_pts": 86.88999999999942,
+   "x_median_16:00-17:30": 7.7,
+   "x_at_18:00-18:02": 5.8,
+   "x_at_19:00-19:02": 5.7,
+   "x_at_18:30-18:32": 1.9,
+   "x_at_19:30-19:32": 3.9,
+   "pred_London": "19:00",
+   "pred_ET+5": "19:00",
+   "pred_UTC_fixed": "19:00"
+  },
+  {
+   "date": "2021-07-28",
+   "max_range_minute_server": "18:00",
+   "range_pts": 51.8700000000008,
+   "x_median_16:00-17:30": 8.4,
+   "x_at_18:00-18:02": 8.4,
+   "x_at_19:00-19:02": 2.1,
+   "x_at_18:30-18:32": 2.6,
+   "x_at_19:30-19:32": 1.4,
+   "pred_London": "19:00",
+   "pred_ET+5": "19:00",
+   "pred_UTC_fixed": "18:00"
+  },
+  {
+   "date": "2021-11-03",
+   "max_range_minute_server": "18:00",
+   "range_pts": 46.80999999999949,
+   "x_median_16:00-17:30": 15.1,
+   "x_at_18:00-18:02": 15.1,
+   "x_at_19:00-19:02": 5.7,
+   "x_at_18:30-18:32": 4.9,
+   "x_at_19:30-19:32": 3.1,
+   "pred_London": "18:00",
+   "pred_ET+5": "19:00",
+   "pred_UTC_fixed": "18:00"
+  }
+ ],
+ "C_reopen_server_time": [
+  {
+   "type": "mismatch (US DST, EU not)",
+   "reopen_hhmm": "22:00",
+   "days": 35
+  },
+  {
+   "type": "mismatch (US DST, EU not)",
+   "reopen_hhmm": "22:05",
+   "days": 16
+  },
+  {
+   "type": "mismatch (US DST, EU not)",
+   "reopen_hhmm": "22:30",
+   "days": 8
+  },
+  {
+   "type": "normal",
+   "reopen_hhmm": "23:00",
+   "days": 434
+  },
+  {
+   "type": "normal",
+   "reopen_hhmm": "23:05",
+   "days": 235
+  },
+  {
+   "type": "normal",
+   "reopen_hhmm": "23:30",
+   "days": 146
+  },
+  {
+   "type": "normal",
+   "reopen_hhmm": "23:02",
+   "days": 6
+  }
+ ],
+ "C_note": "London-era re-opens (Mon-Thu, from 2022-04). Under ET+5 or NY-close the re-open would sit at the SAME server minute in normal and mismatch weeks; under London it is 1 h earlier in mismatch weeks."
+}

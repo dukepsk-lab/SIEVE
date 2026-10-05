@@ -1,0 +1,1771 @@
+{
+  "meta": {
+    "symbol": "USTEC.",
+    "generated_utc": "2026-10-05 13:36",
+    "server_time_at_run": "2026-10-05 14:36:18",
+    "units": "index points (price units) unless stated; 1 index point = 100 'point' units",
+    "provenance_legend": {
+      "M": "MEASURED",
+      "I": "INFERRED",
+      "A": "ASSUMED"
+    },
+    "usd_per_index_point_per_lot": 1.0
+  },
+  "spread": {
+    "regime_note": "broker-set quasi-fixed markup, re-priced in steps; do not pool across regimes",
+    "current_regime_start": {
+      "value": "2026-05-14",
+      "provenance": "MEASURED"
+    },
+    "current_regime": {
+      "all_minutes": {
+        "p50": {
+          "value": 1.43,
+          "provenance": "MEASURED",
+          "n": 138682,
+          "unit": "index_points"
+        },
+        "p99": {
+          "value": 1.43,
+          "provenance": "MEASURED",
+          "n": 138682,
+          "unit": "index_points"
+        },
+        "max_tick": {
+          "value": 2.0,
+          "provenance": "MEASURED",
+          "n": 138682,
+          "unit": "index_points"
+        }
+      },
+      "stress_spread": {
+        "value": 2.0,
+        "provenance": "MEASURED",
+        "n": 138682,
+        "unit": "index_points",
+        "note": "widest quote seen anywhere in the current regime; the stress spread used in hurdle_table"
+      },
+      "rth_0930_1600_ET": {
+        "p50": {
+          "value": 1.43,
+          "provenance": "MEASURED",
+          "n": 39020,
+          "unit": "index_points"
+        },
+        "p99": {
+          "value": 1.43,
+          "provenance": "MEASURED",
+          "n": 39020,
+          "unit": "index_points"
+        },
+        "max_tick": {
+          "value": 2.0,
+          "provenance": "MEASURED",
+          "n": 39020,
+          "unit": "index_points"
+        }
+      },
+      "open_bucket_0930_1000_ET": {
+        "p50": {
+          "value": 1.43,
+          "provenance": "MEASURED",
+          "n": 3060,
+          "unit": "index_points"
+        },
+        "p99": {
+          "value": 1.43,
+          "provenance": "MEASURED",
+          "n": 3060,
+          "unit": "index_points"
+        },
+        "max_tick": {
+          "value": 2.0,
+          "provenance": "MEASURED",
+          "n": 3060,
+          "unit": "index_points"
+        }
+      },
+      "close_bucket_1530_1600_ET": {
+        "p50": {
+          "value": 1.43,
+          "provenance": "MEASURED",
+          "n": 2940,
+          "unit": "index_points"
+        },
+        "p99": {
+          "value": 1.43,
+          "provenance": "MEASURED",
+          "n": 2940,
+          "unit": "index_points"
+        },
+        "max_tick": {
+          "value": 1.43,
+          "provenance": "MEASURED",
+          "n": 2940,
+          "unit": "index_points"
+        }
+      }
+    },
+    "worst_past_regime": {
+      "start": "2024-07-23",
+      "end": "2024-10-27",
+      "level": {
+        "value": 3.0,
+        "provenance": "MEASURED",
+        "unit": "index_points"
+      },
+      "open_bucket": {
+        "p50": {
+          "value": 3.0,
+          "provenance": "MEASURED",
+          "n": 2070,
+          "unit": "index_points"
+        },
+        "p99": {
+          "value": 3.4,
+          "provenance": "MEASURED",
+          "n": 2070,
+          "unit": "index_points"
+        },
+        "max_tick": {
+          "value": 10.2,
+          "provenance": "MEASURED",
+          "n": 2070,
+          "unit": "index_points"
+        }
+      },
+      "close_bucket": {
+        "p50": {
+          "value": 3.0,
+          "provenance": "MEASURED",
+          "n": 2040,
+          "unit": "index_points"
+        },
+        "p99": {
+          "value": 3.4,
+          "provenance": "MEASURED",
+          "n": 2040,
+          "unit": "index_points"
+        },
+        "max_tick": {
+          "value": 10.2,
+          "provenance": "MEASURED",
+          "n": 2040,
+          "unit": "index_points"
+        }
+      }
+    },
+    "all_history_tick_era": {
+      "rth": {
+        "p50": {
+          "value": 1.14,
+          "provenance": "MEASURED",
+          "n": 506659,
+          "unit": "index_points"
+        },
+        "p99": {
+          "value": 3.0,
+          "provenance": "MEASURED",
+          "n": 506659,
+          "unit": "index_points"
+        },
+        "max_tick": {
+          "value": 64.7,
+          "provenance": "MEASURED",
+          "n": 506659,
+          "unit": "index_points"
+        }
+      },
+      "open_bucket": {
+        "p50": {
+          "value": 1.21,
+          "provenance": "MEASURED",
+          "n": 39657,
+          "unit": "index_points"
+        },
+        "p99": {
+          "value": 3.0,
+          "provenance": "MEASURED",
+          "n": 39657,
+          "unit": "index_points"
+        },
+        "max_tick": {
+          "value": 17.7,
+          "provenance": "MEASURED",
+          "n": 39657,
+          "unit": "index_points"
+        }
+      }
+    },
+    "regimes": [
+      {
+        "start": "2021-08-16",
+        "end": "2021-09-07",
+        "days": 20,
+        "level_pts": 0.56,
+        "minutes": 19742,
+        "pct_minutes_at_modal_value": 4.4,
+        "p50": 0.58,
+        "p99": 1.0,
+        "p99.9": 1.29,
+        "max_tick": 2.8
+      },
+      {
+        "start": "2021-09-08",
+        "end": "2021-09-27",
+        "days": 16,
+        "level_pts": 0.67,
+        "minutes": 17134,
+        "pct_minutes_at_modal_value": 3.9,
+        "p50": 0.71,
+        "p99": 1.26,
+        "p99.9": 1.67,
+        "max_tick": 3.7
+      },
+      {
+        "start": "2021-09-28",
+        "end": "2021-10-06",
+        "days": 8,
+        "level_pts": 0.72,
+        "minutes": 8995,
+        "pct_minutes_at_modal_value": 3.6,
+        "p50": 0.77,
+        "p99": 1.26,
+        "p99.9": 1.56,
+        "max_tick": 2.37
+      },
+      {
+        "start": "2021-10-07",
+        "end": "2021-11-03",
+        "days": 24,
+        "level_pts": 0.66,
+        "minutes": 25772,
+        "pct_minutes_at_modal_value": 5.2,
+        "p50": 0.69,
+        "p99": 1.13,
+        "p99.9": 1.45,
+        "max_tick": 2.69
+      },
+      {
+        "start": "2021-11-04",
+        "end": "2021-11-18",
+        "days": 13,
+        "level_pts": 0.81,
+        "minutes": 13938,
+        "pct_minutes_at_modal_value": 4.8,
+        "p50": 0.82,
+        "p99": 1.22,
+        "p99.9": 1.6,
+        "max_tick": 2.35
+      },
+      {
+        "start": "2021-11-19",
+        "end": "2021-11-29",
+        "days": 9,
+        "level_pts": 0.86,
+        "minutes": 8517,
+        "pct_minutes_at_modal_value": 3.4,
+        "p50": 0.92,
+        "p99": 1.58,
+        "p99.9": 2.86,
+        "max_tick": 6.69
+      },
+      {
+        "start": "2021-11-30",
+        "end": "2021-12-08",
+        "days": 8,
+        "level_pts": 0.99,
+        "minutes": 9007,
+        "pct_minutes_at_modal_value": 3.7,
+        "p50": 1.03,
+        "p99": 1.8,
+        "p99.9": 2.17,
+        "max_tick": 3.41
+      },
+      {
+        "start": "2021-12-09",
+        "end": "2021-12-14",
+        "days": 5,
+        "level_pts": 0.83,
+        "minutes": 5156,
+        "pct_minutes_at_modal_value": 3.1,
+        "p50": 0.89,
+        "p99": 1.55,
+        "p99.9": 1.78,
+        "max_tick": 2.67
+      },
+      {
+        "start": "2021-12-15",
+        "end": "2021-12-20",
+        "days": 5,
+        "level_pts": 0.98,
+        "minutes": 5156,
+        "pct_minutes_at_modal_value": 3.1,
+        "p50": 1.02,
+        "p99": 1.9,
+        "p99.9": 2.65,
+        "max_tick": 3.3
+      },
+      {
+        "start": "2021-12-21",
+        "end": "2021-12-27",
+        "days": 5,
+        "level_pts": 0.8,
+        "minutes": 5156,
+        "pct_minutes_at_modal_value": 4.6,
+        "p50": 0.85,
+        "p99": 1.34,
+        "p99.9": 1.65,
+        "max_tick": 2.01
+      },
+      {
+        "start": "2021-12-28",
+        "end": "2022-01-04",
+        "days": 7,
+        "level_pts": 0.89,
+        "minutes": 7674,
+        "pct_minutes_at_modal_value": 4.6,
+        "p50": 0.89,
+        "p99": 1.75,
+        "p99.9": 2.16,
+        "max_tick": 2.56
+      },
+      {
+        "start": "2022-01-05",
+        "end": "2022-01-10",
+        "days": 5,
+        "level_pts": 0.96,
+        "minutes": 5156,
+        "pct_minutes_at_modal_value": 5.1,
+        "p50": 1.01,
+        "p99": 2.26,
+        "p99.9": 2.54,
+        "max_tick": 4.18
+      },
+      {
+        "start": "2022-01-11",
+        "end": "2022-05-23",
+        "days": 114,
+        "level_pts": 2.15,
+        "minutes": 122157,
+        "pct_minutes_at_modal_value": 86.2,
+        "p50": 2.15,
+        "p99": 3.1,
+        "p99.9": 3.4,
+        "max_tick": 10.9
+      },
+      {
+        "start": "2022-05-24",
+        "end": "2022-08-31",
+        "days": 86,
+        "level_pts": 0.6,
+        "minutes": 97460,
+        "pct_minutes_at_modal_value": 98.1,
+        "p50": 0.6,
+        "p99": 1.1,
+        "p99.9": 2.35,
+        "max_tick": 20.0
+      },
+      {
+        "start": "2022-09-01",
+        "end": "2023-05-17",
+        "days": 219,
+        "level_pts": 0.7,
+        "minutes": 236788,
+        "pct_minutes_at_modal_value": 98.6,
+        "p50": 0.7,
+        "p99": 0.7,
+        "p99.9": 2.2,
+        "max_tick": 69.3
+      },
+      {
+        "start": "2023-05-18",
+        "end": "2023-12-17",
+        "days": 183,
+        "level_pts": 1.52,
+        "minutes": 200501,
+        "pct_minutes_at_modal_value": 95.6,
+        "p50": 1.52,
+        "p99": 1.9,
+        "p99.9": 3.16,
+        "max_tick": 19.65
+      },
+      {
+        "start": "2023-12-18",
+        "end": "2024-01-21",
+        "days": 28,
+        "level_pts": 1.62,
+        "minutes": 31373,
+        "pct_minutes_at_modal_value": 85.8,
+        "p50": 1.62,
+        "p99": 2.92,
+        "p99.9": 2.92,
+        "max_tick": 12.0
+      },
+      {
+        "start": "2024-01-22",
+        "end": "2024-03-03",
+        "days": 36,
+        "level_pts": 2.92,
+        "minutes": 41091,
+        "pct_minutes_at_modal_value": 99.3,
+        "p50": 2.92,
+        "p99": 2.92,
+        "p99.9": 3.42,
+        "max_tick": 12.0
+      },
+      {
+        "start": "2024-03-04",
+        "end": "2024-07-22",
+        "days": 121,
+        "level_pts": 2.6,
+        "minutes": 136862,
+        "pct_minutes_at_modal_value": 98.4,
+        "p50": 2.6,
+        "p99": 2.92,
+        "p99.9": 3.6,
+        "max_tick": 15.0
+      },
+      {
+        "start": "2024-07-23",
+        "end": "2024-10-27",
+        "days": 83,
+        "level_pts": 3.0,
+        "minutes": 94715,
+        "pct_minutes_at_modal_value": 91.0,
+        "p50": 3.0,
+        "p99": 5.0,
+        "p99.9": 6.5,
+        "max_tick": 15.0
+      },
+      {
+        "start": "2024-10-28",
+        "end": "2024-12-10",
+        "days": 38,
+        "level_pts": 1.0,
+        "minutes": 43482,
+        "pct_minutes_at_modal_value": 98.0,
+        "p50": 1.0,
+        "p99": 2.0,
+        "p99.9": 3.0,
+        "max_tick": 8.35
+      },
+      {
+        "start": "2024-12-11",
+        "end": "2024-12-18",
+        "days": 7,
+        "level_pts": 1.14,
+        "minutes": 8268,
+        "pct_minutes_at_modal_value": 97.8,
+        "p50": 1.14,
+        "p99": 1.21,
+        "p99.9": 2.0,
+        "max_tick": 7.2
+      },
+      {
+        "start": "2024-12-19",
+        "end": "2025-01-17",
+        "days": 26,
+        "level_pts": 1.21,
+        "minutes": 26525,
+        "pct_minutes_at_modal_value": 99.9,
+        "p50": 1.21,
+        "p99": 1.21,
+        "p99.9": 1.21,
+        "max_tick": 7.2
+      },
+      {
+        "start": "2025-01-19",
+        "end": "2025-01-23",
+        "days": 5,
+        "level_pts": 1.4,
+        "minutes": 5634,
+        "pct_minutes_at_modal_value": 42.5,
+        "p50": 1.2,
+        "p99": 1.4,
+        "p99.9": 1.4,
+        "max_tick": 2.0
+      },
+      {
+        "start": "2025-01-24",
+        "end": "2025-12-16",
+        "days": 279,
+        "level_pts": 1.12,
+        "minutes": 315882,
+        "pct_minutes_at_modal_value": 90.2,
+        "p50": 1.12,
+        "p99": 1.3,
+        "p99.9": 1.56,
+        "max_tick": 7.2
+      },
+      {
+        "start": "2025-12-17",
+        "end": "2025-12-28",
+        "days": 10,
+        "level_pts": 1.21,
+        "minutes": 9340,
+        "pct_minutes_at_modal_value": 93.1,
+        "p50": 1.21,
+        "p99": 1.21,
+        "p99.9": 1.21,
+        "max_tick": 1.65
+      },
+      {
+        "start": "2025-12-29",
+        "end": "2026-03-18",
+        "days": 69,
+        "level_pts": 1.14,
+        "minutes": 77630,
+        "pct_minutes_at_modal_value": 95.7,
+        "p50": 1.14,
+        "p99": 1.2,
+        "p99.9": 2.0,
+        "max_tick": 2.0
+      },
+      {
+        "start": "2026-03-19",
+        "end": "2026-05-13",
+        "days": 48,
+        "level_pts": 1.36,
+        "minutes": 54396,
+        "pct_minutes_at_modal_value": 98.8,
+        "p50": 1.36,
+        "p99": 1.36,
+        "p99.9": 1.36,
+        "max_tick": 2.0
+      },
+      {
+        "start": "2026-05-14",
+        "end": "2026-10-04",
+        "days": 123,
+        "level_pts": 1.43,
+        "minutes": 138682,
+        "pct_minutes_at_modal_value": 98.8,
+        "p50": 1.43,
+        "p99": 1.43,
+        "p99.9": 1.43,
+        "max_tick": 2.0
+      }
+    ],
+    "before_2021_08": {
+      "value": null,
+      "provenance": "MEASURED",
+      "note": "UNKNOWN: bar spread field is 0; no tick history"
+    },
+    "rollover_reopen_et": {
+      "value": "18:00",
+      "provenance": "INFERRED",
+      "note": "spike minute after the daily break; swap rollover time itself is UNKNOWN"
+    },
+    "event_windows": {
+      "provenance_note": "APPROXIMATE: event days detected empirically from 1-min range (no events file); statistics are INFERRED",
+      "08:30 ET (US data releases)": {
+        "event_days": {
+          "value": 499,
+          "provenance": "INFERRED"
+        },
+        "event_days_in_current_regime": {
+          "value": 21,
+          "provenance": "INFERRED",
+          "note": "small N -> not reliable for p99"
+        },
+        "windows_relative_to_release": [
+          {
+            "window (min)": "-15..-1",
+            "range_med_event": 4.55,
+            "range_med_non": 4.5,
+            "range_x": 1.011,
+            "spread_ratio_med_event": 1.0,
+            "spread_ratio_med_non": 1.0,
+            "spread_ratio_p99_event": 5.171,
+            "spread_ratio_p99_non": 1.338,
+            "spread_max_event": 38.7,
+            "spread_max_non": 11.6,
+            "spread_max_event_cur": 1.43,
+            "spread_max_non_cur": 1.43
+          },
+          {
+            "window (min)": "0",
+            "range_med_event": 34.85,
+            "range_med_non": 6.7,
+            "range_x": 5.201,
+            "spread_ratio_med_event": 1.0,
+            "spread_ratio_med_non": 1.0,
+            "spread_ratio_p99_event": 8.917,
+            "spread_ratio_p99_non": 1.408,
+            "spread_max_event": 69.3,
+            "spread_max_non": 11.25,
+            "spread_max_event_cur": 2.0,
+            "spread_max_non_cur": 1.43
+          },
+          {
+            "window (min)": "+1..+2",
+            "range_med_event": 16.125,
+            "range_med_non": 5.74,
+            "range_x": 2.809,
+            "spread_ratio_med_event": 1.0,
+            "spread_ratio_med_non": 1.0,
+            "spread_ratio_p99_event": 3.842,
+            "spread_ratio_p99_non": 1.27,
+            "spread_max_event": 29.0,
+            "spread_max_non": 10.2,
+            "spread_max_event_cur": 1.43,
+            "spread_max_non_cur": 1.43
+          },
+          {
+            "window (min)": "+3..+5",
+            "range_med_event": 11.38,
+            "range_med_non": 5.25,
+            "range_x": 2.168,
+            "spread_ratio_med_event": 1.0,
+            "spread_ratio_med_non": 1.0,
+            "spread_ratio_p99_event": 3.143,
+            "spread_ratio_p99_non": 1.21,
+            "spread_max_event": 15.2,
+            "spread_max_non": 10.2,
+            "spread_max_event_cur": 2.0,
+            "spread_max_non_cur": 1.43
+          },
+          {
+            "window (min)": "+6..+15",
+            "range_med_event": 8.51,
+            "range_med_non": 4.965,
+            "range_x": 1.714,
+            "spread_ratio_med_event": 1.0,
+            "spread_ratio_med_non": 1.0,
+            "spread_ratio_p99_event": 1.804,
+            "spread_ratio_p99_non": 1.214,
+            "spread_max_event": 11.0,
+            "spread_max_non": 11.6,
+            "spread_max_event_cur": 1.43,
+            "spread_max_non_cur": 1.43
+          },
+          {
+            "window (min)": "+16..+30",
+            "range_med_event": 7.13,
+            "range_med_non": 4.695,
+            "range_x": 1.519,
+            "spread_ratio_med_event": 1.0,
+            "spread_ratio_med_non": 1.0,
+            "spread_ratio_p99_event": 1.441,
+            "spread_ratio_p99_non": 1.183,
+            "spread_max_event": 10.2,
+            "spread_max_non": 10.7,
+            "spread_max_event_cur": 1.43,
+            "spread_max_non_cur": 1.43
+          }
+        ]
+      },
+      "14:00 ET (FOMC / Fed)": {
+        "event_days": {
+          "value": 119,
+          "provenance": "INFERRED"
+        },
+        "event_days_in_current_regime": {
+          "value": 6,
+          "provenance": "INFERRED",
+          "note": "small N -> not reliable for p99"
+        },
+        "windows_relative_to_release": [
+          {
+            "window (min)": "-15..-1",
+            "range_med_event": 5.355,
+            "range_med_non": 6.62,
+            "range_x": 0.809,
+            "spread_ratio_med_event": 1.0,
+            "spread_ratio_med_non": 1.0,
+            "spread_ratio_p99_event": 3.033,
+            "spread_ratio_p99_non": 1.197,
+            "spread_max_event": 11.05,
+            "spread_max_non": 10.6,
+            "spread_max_event_cur": 1.43,
+            "spread_max_non_cur": 1.51
+          },
+          {
+            "window (min)": "0",
+            "range_med_event": 34.3,
+            "range_med_non": 8.915,
+            "range_x": 3.847,
+            "spread_ratio_med_event": 1.0,
+            "spread_ratio_med_non": 1.0,
+            "spread_ratio_p99_event": 5.129,
+            "spread_ratio_p99_non": 1.221,
+            "spread_max_event": 64.7,
+            "spread_max_non": 10.2,
+            "spread_max_event_cur": 1.43,
+            "spread_max_non_cur": 1.43
+          },
+          {
+            "window (min)": "+1..+2",
+            "range_med_event": 21.37,
+            "range_med_non": 7.87,
+            "range_x": 2.715,
+            "spread_ratio_med_event": 1.0,
+            "spread_ratio_med_non": 1.0,
+            "spread_ratio_p99_event": 4.001,
+            "spread_ratio_p99_non": 1.229,
+            "spread_max_event": 10.85,
+            "spread_max_non": 10.2,
+            "spread_max_event_cur": 1.43,
+            "spread_max_non_cur": 1.43
+          },
+          {
+            "window (min)": "+3..+5",
+            "range_med_event": 15.75,
+            "range_med_non": 7.165,
+            "range_x": 2.198,
+            "spread_ratio_med_event": 1.0,
+            "spread_ratio_med_non": 1.0,
+            "spread_ratio_p99_event": 2.892,
+            "spread_ratio_p99_non": 1.213,
+            "spread_max_event": 9.8,
+            "spread_max_non": 8.65,
+            "spread_max_event_cur": 1.43,
+            "spread_max_non_cur": 1.43
+          },
+          {
+            "window (min)": "+6..+15",
+            "range_med_event": 11.565,
+            "range_med_non": 7.0,
+            "range_x": 1.652,
+            "spread_ratio_med_event": 1.0,
+            "spread_ratio_med_non": 1.0,
+            "spread_ratio_p99_event": 2.37,
+            "spread_ratio_p99_non": 1.209,
+            "spread_max_event": 10.2,
+            "spread_max_non": 10.2,
+            "spread_max_event_cur": 1.43,
+            "spread_max_non_cur": 1.43
+          },
+          {
+            "window (min)": "+16..+30",
+            "range_med_event": 9.02,
+            "range_med_non": 6.75,
+            "range_x": 1.336,
+            "spread_ratio_med_event": 1.0,
+            "spread_ratio_med_non": 1.0,
+            "spread_ratio_p99_event": 1.748,
+            "spread_ratio_p99_non": 1.173,
+            "spread_max_event": 10.2,
+            "spread_max_non": 10.2,
+            "spread_max_event_cur": 1.43,
+            "spread_max_non_cur": 1.43
+          }
+        ]
+      }
+    }
+  },
+  "commission": {
+    "round_trip_per_lot_usd": {
+      "value": 0.0,
+      "provenance": "MEASURED",
+      "n": 1,
+      "unit": "USD/lot",
+      "note": "weak: single round trip; other symbols also 0.0; account type unconfirmed"
+    },
+    "round_trip_index_points": {
+      "value": 0.0,
+      "provenance": "MEASURED",
+      "n": 1,
+      "unit": "index_points"
+    }
+  },
+  "swap": {
+    "mode": {
+      "value": "DISABLED",
+      "provenance": "MEASURED"
+    },
+    "raw_long": {
+      "value": -428.93,
+      "provenance": "MEASURED"
+    },
+    "raw_short": {
+      "value": 0.0,
+      "provenance": "MEASURED"
+    },
+    "charged": {
+      "value": null,
+      "provenance": "MEASURED",
+      "note": "UNKNOWN: swap_mode DISABLED but values populated; deal history inconclusive"
+    },
+    "long_pts_per_night_if_points": {
+      "value": -4.2893,
+      "provenance": "INFERRED",
+      "unit": "index_points/night",
+      "note": "negative = paid; reading = POINTS"
+    },
+    "short_pts_per_night_if_points": {
+      "value": 0.0,
+      "provenance": "INFERRED",
+      "unit": "index_points/night"
+    },
+    "annual_pct_long": {
+      "value": -5.066,
+      "provenance": "INFERRED",
+      "unit": "% of price p.a. (negative = paid)"
+    },
+    "triple_swap_day": {
+      "value": "Friday",
+      "provenance": "MEASURED"
+    },
+    "nights_per_week_charged": {
+      "value": 7,
+      "provenance": "INFERRED"
+    }
+  },
+  "slippage_per_side": {
+    "base": {
+      "value": 0.5,
+      "provenance": "ASSUMED",
+      "unit": "index_points"
+    },
+    "stress": {
+      "value": 2.0,
+      "provenance": "ASSUMED",
+      "unit": "index_points"
+    }
+  },
+  "server_clock": {
+    "eras": [
+      {
+        "start_utc": "1900-01-01 00:00:00",
+        "kind": "fixed",
+        "param": 0.0
+      },
+      {
+        "start_utc": "2021-11-01 00:00:00",
+        "kind": "eu",
+        "param": 0.0
+      }
+    ],
+    "live_offset_hours": {
+      "value": 1,
+      "provenance": "MEASURED"
+    },
+    "convention": {
+      "value": [
+        "UTC fixed (UTC+0)",
+        "London (UTC+0/+1, EU DST)"
+      ],
+      "provenance": "INFERRED"
+    },
+    "ny_close_match_pct": {
+      "value": 0.0,
+      "provenance": "MEASURED",
+      "n": 367,
+      "unit": "% of weeks"
+    },
+    "era_boundary_note": "the UTC->London switch is only identifiable within the winter ambiguity (2021-10-31 .. 2022-03-27); conversions are identical for any date in it",
+    "how_to_use": "audit.tz.ServerClock.load('audit/out/server_clock.json')"
+  },
+  "volatility": {
+    "sigma_last_12m_index_points": {
+      "5min": {
+        "value": 28.701973241513944,
+        "provenance": "MEASURED",
+        "n": 19690,
+        "unit": "index_points"
+      },
+      "1h": {
+        "value": 101.01775200311376,
+        "provenance": "MEASURED",
+        "n": 1513,
+        "unit": "index_points"
+      },
+      "6h": {
+        "value": 253.37098301867152,
+        "provenance": "MEASURED",
+        "n": 248,
+        "unit": "index_points"
+      },
+      "overnight": {
+        "value": 228.51721663561776,
+        "provenance": "MEASURED",
+        "n": 198,
+        "unit": "index_points"
+      },
+      "5d": {
+        "value": 661.4601107443896,
+        "provenance": "MEASURED",
+        "n": 43,
+        "unit": "index_points"
+      }
+    },
+    "mean_abs_move_last_12m_index_points": {
+      "5min": {
+        "value": 19.64002539360082,
+        "provenance": "MEASURED",
+        "n": 19690,
+        "unit": "index_points"
+      },
+      "1h": {
+        "value": 69.59619299405159,
+        "provenance": "MEASURED",
+        "n": 1513,
+        "unit": "index_points"
+      },
+      "6h": {
+        "value": 195.68729838709675,
+        "provenance": "MEASURED",
+        "n": 248,
+        "unit": "index_points"
+      },
+      "overnight": {
+        "value": 168.4021717171716,
+        "provenance": "MEASURED",
+        "n": 198,
+        "unit": "index_points"
+      },
+      "5d": {
+        "value": 515.5195348837211,
+        "provenance": "MEASURED",
+        "n": 43,
+        "unit": "index_points"
+      }
+    },
+    "price_level_last_12m": {
+      "value": 27042.0,
+      "provenance": "MEASURED",
+      "unit": "index_points"
+    },
+    "sigma_by_year_index_points": {
+      "5min": {
+        "2019": {
+          "value": 6.660783578657803,
+          "provenance": "MEASURED",
+          "n": 8820,
+          "unit": "index_points"
+        },
+        "2020": {
+          "value": 16.990026615491516,
+          "provenance": "MEASURED",
+          "n": 19706,
+          "unit": "index_points"
+        },
+        "2021": {
+          "value": 14.860321586413505,
+          "provenance": "MEASURED",
+          "n": 19477,
+          "unit": "index_points"
+        },
+        "2022": {
+          "value": 22.208648569448158,
+          "provenance": "MEASURED",
+          "n": 19659,
+          "unit": "index_points"
+        },
+        "2023": {
+          "value": 14.284997787336756,
+          "provenance": "MEASURED",
+          "n": 19539,
+          "unit": "index_points"
+        },
+        "2024": {
+          "value": 18.445845697175,
+          "provenance": "MEASURED",
+          "n": 19842,
+          "unit": "index_points"
+        },
+        "2025": {
+          "value": 26.23925423282581,
+          "provenance": "MEASURED",
+          "n": 19651,
+          "unit": "index_points"
+        },
+        "2026": {
+          "value": 29.723235329085483,
+          "provenance": "MEASURED",
+          "n": 14969,
+          "unit": "index_points"
+        },
+        "last 12 months": {
+          "value": 28.701973241513944,
+          "provenance": "MEASURED",
+          "n": 19690,
+          "unit": "index_points"
+        }
+      },
+      "1h": {
+        "2019": {
+          "value": 22.954674619679523,
+          "provenance": "MEASURED",
+          "n": 700,
+          "unit": "index_points"
+        },
+        "2020": {
+          "value": 52.10427910580321,
+          "provenance": "MEASURED",
+          "n": 1518,
+          "unit": "index_points"
+        },
+        "2021": {
+          "value": 50.495322160563056,
+          "provenance": "MEASURED",
+          "n": 1510,
+          "unit": "index_points"
+        },
+        "2022": {
+          "value": 77.56362095212592,
+          "provenance": "MEASURED",
+          "n": 1518,
+          "unit": "index_points"
+        },
+        "2023": {
+          "value": 49.469257115641554,
+          "provenance": "MEASURED",
+          "n": 1512,
+          "unit": "index_points"
+        },
+        "2024": {
+          "value": 63.611411645460926,
+          "provenance": "MEASURED",
+          "n": 1524,
+          "unit": "index_points"
+        },
+        "2025": {
+          "value": 91.29597823754108,
+          "provenance": "MEASURED",
+          "n": 1512,
+          "unit": "index_points"
+        },
+        "2026": {
+          "value": 102.55784087196763,
+          "provenance": "MEASURED",
+          "n": 1150,
+          "unit": "index_points"
+        },
+        "last 12 months": {
+          "value": 101.01775200311376,
+          "provenance": "MEASURED",
+          "n": 1513,
+          "unit": "index_points"
+        }
+      },
+      "6h": {
+        "2019": {
+          "value": 55.76229013411649,
+          "provenance": "MEASURED",
+          "n": 114,
+          "unit": "index_points"
+        },
+        "2020": {
+          "value": 124.30218457528913,
+          "provenance": "MEASURED",
+          "n": 244,
+          "unit": "index_points"
+        },
+        "2021": {
+          "value": 130.44332437799878,
+          "provenance": "MEASURED",
+          "n": 240,
+          "unit": "index_points"
+        },
+        "2022": {
+          "value": 205.17323827230524,
+          "provenance": "MEASURED",
+          "n": 246,
+          "unit": "index_points"
+        },
+        "2023": {
+          "value": 131.4976961034331,
+          "provenance": "MEASURED",
+          "n": 247,
+          "unit": "index_points"
+        },
+        "2024": {
+          "value": 165.1946105966654,
+          "provenance": "MEASURED",
+          "n": 249,
+          "unit": "index_points"
+        },
+        "2025": {
+          "value": 250.17529599752262,
+          "provenance": "MEASURED",
+          "n": 247,
+          "unit": "index_points"
+        },
+        "2026": {
+          "value": 253.42724449801307,
+          "provenance": "MEASURED",
+          "n": 189,
+          "unit": "index_points"
+        },
+        "last 12 months": {
+          "value": 253.37098301867152,
+          "provenance": "MEASURED",
+          "n": 248,
+          "unit": "index_points"
+        }
+      },
+      "overnight": {
+        "2019": {
+          "value": 40.87797697343615,
+          "provenance": "MEASURED",
+          "n": 91,
+          "unit": "index_points"
+        },
+        "2020": {
+          "value": 105.10231108599822,
+          "provenance": "MEASURED",
+          "n": 197,
+          "unit": "index_points"
+        },
+        "2021": {
+          "value": 78.41093812302823,
+          "provenance": "MEASURED",
+          "n": 25,
+          "unit": "index_points"
+        },
+        "2022": {
+          "value": 131.93593141695925,
+          "provenance": "MEASURED",
+          "n": 116,
+          "unit": "index_points"
+        },
+        "2023": {
+          "value": 81.1889400468646,
+          "provenance": "MEASURED",
+          "n": 62,
+          "unit": "index_points"
+        },
+        "2024": {
+          "value": 127.1286495376204,
+          "provenance": "MEASURED",
+          "n": 197,
+          "unit": "index_points"
+        },
+        "2025": {
+          "value": 152.5580069081246,
+          "provenance": "MEASURED",
+          "n": 190,
+          "unit": "index_points"
+        },
+        "2026": {
+          "value": 244.8863127228135,
+          "provenance": "MEASURED",
+          "n": 151,
+          "unit": "index_points"
+        },
+        "last 12 months": {
+          "value": 228.51721663561776,
+          "provenance": "MEASURED",
+          "n": 198,
+          "unit": "index_points"
+        }
+      },
+      "5d": {
+        "2019": {
+          "value": 129.80362887639362,
+          "provenance": "MEASURED",
+          "n": 22,
+          "unit": "index_points"
+        },
+        "2020": {
+          "value": 389.55490026369085,
+          "provenance": "MEASURED",
+          "n": 42,
+          "unit": "index_points"
+        },
+        "2021": {
+          "value": 500.90523491974034,
+          "provenance": "MEASURED",
+          "n": 5,
+          "unit": "index_points"
+        },
+        "2022": {
+          "value": 502.6633815242532,
+          "provenance": "MEASURED",
+          "n": 28,
+          "unit": "index_points"
+        },
+        "2023": {
+          "value": 424.463699487268,
+          "provenance": "MEASURED",
+          "n": 14,
+          "unit": "index_points"
+        },
+        "2024": {
+          "value": 488.3568088792038,
+          "provenance": "MEASURED",
+          "n": 48,
+          "unit": "index_points"
+        },
+        "2025": {
+          "value": 515.7011899030183,
+          "provenance": "MEASURED",
+          "n": 44,
+          "unit": "index_points"
+        },
+        "2026": {
+          "value": 696.2522645360594,
+          "provenance": "MEASURED",
+          "n": 33,
+          "unit": "index_points"
+        },
+        "last 12 months": {
+          "value": 661.4601107443896,
+          "provenance": "MEASURED",
+          "n": 43,
+          "unit": "index_points"
+        }
+      }
+    },
+    "sigma_definitions": "5min/1h: non-overlapping blocks inside 09:30-16:00 ET; 6h: 09:30->15:30 ET; overnight: 16:00 ET -> next 09:30 ET (Mon-Thu nights); 5d: Fri 16:00 ET -> next Fri 16:00 ET; price = open of the M1 bar at that ET time"
+  },
+  "hurdle_table": [
+    {
+      "horizon": "5min",
+      "case": "base",
+      "side": "n/a",
+      "sigma_pts": 28.7,
+      "spread": 1.43,
+      "slippage (ASSUMED)": 1.0,
+      "commission": 0.0,
+      "swap": 0.0,
+      "C_total_pts": 2.43,
+      "required_hit_rate_%": 55.29,
+      "required_hit_rate_% using measured mean abs move": 56.19
+    },
+    {
+      "horizon": "5min",
+      "case": "stress (widest quote, current regime)",
+      "side": "n/a",
+      "sigma_pts": 28.7,
+      "spread": 2.0,
+      "slippage (ASSUMED)": 4.0,
+      "commission": 0.0,
+      "swap": 0.0,
+      "C_total_pts": 6.0,
+      "required_hit_rate_%": 63.07,
+      "required_hit_rate_% using measured mean abs move": 65.27
+    },
+    {
+      "horizon": "5min",
+      "case": "stress-alt (p99, worst past regime)",
+      "side": "n/a",
+      "sigma_pts": 28.7,
+      "spread": 3.4,
+      "slippage (ASSUMED)": 4.0,
+      "commission": 0.0,
+      "swap": 0.0,
+      "C_total_pts": 7.4,
+      "required_hit_rate_%": 66.11,
+      "required_hit_rate_% using measured mean abs move": 68.84
+    },
+    {
+      "horizon": "1h",
+      "case": "base",
+      "side": "n/a",
+      "sigma_pts": 101.0,
+      "spread": 1.43,
+      "slippage (ASSUMED)": 1.0,
+      "commission": 0.0,
+      "swap": 0.0,
+      "C_total_pts": 2.43,
+      "required_hit_rate_%": 51.5,
+      "required_hit_rate_% using measured mean abs move": 51.75
+    },
+    {
+      "horizon": "1h",
+      "case": "stress (widest quote, current regime)",
+      "side": "n/a",
+      "sigma_pts": 101.0,
+      "spread": 2.0,
+      "slippage (ASSUMED)": 4.0,
+      "commission": 0.0,
+      "swap": 0.0,
+      "C_total_pts": 6.0,
+      "required_hit_rate_%": 53.71,
+      "required_hit_rate_% using measured mean abs move": 54.31
+    },
+    {
+      "horizon": "1h",
+      "case": "stress-alt (p99, worst past regime)",
+      "side": "n/a",
+      "sigma_pts": 101.0,
+      "spread": 3.4,
+      "slippage (ASSUMED)": 4.0,
+      "commission": 0.0,
+      "swap": 0.0,
+      "C_total_pts": 7.4,
+      "required_hit_rate_%": 54.58,
+      "required_hit_rate_% using measured mean abs move": 55.32
+    },
+    {
+      "horizon": "6h",
+      "case": "base",
+      "side": "n/a",
+      "sigma_pts": 253.4,
+      "spread": 1.43,
+      "slippage (ASSUMED)": 1.0,
+      "commission": 0.0,
+      "swap": 0.0,
+      "C_total_pts": 2.43,
+      "required_hit_rate_%": 50.6,
+      "required_hit_rate_% using measured mean abs move": 50.62
+    },
+    {
+      "horizon": "6h",
+      "case": "stress (widest quote, current regime)",
+      "side": "n/a",
+      "sigma_pts": 253.4,
+      "spread": 2.0,
+      "slippage (ASSUMED)": 4.0,
+      "commission": 0.0,
+      "swap": 0.0,
+      "C_total_pts": 6.0,
+      "required_hit_rate_%": 51.48,
+      "required_hit_rate_% using measured mean abs move": 51.53
+    },
+    {
+      "horizon": "6h",
+      "case": "stress-alt (p99, worst past regime)",
+      "side": "n/a",
+      "sigma_pts": 253.4,
+      "spread": 3.4,
+      "slippage (ASSUMED)": 4.0,
+      "commission": 0.0,
+      "swap": 0.0,
+      "C_total_pts": 7.4,
+      "required_hit_rate_%": 51.83,
+      "required_hit_rate_% using measured mean abs move": 51.89
+    },
+    {
+      "horizon": "overnight",
+      "case": "base",
+      "side": "long",
+      "sigma_pts": 228.5,
+      "spread": 1.43,
+      "slippage (ASSUMED)": 1.0,
+      "commission": 0.0,
+      "swap": 4.29,
+      "C_total_pts": 6.72,
+      "required_hit_rate_%": 51.84,
+      "required_hit_rate_% using measured mean abs move": 52.0
+    },
+    {
+      "horizon": "overnight",
+      "case": "base",
+      "side": "short",
+      "sigma_pts": 228.5,
+      "spread": 1.43,
+      "slippage (ASSUMED)": 1.0,
+      "commission": 0.0,
+      "swap": 0.0,
+      "C_total_pts": 2.43,
+      "required_hit_rate_%": 50.66,
+      "required_hit_rate_% using measured mean abs move": 50.72
+    },
+    {
+      "horizon": "overnight",
+      "case": "stress (widest quote, current regime)",
+      "side": "long",
+      "sigma_pts": 228.5,
+      "spread": 2.0,
+      "slippage (ASSUMED)": 4.0,
+      "commission": 0.0,
+      "swap": 4.29,
+      "C_total_pts": 10.29,
+      "required_hit_rate_%": 52.81,
+      "required_hit_rate_% using measured mean abs move": 53.05
+    },
+    {
+      "horizon": "overnight",
+      "case": "stress (widest quote, current regime)",
+      "side": "short",
+      "sigma_pts": 228.5,
+      "spread": 2.0,
+      "slippage (ASSUMED)": 4.0,
+      "commission": 0.0,
+      "swap": 0.0,
+      "C_total_pts": 6.0,
+      "required_hit_rate_%": 51.64,
+      "required_hit_rate_% using measured mean abs move": 51.78
+    },
+    {
+      "horizon": "overnight",
+      "case": "stress-alt (p99, worst past regime)",
+      "side": "long",
+      "sigma_pts": 228.5,
+      "spread": 3.4,
+      "slippage (ASSUMED)": 4.0,
+      "commission": 0.0,
+      "swap": 4.29,
+      "C_total_pts": 11.69,
+      "required_hit_rate_%": 53.2,
+      "required_hit_rate_% using measured mean abs move": 53.47
+    },
+    {
+      "horizon": "overnight",
+      "case": "stress-alt (p99, worst past regime)",
+      "side": "short",
+      "sigma_pts": 228.5,
+      "spread": 3.4,
+      "slippage (ASSUMED)": 4.0,
+      "commission": 0.0,
+      "swap": 0.0,
+      "C_total_pts": 7.4,
+      "required_hit_rate_%": 52.02,
+      "required_hit_rate_% using measured mean abs move": 52.2
+    },
+    {
+      "horizon": "5d",
+      "case": "base",
+      "side": "long",
+      "sigma_pts": 661.5,
+      "spread": 1.43,
+      "slippage (ASSUMED)": 1.0,
+      "commission": 0.0,
+      "swap": 30.03,
+      "C_total_pts": 32.46,
+      "required_hit_rate_%": 53.07,
+      "required_hit_rate_% using measured mean abs move": 53.15
+    },
+    {
+      "horizon": "5d",
+      "case": "base",
+      "side": "short",
+      "sigma_pts": 661.5,
+      "spread": 1.43,
+      "slippage (ASSUMED)": 1.0,
+      "commission": 0.0,
+      "swap": 0.0,
+      "C_total_pts": 2.43,
+      "required_hit_rate_%": 50.23,
+      "required_hit_rate_% using measured mean abs move": 50.24
+    },
+    {
+      "horizon": "5d",
+      "case": "stress (widest quote, current regime)",
+      "side": "long",
+      "sigma_pts": 661.5,
+      "spread": 2.0,
+      "slippage (ASSUMED)": 4.0,
+      "commission": 0.0,
+      "swap": 30.03,
+      "C_total_pts": 36.03,
+      "required_hit_rate_%": 53.4,
+      "required_hit_rate_% using measured mean abs move": 53.49
+    },
+    {
+      "horizon": "5d",
+      "case": "stress (widest quote, current regime)",
+      "side": "short",
+      "sigma_pts": 661.5,
+      "spread": 2.0,
+      "slippage (ASSUMED)": 4.0,
+      "commission": 0.0,
+      "swap": 0.0,
+      "C_total_pts": 6.0,
+      "required_hit_rate_%": 50.57,
+      "required_hit_rate_% using measured mean abs move": 50.58
+    },
+    {
+      "horizon": "5d",
+      "case": "stress-alt (p99, worst past regime)",
+      "side": "long",
+      "sigma_pts": 661.5,
+      "spread": 3.4,
+      "slippage (ASSUMED)": 4.0,
+      "commission": 0.0,
+      "swap": 30.03,
+      "C_total_pts": 37.43,
+      "required_hit_rate_%": 53.54,
+      "required_hit_rate_% using measured mean abs move": 53.63
+    },
+    {
+      "horizon": "5d",
+      "case": "stress-alt (p99, worst past regime)",
+      "side": "short",
+      "sigma_pts": 661.5,
+      "spread": 3.4,
+      "slippage (ASSUMED)": 4.0,
+      "commission": 0.0,
+      "swap": 0.0,
+      "C_total_pts": 7.4,
+      "required_hit_rate_%": 50.7,
+      "required_hit_rate_% using measured mean abs move": 50.72
+    }
+  ],
+  "comparison_with_user_assumptions": [
+    {
+      "horizon": "5min",
+      "case": "base",
+      "sigma assumed": 19,
+      "sigma measured": 28.7,
+      "C assumed": 3.0,
+      "C measured": 2.43,
+      "hit rate assumed %": 59.87,
+      "hit rate: measured sigma, your C %": 56.53,
+      "hit rate measured %": 55.29,
+      "verdict": "better"
+    },
+    {
+      "horizon": "5min",
+      "case": "stress",
+      "sigma assumed": 19,
+      "sigma measured": 28.7,
+      "C assumed": 12.0,
+      "C measured": 6.0,
+      "hit rate assumed %": 89.47,
+      "hit rate: measured sigma, your C %": 76.13,
+      "hit rate measured %": 63.07,
+      "verdict": "better"
+    },
+    {
+      "horizon": "1h",
+      "case": "base",
+      "sigma assumed": 65,
+      "sigma measured": 101.0,
+      "C assumed": 3.0,
+      "C measured": 2.43,
+      "hit rate assumed %": 52.88,
+      "hit rate: measured sigma, your C %": 51.86,
+      "hit rate measured %": 51.5,
+      "verdict": "better"
+    },
+    {
+      "horizon": "1h",
+      "case": "stress",
+      "sigma assumed": 65,
+      "sigma measured": 101.0,
+      "C assumed": 12.0,
+      "C measured": 6.0,
+      "hit rate assumed %": 61.54,
+      "hit rate: measured sigma, your C %": 57.42,
+      "hit rate measured %": 53.71,
+      "verdict": "better"
+    },
+    {
+      "horizon": "6h",
+      "case": "base",
+      "sigma assumed": 160,
+      "sigma measured": 253.4,
+      "C assumed": 3.0,
+      "C measured": 2.43,
+      "hit rate assumed %": 51.17,
+      "hit rate: measured sigma, your C %": 50.74,
+      "hit rate measured %": 50.6,
+      "verdict": "better"
+    },
+    {
+      "horizon": "6h",
+      "case": "stress",
+      "sigma assumed": 160,
+      "sigma measured": 253.4,
+      "C assumed": 12.0,
+      "C measured": 6.0,
+      "hit rate assumed %": 54.69,
+      "hit rate: measured sigma, your C %": 52.96,
+      "hit rate measured %": 51.48,
+      "verdict": "better"
+    },
+    {
+      "horizon": "overnight",
+      "case": "base",
+      "sigma assumed": 150,
+      "sigma measured": 228.5,
+      "C assumed": 7.6,
+      "C measured": 6.72,
+      "hit rate assumed %": 53.17,
+      "hit rate: measured sigma, your C %": 52.08,
+      "hit rate measured %": 51.84,
+      "verdict": "better"
+    },
+    {
+      "horizon": "overnight",
+      "case": "stress",
+      "sigma assumed": 150,
+      "sigma measured": 228.5,
+      "C assumed": 16.6,
+      "C measured": 10.29,
+      "hit rate assumed %": 56.92,
+      "hit rate: measured sigma, your C %": 54.54,
+      "hit rate measured %": 52.81,
+      "verdict": "better"
+    },
+    {
+      "horizon": "5d",
+      "case": "base",
+      "sigma assumed": 700,
+      "sigma measured": 661.5,
+      "C assumed": 35.2,
+      "C measured": 32.46,
+      "hit rate assumed %": 53.14,
+      "hit rate: measured sigma, your C %": 53.33,
+      "hit rate measured %": 53.07,
+      "verdict": "better"
+    },
+    {
+      "horizon": "5d",
+      "case": "stress",
+      "sigma assumed": 700,
+      "sigma measured": 661.5,
+      "C assumed": 44.2,
+      "C measured": 36.03,
+      "hit rate assumed %": 53.95,
+      "hit rate: measured sigma, your C %": 54.18,
+      "hit rate measured %": 53.4,
+      "verdict": "better"
+    }
+  ],
+  "session_schedule": {
+    "provenance": "INFERRED",
+    "latest_quarter": "2026Q3",
+    "expected_minutes_ET": [
+      {
+        "weekday_ET": "Mon",
+        "from_ET": "00:00",
+        "to_ET": "16:57",
+        "minutes": 1018
+      },
+      {
+        "weekday_ET": "Mon",
+        "from_ET": "18:05",
+        "to_ET": "23:59",
+        "minutes": 355
+      },
+      {
+        "weekday_ET": "Tue",
+        "from_ET": "00:00",
+        "to_ET": "16:57",
+        "minutes": 1018
+      },
+      {
+        "weekday_ET": "Tue",
+        "from_ET": "18:05",
+        "to_ET": "23:59",
+        "minutes": 355
+      },
+      {
+        "weekday_ET": "Wed",
+        "from_ET": "00:00",
+        "to_ET": "16:57",
+        "minutes": 1018
+      },
+      {
+        "weekday_ET": "Wed",
+        "from_ET": "18:05",
+        "to_ET": "23:59",
+        "minutes": 355
+      },
+      {
+        "weekday_ET": "Thu",
+        "from_ET": "00:00",
+        "to_ET": "16:57",
+        "minutes": 1018
+      },
+      {
+        "weekday_ET": "Thu",
+        "from_ET": "18:05",
+        "to_ET": "23:59",
+        "minutes": 355
+      },
+      {
+        "weekday_ET": "Fri",
+        "from_ET": "00:00",
+        "to_ET": "16:54",
+        "minutes": 1015
+      },
+      {
+        "weekday_ET": "Sun",
+        "from_ET": "18:05",
+        "to_ET": "23:59",
+        "minutes": 355
+      }
+    ],
+    "history_daily_break_ET": [
+      {
+        "from": "2019Q3",
+        "to": "2019Q3",
+        "daily break (ET, expected-minute gap)": "12:15-12:29, 16:15-16:29, 17:00-17:59, 20:00-20:14"
+      },
+      {
+        "from": "2019Q4",
+        "to": "2019Q4",
+        "daily break (ET, expected-minute gap)": "16:15-16:29, 17:00-17:59"
+      },
+      {
+        "from": "2020Q1",
+        "to": "2020Q2",
+        "daily break (ET, expected-minute gap)": "16:15-16:29, 16:59-17:59"
+      },
+      {
+        "from": "2020Q3",
+        "to": "2020Q4",
+        "daily break (ET, expected-minute gap)": "16:00-18:29"
+      },
+      {
+        "from": "2021Q1",
+        "to": "2022Q1",
+        "daily break (ET, expected-minute gap)": "15:59-18:29"
+      },
+      {
+        "from": "2022Q2",
+        "to": "2022Q3",
+        "daily break (ET, expected-minute gap)": "16:15-16:29, 16:59-17:59"
+      },
+      {
+        "from": "2022Q4",
+        "to": "2022Q4",
+        "daily break (ET, expected-minute gap)": "15:59-17:59"
+      },
+      {
+        "from": "2023Q1",
+        "to": "2023Q3",
+        "daily break (ET, expected-minute gap)": "15:59-18:29"
+      },
+      {
+        "from": "2023Q4",
+        "to": "2025Q1",
+        "daily break (ET, expected-minute gap)": "16:59-17:59"
+      },
+      {
+        "from": "2025Q2",
+        "to": "2025Q2",
+        "daily break (ET, expected-minute gap)": "17:00-17:59"
+      },
+      {
+        "from": "2025Q3",
+        "to": "2026Q3",
+        "daily break (ET, expected-minute gap)": "16:58-18:04"
+      }
+    ]
+  },
+  "data_gaps": {
+    "expected_minutes": {
+      "value": 2525528,
+      "provenance": "INFERRED"
+    },
+    "missing_minutes": {
+      "value": 57739,
+      "provenance": "INFERRED"
+    },
+    "bars_outside_schedule": {
+      "value": 3423,
+      "provenance": "INFERRED"
+    }
+  },
+  "history": {
+    "M1 bars": {
+      "years": {
+        "value": 7.22,
+        "provenance": "MEASURED"
+      },
+      "min_detectable_sharpe_t3": {
+        "value": 1.12,
+        "provenance": "INFERRED"
+      }
+    },
+    "ticks": {
+      "years": {
+        "value": 5.14,
+        "provenance": "MEASURED"
+      },
+      "min_detectable_sharpe_t3": {
+        "value": 1.32,
+        "provenance": "INFERRED"
+      }
+    }
+  }
+}

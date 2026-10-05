@@ -1,0 +1,11 @@
+horizon,case,sigma assumed,sigma measured,C assumed,C measured,hit rate assumed %,"hit rate: measured sigma, your C %",hit rate measured %,verdict
+5min,base,19,28.7,3.0,2.43,59.87,56.53,55.29,better
+5min,stress,19,28.7,12.0,6.0,89.47,76.13,63.07,better
+1h,base,65,101.0,3.0,2.43,52.88,51.86,51.5,better
+1h,stress,65,101.0,12.0,6.0,61.54,57.42,53.71,better
+6h,base,160,253.4,3.0,2.43,51.17,50.74,50.6,better
+6h,stress,160,253.4,12.0,6.0,54.69,52.96,51.48,better
+overnight,base,150,228.5,7.6,6.72,53.17,52.08,51.84,better
+overnight,stress,150,228.5,16.6,10.29,56.92,54.54,52.81,better
+5d,base,700,661.5,35.2,32.46,53.14,53.33,53.07,better
+5d,stress,700,661.5,44.2,36.03,53.95,54.18,53.4,better
