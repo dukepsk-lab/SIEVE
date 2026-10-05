@@ -14,6 +14,13 @@ EVENTS_CSV = os.environ.get("AUDIT_EVENTS_CSV", "")       # optional: event_name
 BROKER_HINT = "IUX"                                       # terminal/company/server must contain this
 SYMBOL_PATTERN = r"US100|USTEC|NAS100|NDX|NASDAQ|TECH ?100"
 
+# USER-CONFIRMED by the account owner on 2026-10-05 (IUX Pro account): no commission, no swap on USTEC.
+# Labelled USER-CONFIRMED in outputs. Override if the account terms change.
+ACCOUNT_TYPE = "Pro"
+USER_CONFIRMED_ON = "2026-10-05"
+COMMISSION_RT_USD_PER_LOT = float(os.environ.get("AUDIT_COMMISSION_RT_USD", "0"))   # round trip, per 1.0 lot
+SWAP_CHARGED = os.environ.get("AUDIT_SWAP_CHARGED", "0") == "1"
+
 # ASSUMED (cannot be measured without live executions) -- always labelled ASSUMED in outputs
 SLIP_BASE_PER_SIDE = 0.5      # index points
 SLIP_STRESS_PER_SIDE = 2.0    # index points

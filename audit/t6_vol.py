@@ -1,9 +1,12 @@
 """Task 6: volatility calibration and the cost-hurdle table.
 
-Prices: P(T) = open of the M1 bar at New York time T (the price at the start of that minute); when there is no bar at T
-(e.g. the session already ended at 15:59 ET) the close of the bar at T-1min, which is the last recorded price before T.
-A sample is dropped when either end price is missing; nothing is interpolated. Sigma = std of the price difference in index points over the horizon
-(non-overlapping samples), grouped by the calendar year of the start date.
+Prices: P(T) = open of the M1 bar at New York time T (the price at the start of that minute). When there is no bar at T
+(e.g. the broker session ended at 15:58 ET), P(T) = close of the last bar stamped before T, provided that bar started at
+most MAX_STALE earlier (the last recorded price, past-only). Otherwise the sample is dropped; nothing is interpolated.
+Dropped samples are counted per year (N_candidates, N_dropped) and listed by `dropped_samples`, because a drop is not
+random: it happens on early closes, broker session shifts and data gaps, which cluster on volatile days.
+Sigma = std of the price difference in index points over the horizon (non-overlapping samples), grouped by the calendar
+year of the start date.
 
 Horizons
   5min / 1h   non-overlapping blocks aligned to 09:30 ET inside the cash session (RTH), and, for reference, every aligned
@@ -21,24 +24,34 @@ from . import config as C
 
 HORIZONS = ["5min", "1h", "6h", "overnight", "5d"]
 NIGHTS = {"5min": 0, "1h": 0, "6h": 0, "overnight": 1, "5d": 7}
+MAX_STALE = pd.Timedelta(minutes=5)
 
 
 def _price_lookup(m1: pd.DataFrame, clock):
-    """Series of open prices by ET timestamp, with a fallback for missing minutes (see module docstring)."""
+    """Open and close prices by ET bar timestamp (sorted, unique), see module docstring."""
     srv = pd.DatetimeIndex(pd.to_datetime(m1["time"], unit="s")).as_unit("ns")
     et = clock.to_et(srv)
     o = pd.Series(m1["open"].to_numpy(), index=et)
     c = pd.Series(m1["close"].to_numpy(), index=et)
-    return o[~o.index.duplicated(keep="first")], c[~c.index.duplicated(keep="first")], et
+    keep = ~et.duplicated(keep="first")
+    return o[keep].sort_index(), c[keep].sort_index(), et
 
 
-def _diff(P, t0: pd.DatetimeIndex, t1: pd.DatetimeIndex) -> pd.DataFrame:
+def price_at(P, t: pd.DatetimeIndex) -> np.ndarray:
+    """P(T): open of the bar stamped T, else close of the last bar stamped before T if it started <= MAX_STALE earlier, else NaN."""
     o, c = P
+    p = o.reindex(t).to_numpy(dtype=float)
+    i = c.index.searchsorted(t, side="left") - 1                        # last bar stamped strictly before T
+    j = np.clip(i, 0, None)
+    fresh = (i >= 0) & ((t - c.index[j]) <= MAX_STALE)
+    return np.where(np.isnan(p), np.where(fresh, c.to_numpy()[j], np.nan), p)
 
-    def price(t):
-        return o.reindex(t).fillna(pd.Series(c.reindex(t - pd.Timedelta(minutes=1)).to_numpy(), index=t)).to_numpy()
-    a, b = price(t0), price(t1)
-    return pd.DataFrame({"start": t0, "move": b - a, "p0": a}).dropna()
+
+def _diff(P, t0: pd.DatetimeIndex, t1: pd.DatetimeIndex, keep_missing: bool = True) -> pd.DataFrame:
+    """One row per candidate sample; move is NaN when either end has no price (kept so drops can be counted)."""
+    a, b = price_at(P, t0), price_at(P, t1)
+    d = pd.DataFrame({"start": t0, "end": t1, "move": b - a, "p0": a, "p1": b})
+    return d if keep_missing else d.dropna(subset=["move"])
 
 
 def samples(m1: pd.DataFrame, clock) -> dict:
@@ -56,10 +69,11 @@ def samples(m1: pd.DataFrame, clock) -> dict:
     out["5min|RTH"] = _diff(P, t0, t0 + pd.Timedelta(minutes=5))
     t0 = grid(60, 6)                                                                  # 09:30 .. 14:30 -> ends 15:30
     out["1h|RTH"] = _diff(P, t0, t0 + pd.Timedelta(hours=1))
+    # all-hours blocks start at existing bars, so their 'candidates' are not a fixed grid: keep only complete samples
     allm = o.index[(o.index.minute % 5 == 0) & (o.index.second == 0)]
-    out["5min|all hours"] = _diff(P, allm, allm + pd.Timedelta(minutes=5))
+    out["5min|all hours"] = _diff(P, allm, allm + pd.Timedelta(minutes=5), keep_missing=False)
     allh = o.index[o.index.minute == 0]
-    out["1h|all hours"] = _diff(P, allh, allh + pd.Timedelta(hours=1))
+    out["1h|all hours"] = _diff(P, allh, allh + pd.Timedelta(hours=1), keep_missing=False)
     d930 = dates + pd.Timedelta(hours=9, minutes=30)
     out["6h|09:30-15:30 ET"] = _diff(P, d930, d930 + pd.Timedelta(hours=6))
     out["6.5h|09:30-16:00 ET (full cash session)"] = _diff(P, d930, d930 + pd.Timedelta(hours=6, minutes=30))
@@ -70,12 +84,14 @@ def samples(m1: pd.DataFrame, clock) -> dict:
     fri = dates.dayofweek == 4
     out["weekend|Fri 16:00 - Mon 09:30"] = _diff(P, d16[fri], (d16 + pd.Timedelta(days=3, hours=-6, minutes=-30))[fri])
     out["5d|Fri 16:00 - next Fri 16:00"] = _diff(P, d16[fri], (d16 + pd.Timedelta(days=7))[fri])
-    return out
+    last = o.index.max()                                                              # samples ending after the data are not candidates yet
+    return {k: v[v["end"] <= last].reset_index(drop=True) for k, v in out.items()}
 
 
 def _sigma_row(d: pd.DataFrame) -> dict:
-    m = d["move"].to_numpy()
-    return {"N": len(m), "sigma_pts": float(np.std(m, ddof=1)) if len(m) > 2 else np.nan,
+    m = d["move"].dropna().to_numpy()
+    return {"N": len(m), "N_candidates": len(d), "N_dropped": len(d) - len(m),
+            "sigma_pts": float(np.std(m, ddof=1)) if len(m) > 2 else np.nan,
             "mean_abs_over_sigma": float(np.mean(np.abs(m)) / np.std(m, ddof=1)) if len(m) > 2 else np.nan}
 
 
@@ -88,10 +104,22 @@ def sigma_tables(smp: dict, last_date: pd.Timestamp) -> dict:
         rows["ALL"] = _sigma_row(d)
         rows["last 12 months"] = _sigma_row(d[d["start"] > last_date - pd.Timedelta(days=365)])
         tbl = pd.DataFrame(rows).T
-        tbl["N"] = tbl["N"].astype(int)
+        for k in ("N", "N_candidates", "N_dropped"):
+            tbl[k] = tbl[k].astype(int)
         tbl.index.name = "year"
         by_year[name] = tbl
     return by_year
+
+
+def dropped_samples(smp: dict) -> pd.DataFrame:
+    """Every candidate sample without a price at one end (start or end), for inspection."""
+    rows = []
+    for name, d in smp.items():
+        x = d[d["move"].isna()]
+        if len(x):
+            rows.append(pd.DataFrame({"horizon": name, "start_et": x["start"], "end_et": x["end"],
+                                      "missing": np.where(x["p0"].isna(), np.where(x["p1"].isna(), "both", "start"), "end")}))
+    return pd.concat(rows, ignore_index=True) if rows else pd.DataFrame(columns=["horizon", "start_et", "end_et", "missing"])
 
 
 def price_levels(m1: pd.DataFrame, last_date: pd.Timestamp) -> pd.Series:
@@ -109,7 +137,8 @@ def required_hit_rate(cost: float, sigma: float) -> float:
 
 def hurdle(sig: dict, mad: dict, spreads: dict, swap_long_pts: float, commission_pts: float) -> pd.DataFrame:
     """sig / mad: {'5min': sigma, ...} and mean |move| in points, measured over the last 12 months. spreads: t2.cost_spreads.
-    swap_long_pts: signed index points per night as MT5 books it (negative = the long pays). Round-trip cost
+    swap_long_pts: signed index points per night as MT5 books it (negative = the long pays); 0 when no swap is charged,
+    in which case long and short rows would be identical and are reported once as side 'n/a'. Round-trip cost
     C = one spread + slippage on both sides + commission + swap x nights; the spread is paid once per round trip
     (half at entry, half at exit).
     Spreads: base = RTH median of the current regime. stress = the widest quote (per-minute max) seen anywhere in the
@@ -128,7 +157,7 @@ def hurdle(sig: dict, mad: dict, spreads: dict, swap_long_pts: float, commission
             entry_exit["stress-alt (p99, worst past regime)"] = w_close
         for case, spr in entry_exit.items():
             slip = 2 * (C.SLIP_BASE_PER_SIDE if case == "base" else C.SLIP_STRESS_PER_SIDE)
-            for side in (["long", "short"] if NIGHTS[h] else ["n/a"]):
+            for side in (["long", "short"] if NIGHTS[h] and swap_long_pts else ["n/a"]):
                 swap = (-swap_long_pts if side == "long" else 0.0) * NIGHTS[h]
                 cost = spr + slip + commission_pts + swap
                 rows.append({"horizon": h, "case": case, "side": side, "sigma_pts": round(sig[h], 1), "spread": round(spr, 2),

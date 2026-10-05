@@ -9,7 +9,7 @@ import pandas as pd
 
 from . import config as C
 
-TAG = {"M": "MEASURED", "I": "INFERRED", "A": "ASSUMED"}
+TAG = {"M": "MEASURED", "I": "INFERRED", "A": "ASSUMED", "U": "USER-CONFIRMED"}
 
 
 # ------------------------------------------------------------------ formatting
@@ -145,7 +145,8 @@ def build(x: dict) -> str:
     add(f"# {meta['sym']} data and cost audit — IUX, MetaTrader 5")
     add(f"_Generated {meta['generated']} UTC · server clock at run {meta['server_now']} · read-only audit (no order function was called) · "
         f"all costs in **index points** (price units) unless stated; 1 index point = {spec.get('_units', {}).get('points_per_index_point', 100)} `point` units._")
-    add("Provenance tags: **MEASURED** = computed from MT5 data · **INFERRED** = derived with stated logic · **ASSUMED** = not measured. Sample sizes (N) sit next to every statistic.\n")
+    add("Provenance tags: **MEASURED** = computed from MT5 data · **INFERRED** = derived with stated logic · **ASSUMED** = not measured · "
+        "**USER-CONFIRMED** = stated by the account owner, not measured. Sample sizes (N) sit next to every statistic.\n")
 
     # ---------------------------------------------------------------- 1. summary
     add("## 1. Summary")
@@ -180,14 +181,16 @@ def build(x: dict) -> str:
             f"Money per index point per 1.0 lot = tick_value/tick_size = **{u['usd_per_index_point_per_lot']:.2f} {spec['currency_profit']}** "
             f"(contract size {spec['trade_contract_size']}). Smallest lot {spec['volume_min']} = {spec['volume_min'] * u['usd_per_index_point_per_lot']:.2f} {spec['currency_profit']} per index point.")
     dv = x.get("deals") or {}
-    add("\n**Commission.** Not exposed in `symbol_info`. From the account's own deal history (read-only, aggregated):")
+    add(f"\n**Commission: {C.COMMISSION_RT_USD_PER_LOT:g} USD per lot round trip (USER-CONFIRMED {C.USER_CONFIRMED_ON}, {C.ACCOUNT_TYPE} account).** "
+        "Commission is not exposed in `symbol_info`; the account's own deal history (read-only, aggregated) is a cross-check:")
     if dv.get("deals"):
         add(md(dv["per_symbol"], nd=4))
-        add(f"On {meta['sym']}: {dv['sym_deals']} deals, {dv['sym_round_trips']} round trip(s), {dv['sym_lots_closed']} lots, commission booked = {dv['sym_commission']} → "
-            f"**0.0 per lot** (MEASURED, but n = {dv['sym_round_trips']} round trip, so weak). Other symbols also show 0.0 commission, which suggests a commission-free (spread-only) account type, "
-            "but that is INFERRED, not confirmed — see questions.")
+        add(f"On {meta['sym']}: {dv['sym_deals']} deals, {dv['sym_round_trips']} round trip(s), {dv['sym_lots_closed']} lots, commission booked = {dv['sym_commission']} "
+            f"(MEASURED, n = {dv['sym_round_trips']} round trip), "
+            + ("consistent with the confirmed value." if (dv.get("sym_commission_per_lot_round_trip_usd") or 0) == C.COMMISSION_RT_USD_PER_LOT
+               else "**different from the confirmed value — check the account terms.**"))
     else:
-        add("No deal history available → commission **UNKNOWN**.")
+        add("No deal history available to cross-check.")
 
     # ---------------- task 1
     add("\n## 4. Task 1 — History coverage")
@@ -207,11 +210,21 @@ def build(x: dict) -> str:
         add("\nGaps by size (a gap = run of expected minutes with no bar; '>1 min' = at least 1 missing minute, '>5' = at least 5, '>60' = at least 60). "
             "Gaps are measured against the quarterly schedule, weekends and the daily break are excluded:")
         add(md(t1g["gap_counts"], index=True))
-        add(f"\n**20 largest gaps** (times in New York and server clock). Gaps ≥ 10 h are holiday closures or outages; gaps that run to the daily break are US-holiday early closes; "
-            f"{t1g['holiday_gaps']} of {len(t1g['gaps'])} gaps are of those two kinds, the rest ('other') are intraday data gaps:")
+        kc = t1g.get("kind_counts", pd.Series(dtype=int))
+        add(f"\n**20 largest gaps** (times in New York and server clock). Kinds (INFERRED from the gap's length and position): gaps ≥ 10 h are holiday closures or outages "
+            f"({kc.get('closure >=10h (holiday or outage)', 0)}); gaps of 50–70 min that run up to the daily break within 21 days after a US or EU DST change are "
+            f"**broker session shifts** ({kc.get('session shift after a DST change', 0)}): the broker keeps its session in server time and has moved it late, so the CFD stopped quoting an hour early; "
+            f"other gaps of ≥ 60 min that run up to the daily break are early closes ({kc.get('early close (runs to the daily break)', 0)}), mostly US holidays but some are broker schedule changes. "
+            f"The remaining {kc.get('other', 0)} of {len(t1g['gaps'])} gaps ('other') are intraday data gaps:")
         add(md(t1g["top20"][["start_et", "end_et", "start_server", "minutes_missing", "kind"]]))
-        add("\nLargest 'other' gaps (not holiday closures or early closes):")
+        add("\nLargest 'other' gaps (not closures, early closes or session shifts):")
         add(md(t1g["top_other"][["start_et", "end_et", "start_server", "minutes_missing"]]))
+        sh = t1g.get("shortened")
+        if sh is not None and len(sh):
+            dst = sh[sh["kind"] == "session shift after a DST change"]
+            add(f"\n**Shortened sessions (tradability calendar).** On {len(sh)} days the CFD stopped quoting before its regular daily break; full list in "
+                "`audit/out/session_shortened_days.csv`. Anything that trades near the cash close (16:00 ET) is affected on these days. The session shifts after DST changes:")
+            add(md(dst[["date_et", "weekday", "no_quotes_from_et", "regular_break_from_et", "minutes_lost", "no_quotes_from_server"]]) if len(dst) else "_none_")
     if tc:
         ft = x.get("first_tick") or {}
         add(f"\n**Ticks (MEASURED).** Earliest tick: **{ft.get('first_tick')}** server time (binary search over weeks; direct `copy_ticks_from` from 2019 gives "
@@ -310,9 +323,12 @@ def build(x: dict) -> str:
         od = t3["overnight_deals"]
         add("\nEvidence from this account's deals (positions that crossed ≥1 server midnight). Expected charge under the 'points' reading is far below the 0.01 rounding of the booked swap, so this is **inconclusive**:")
         add(md(od, nd=5) if od is not None and len(od) else "_no overnight positions_")
-        add("\n**Whether swap is actually charged on this account is UNKNOWN.** Modelled conservatively as charged at the 'points' reading (long); if the account is swap-free, swap = 0.")
-        add("The rollover time cannot be read from the API. INFERRED from the spread spike: the market re-opens at the time shown in 2b; the usual MT5 default (server midnight) would be "
-            "19:00 ET in the London-clock era. Please confirm in the terminal (see questions).")
+        if C.SWAP_CHARGED:
+            add(f"\n**Swap is charged (USER-CONFIRMED {C.USER_CONFIRMED_ON})** and modelled at the 'points' reading (long pays, short 0). The rollover time cannot be read from the API; "
+                "the usual MT5 default (server midnight) would be 19:00 ET in the London-clock era.")
+        else:
+            add(f"\n**Swap is not charged (USER-CONFIRMED {C.USER_CONFIRMED_ON}, {C.ACCOUNT_TYPE} account)**, which matches `swap_mode` = DISABLED. The populated `swap_long` value is ignored: "
+                "the cost model uses 0 swap for both sides, and the readings above are kept for reference only. The swap rollover time therefore does not affect costs.")
 
     # ---------------- task 4
     add("\n## 7. Task 4 — Server time ↔ UTC ↔ New York")
@@ -393,8 +409,11 @@ def build(x: dict) -> str:
     # ---------------- task 6
     add("\n## 9. Task 6 — Volatility calibration and cost hurdles")
     if t6.get("sigma"):
-        add("Definitions: P(T) = open of the M1 bar at ET time T. 5 min/1 h: non-overlapping blocks inside the cash session (RTH) from 09:30; 6 h: 09:30→15:30 ET; "
-            "overnight: 16:00 ET → next 09:30 ET, Mon–Thu nights; 5 days: Fri 16:00 → next Fri 16:00. σ = std of the price change in **index points** (MEASURED); `mean abs move / σ` is 0.80 for a normal distribution.")
+        add("Definitions: P(T) = open of the M1 bar at ET time T; if there is no bar at T, the close of the last bar that started at most 5 min before T (the last recorded price; "
+            "past-only, nothing interpolated), else the sample is dropped. 5 min/1 h: non-overlapping blocks inside the cash session (RTH) from 09:30; 6 h: 09:30→15:30 ET; "
+            "overnight: 16:00 ET → next 09:30 ET, Mon–Thu nights; 5 days: Fri 16:00 → next Fri 16:00. σ = std of the price change in **index points** (MEASURED); `mean abs move / σ` is 0.80 for a normal distribution. "
+            "`N_candidates` counts every scheduled sample, `N_dropped` those without a price at one end; drops cluster on early closes, session shifts and data gaps, "
+            "so check them before trusting a year's σ (list: `audit/out/sigma_dropped_samples.csv`).")
         add("\nAverage price level by year (M1 close mean):")
         add(md(t6["levels"].round(0).astype(int).to_frame("avg_price").T))
         for name, tbl in t6["sigma"].items():
@@ -403,8 +422,10 @@ def build(x: dict) -> str:
         add("\nSigma used below = **last 12 months** (volatility in points scales with the price level, so older years are not comparable).")
     if t6.get("hurdle") is not None:
         add("\n### Hurdle table (required hit rate for payoff 1:1: 0.5 + C / (1.6 σ))")
-        add("C = one spread + slippage on both sides (**ASSUMED**: 0.5 pt/side base, 2 pt/side stress) + commission (0.0, weakly MEASURED) + swap × nights "
-            "(INFERRED 'points' reading; long pays, short 0; 1 night overnight, 7 for a 5-day hold). Spreads: base = RTH median of the current regime; "
+        swap_txt = ("swap × nights (USER-CONFIRMED as charged; 'points' reading; long pays, short 0; 1 night overnight, 7 for a 5-day hold)" if C.SWAP_CHARGED
+                    else "swap (0: USER-CONFIRMED as not charged, so long and short rows are identical and shown once)")
+        add(f"C = one spread + slippage on both sides (**ASSUMED**: 0.5 pt/side base, 2 pt/side stress) + commission ({C.COMMISSION_RT_USD_PER_LOT:g}, USER-CONFIRMED) + {swap_txt}. "
+            "Spreads: base = RTH median of the current regime; "
             f"stress = the **widest quote seen anywhere in the current regime** ({f.get('cur_max')} pts, MEASURED over {num(f.get('cur_minutes'))} minutes), i.e. the worst-case spread "
             "at volatile times; a p99 of the per-minute median would equal the base in a quasi-fixed regime and would stress nothing. "
             "stress-alt = p99 of the per-minute spread in the worst past regime (09:30–10:00 ET for intraday, average of the 15:30–16:00 and 09:30–10:00 p99 for overnight), "
@@ -420,6 +441,10 @@ def build(x: dict) -> str:
     for s_ in limitations(x, f):
         add(f"- {s_}")
     add("\n## 11. Questions you must answer")
+    add(f"Answered by you on {C.USER_CONFIRMED_ON} (USER-CONFIRMED): account type **{C.ACCOUNT_TYPE}** (matches the symbol path `{(x.get('spec') or {}).get('path', '?')}`); "
+        f"commission **{'none' if not C.COMMISSION_RT_USD_PER_LOT else f'{C.COMMISSION_RT_USD_PER_LOT} USD per lot round trip'}**; "
+        f"swap **{'charged' if C.SWAP_CHARGED else 'not charged'}**{'' if C.SWAP_CHARGED else ', so the swap rollover time does not affect costs'}. "
+        "Slippage stays ASSUMED until live fills are logged. Still open:")
     for i, s_ in enumerate(questions(x, f), 1):
         add(f"{i}. {s_}")
     if x.get("problems"):
@@ -496,8 +521,13 @@ def summary_paragraph(x: dict, f: dict) -> str:
     p.append(f"Spread: it floated until early 2022 and since then is a broker-set quasi-fixed markup (re-set {f.get('n_regimes', 0) - 1} times in the tick era, levels {f.get('lvl_min')}–{f.get('lvl_max')} pts), currently **{f.get('cur_level')} pts** since {f.get('cur_start')} "
              f"({f.get('cur_fixed_pct')}% of minutes at exactly that value, p99 = {f.get('cur_p99')}, widest tick {f.get('cur_max')}); older regimes show spikes to {f.get('tick_spike_max')} pts around data releases and the daily re-open, "
              "so the risk is the broker changing the level, not intraday noise. ")
-    p.append(f"Financing and commission are not settled: swap_mode is DISABLED although swap_long = {sw.get('swap_long_raw')} points is populated (read as points: long pays {abs(f.get('swap_long') or 0)} index pts/night = {abs(f.get('swap_pct') or 0)}% p.a., short {abs(f.get('swap_short') or 0)}), "
-             "and the account's deal history (one USTEC round trip, 0.0 commission) cannot tell whether either is charged — both are UNKNOWN and modelled conservatively. ")
+    if C.SWAP_CHARGED or C.COMMISSION_RT_USD_PER_LOT:
+        p.append(f"Financing and commission (USER-CONFIRMED {C.USER_CONFIRMED_ON}): commission {C.COMMISSION_RT_USD_PER_LOT:g} USD per lot round trip; swap "
+                 + (f"charged, long pays {abs(f.get('swap_long') or 0)} index pts/night = {abs(f.get('swap_pct') or 0)}% p.a. ('points' reading). " if C.SWAP_CHARGED else "not charged. "))
+    else:
+        p.append(f"Financing and commission: you confirmed that the {C.ACCOUNT_TYPE} account pays **no commission and no swap** (USER-CONFIRMED {C.USER_CONFIRMED_ON}). "
+                 f"This matches swap_mode = DISABLED and the 0.0 commission in the deal history; the populated swap_long = {sw.get('swap_long_raw')} is ignored. "
+                 "Costs are therefore spread plus slippage only. ")
     cmp = (x.get("t6") or {}).get("compare")
     h = (x.get("t6") or {}).get("hurdle")
     c5 = None
@@ -527,8 +557,8 @@ def status_rows(x: dict, f: dict) -> list:
     ok = lambda v: "ANSWERED" if v else "UNKNOWN"
     rows = [
         ("0", "Symbol specification, units, point vs index points", ok(x.get("spec")), "digits 2, point 0.01, 1 lot = 1 USD per index point"),
-        ("0", "Commission", "PARTIAL", "0.0 on the only USTEC round trip (n=1) and on all other deals; account type not exposed by the API → questions 1-2"),
-        ("1", "M1 earliest/latest, bars per day, gaps", ok(t1g), "2019-07-16 → now; gaps listed, mostly holidays/early closes"),
+        ("0", "Commission", "ANSWERED", f"{C.COMMISSION_RT_USD_PER_LOT:g} (USER-CONFIRMED, {C.ACCOUNT_TYPE} account); deal history (1 round trip) shows 0.0"),
+        ("1", "M1 earliest/latest, bars per day, gaps", ok(t1g), "2019-07-16 → now; gaps classified as closures, early closes, DST session shifts and data gaps"),
         ("1", "M5/H1/D1 earliest/latest", ok(x.get("extent") is not None), "same start date"),
         ("1", "Earliest tick, ticks/day, bid/ask, flags, last/volume", ok(tc), "from 2021-08-16; bid/ask always set; last/volume always 0; undocumented flag bits"),
         ("1", "Usable years and Sharpe floor (M1 and ticks)", ok(x.get("usable") is not None), "see table; assumes stationarity (violated)"),
@@ -538,8 +568,10 @@ def status_rows(x: dict, f: dict) -> list:
         ("2", "Event-window spread and range (08:30 / 14:00 ET)", "PARTIAL", "APPROXIMATE: events detected empirically, no events file"),
         ("2", "Spread regime over time", "ANSWERED", f"{f.get('n_regimes')} regimes; structural level changes dated"),
         ("2", "Share of minutes > 2×/4×/8× session median", "ANSWERED", "table by year and for the current regime"),
-        ("3", "Swap formula, points/night, triple day, annualised", "PARTIAL", "values computed; **whether swap is charged is UNKNOWN** (mode DISABLED with values populated) → question 3"),
-        ("3", "Rollover time", "INFERRED", "re-open spike time; the swap rollover time itself needs confirmation → question 4"),
+        ("3", "Swap formula, points/night, triple day, annualised", "ANSWERED",
+         "charged (USER-CONFIRMED); 'points' reading used" if C.SWAP_CHARGED else "not charged (USER-CONFIRMED), matches swap_mode DISABLED; readings kept for reference"),
+        ("3", "Rollover time", "UNKNOWN" if C.SWAP_CHARGED else "NOT NEEDED",
+         "cannot be read from the API" if C.SWAP_CHARGED else "no swap is charged; the 18:00 ET spread spike is the market re-open, not a swap time"),
         ("4", "Live server offset", ok(t4), "UTC+1 now (London clock, EU summer time)"),
         ("4", "Server-time convention and offset regimes", ok(t4), "UTC-fixed → London time; NOT NY-close"),
         ("4", "Tested server→UTC→ET helper", "ANSWERED", "audit.tz + tests (DST transitions, mismatch weeks)"),
@@ -548,7 +580,7 @@ def status_rows(x: dict, f: dict) -> list:
         ("5", "Roll / jump check", "PARTIAL" if t5.get("roll") else "UNKNOWN", "no roll signature; cannot separate cash-like from adjusted futures"),
         ("5", "Bars vs ticks aggregation", ok(t5.get("bvt")), "bid-based OHLC; tick_volume = tick count only approximately"),
         ("6", "Realised sigma by year and horizon", ok(t6.get("sigma")), "tables by year; last-12-month sigma used"),
-        ("6", "Hurdle table, measured vs your assumptions", "PARTIAL" if t6.get("hurdle") is not None else "UNKNOWN", "slippage ASSUMED; swap status UNKNOWN; stress spread = widest quote of the current regime; re-pricing risk shown as stress-alt"),
+        ("6", "Hurdle table, measured vs your assumptions", "PARTIAL" if t6.get("hurdle") is not None else "UNKNOWN", "slippage ASSUMED; commission and swap USER-CONFIRMED; stress spread = widest quote of the current regime; re-pricing risk shown as stress-alt"),
     ]
     return rows
 
@@ -556,7 +588,8 @@ def status_rows(x: dict, f: dict) -> list:
 def limitations(x: dict, f: dict) -> list:
     return [
         "Slippage cannot be measured without live executions; 0.5 / 2.0 points per side are ASSUMED, and market-execution fills at this broker may differ from quote-based costs.",
-        "Whether swap and commission are charged is not established (swap_mode DISABLED with populated values; one USTEC round trip in the deal history). Money-based checks are impossible at 0.01-0.02 lots because swap rounds to 0.00.",
+        f"Commission and swap come from the account owner's statement ({C.ACCOUNT_TYPE} account, {C.USER_CONFIRMED_ON}), not from a measurement; the deal history (one USTEC round trip) "
+        "and swap_mode = DISABLED agree with it. Re-check if the account type or terms change.",
         "No spread history before 2021-08-16 (bar spread = 0). The 2019-2021 M1 data are usable for price/volatility, not for costs.",
         "The spread is quasi-fixed and re-priced by the broker; percentiles from different regimes must not be pooled. Current-regime statistics rest on ~123 days.",
         "The weekly server-clock detection depends on a cash-open step in 1-min range; weeks with margin < 1.15 or < 3 trading days were treated as uninformative. The exact date of the UTC→London switch is unidentifiable inside the winter ambiguity.",
@@ -570,10 +603,8 @@ def limitations(x: dict, f: dict) -> list:
 
 def questions(x: dict, f: dict) -> list:
     return [
-        "**Account type and execution model.** Is this a Pro/Standard/ECN account, and is execution market (the API says SYMBOL_TRADE_EXECUTION_MARKET, FOK|IOC) with a dealer-set spread? Is the 1.43-point USTEC spread contractually fixed or can it float/re-price?",
-        "**Commission.** Is there any commission on USTEC (per lot or per million)? The deal history shows 0.0 on one round trip only.",
-        "**Swap.** Does the account pay/receive swap on USTEC? swap_mode is DISABLED but swap_long = −428.93 points. Please check the symbol specification in the terminal (Market Watch → Specification) or ask IUX, and say whether this is a swap-free account.",
-        "**Rollover time.** At which server time are swaps applied (default would be server midnight = 19:00 ET)? The spread spike is at the post-break re-open shown in section 5.",
+        "**Spread terms.** Is the USTEC spread on the Pro account contractually fixed, or can IUX re-price it at any time (the regime table shows repeated re-pricings since 2022)? "
+        "Execution is market (SYMBOL_TRADE_EXECUTION_MARKET, FOK|IOC), so event-time costs show up as slippage.",
         "**Events file.** Provide `events.csv` (event_name, datetime_et) to replace the APPROXIMATE event detection with real release times (set `AUDIT_EVENTS_CSV`).",
         "**Slippage.** If you have live-fill logs, share them so the ASSUMED 0.5/2 pt per side can be replaced by a measurement.",
         "**Cache location.** The tick cache is ~1 GB of parquet inside `audit/cache/`, which sits in a OneDrive-synced folder here; move it with `AUDIT_CACHE_DIR` if you do not want it synced.",
@@ -609,13 +640,20 @@ def cost_inputs(x: dict) -> dict:
         }
         ro = x["t2"].get("roll") or {}
         out["spread"]["rollover_reopen_et"] = P(ro.get("spike_clock_et"), "I", note="spike minute after the daily break; swap rollover time itself is UNKNOWN")
-    out["commission"] = {"round_trip_per_lot_usd": P(dv.get("sym_commission_per_lot_round_trip_usd"), "M", n=dv.get("sym_round_trips"), unit="USD/lot",
-                                                    note="weak: single round trip; other symbols also 0.0; account type unconfirmed"),
-                         "round_trip_index_points": P(0.0, "M", n=dv.get("sym_round_trips"), unit="index_points")}
+    usd_pt = (spec.get("_units") or {}).get("usd_per_index_point_per_lot") or 1.0
+    note_u = f"stated by the account owner on {C.USER_CONFIRMED_ON} ({C.ACCOUNT_TYPE} account)"
+    out["account_type"] = P(C.ACCOUNT_TYPE, "U", note=note_u)
+    out["commission"] = {"round_trip_per_lot_usd": P(C.COMMISSION_RT_USD_PER_LOT, "U", unit="USD/lot", note=note_u),
+                         "round_trip_index_points": P(C.COMMISSION_RT_USD_PER_LOT / usd_pt, "U", unit="index_points", note="the value used in hurdle_table"),
+                         "deal_history_round_trip_per_lot_usd": P(dv.get("sym_commission_per_lot_round_trip_usd"), "M", n=dv.get("sym_round_trips"), unit="USD/lot",
+                                                                  note="cross-check from the account's own deals")}
     if t3:
         out["swap"] = {"mode": P(t3["mode"], "M"), "raw_long": P(t3["swap_long_raw"], "M"), "raw_short": P(t3["swap_short_raw"], "M"),
-                       "charged": P(None, "M", note="UNKNOWN: swap_mode DISABLED but values populated; deal history inconclusive"),
-                       "long_pts_per_night_if_points": P(t3["swap_long_pts_per_night_if_points"], "I", unit="index_points/night", note="negative = paid; reading = POINTS"),
+                       "charged": P(C.SWAP_CHARGED, "U", note=note_u + "; matches swap_mode DISABLED"),
+                       "cost_per_night_index_points_used": P(-t3["swap_long_pts_per_night_if_points"] if C.SWAP_CHARGED else 0.0, "U", unit="index_points/night",
+                                                             note="long side; the value used in hurdle_table"),
+                       "long_pts_per_night_if_points": P(t3["swap_long_pts_per_night_if_points"], "I", unit="index_points/night",
+                                                         note="negative = paid; reading = POINTS" + ("" if C.SWAP_CHARGED else "; reference only, not charged")),
                        "short_pts_per_night_if_points": P(t3["swap_short_pts_per_night_if_points"], "I", unit="index_points/night"),
                        "annual_pct_long": P(t3["annual_pct_long"], "I", unit="% of price p.a. (negative = paid)"), "triple_swap_day": P(t3["triple_day"], "M"),
                        "nights_per_week_charged": P(7, "I")}
@@ -634,7 +672,10 @@ def cost_inputs(x: dict) -> dict:
         out["comparison_with_user_assumptions"] = t6["compare"].to_dict("records")
     if t6 and t6.get("sigma"):
         out["volatility"]["sigma_by_year_index_points"] = {
-            h: {str(y): P(float(r["sigma_pts"]), "M", n=int(r["N"]), unit="index_points") for y, r in t6["sigma"][k].iterrows() if y != "ALL"}
+            h: {str(y): P(float(r["sigma_pts"]), "M", n=int(r["N"]), unit="index_points",
+                          note=f"{int(r['N_dropped'])} of {int(r['N_candidates'])} scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
+                          if r["N_dropped"] else None)
+                for y, r in t6["sigma"][k].iterrows() if y != "ALL"}
             for h, k in {"5min": "5min|RTH", "1h": "1h|RTH", "6h": "6h|09:30-15:30 ET", "overnight": "overnight|Mon-Thu nights", "5d": "5d|Fri 16:00 - next Fri 16:00"}.items()}
         out["volatility"]["sigma_definitions"] = ("5min/1h: non-overlapping blocks inside 09:30-16:00 ET; 6h: 09:30->15:30 ET; overnight: 16:00 ET -> next 09:30 ET (Mon-Thu nights); "
                                                   "5d: Fri 16:00 ET -> next Fri 16:00 ET; price = open of the M1 bar at that ET time")
@@ -649,7 +690,9 @@ def cost_inputs(x: dict) -> dict:
         out["session_schedule"] = {"provenance": "INFERRED", "latest_quarter": t1g["schedule_period"], "expected_minutes_ET": t1g["schedule_latest_year"].to_dict("records"),
                                    "history_daily_break_ET": t1g["schedule_history"].to_dict("records")}
         out["data_gaps"] = {"expected_minutes": P(t1g["expected_minutes_total"], "I"), "missing_minutes": P(t1g["missing_minutes_total"], "I"),
-                            "bars_outside_schedule": P(t1g["bars_outside_schedule"], "I")}
+                            "bars_outside_schedule": P(t1g["bars_outside_schedule"], "I"),
+                            "session_shift_days_after_dst": P(t1g["shortened"].loc[t1g["shortened"]["kind"] == "session shift after a DST change", "date_et"].tolist(), "I",
+                                                              note="the CFD stopped quoting ~1 h before its regular daily break; full calendar in session_shortened_days.csv")}
     u = x.get("usable")
     if u is not None:
         out["history"] = {r["source"]: {"years": P(r["years"], "M"), "min_detectable_sharpe_t3": P(r["min_detectable_sharpe_t3"], "I")} for r in u.to_dict("records")}

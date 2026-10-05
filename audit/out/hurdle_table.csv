@@ -1,6 +1,6 @@
 horizon,case,side,sigma_pts,spread,slippage (ASSUMED),commission,swap,C_total_pts,required_hit_rate_%,required_hit_rate_% using measured mean abs move
 5min,base,n/a,28.7,1.43,1.0,0.0,0.0,2.43,55.29,56.19
-5min,"stress (widest quote, current regime)",n/a,28.7,2.0,4.0,0.0,0.0,6.0,63.07,65.27
+5min,"stress (widest quote, current regime)",n/a,28.7,2.0,4.0,0.0,0.0,6.0,63.06,65.27
 5min,"stress-alt (p99, worst past regime)",n/a,28.7,3.4,4.0,0.0,0.0,7.4,66.11,68.84
 1h,base,n/a,101.0,1.43,1.0,0.0,0.0,2.43,51.5,51.75
 1h,"stress (widest quote, current regime)",n/a,101.0,2.0,4.0,0.0,0.0,6.0,53.71,54.31
@@ -8,15 +8,9 @@ horizon,case,side,sigma_pts,spread,slippage (ASSUMED),commission,swap,C_total_pt
 6h,base,n/a,253.4,1.43,1.0,0.0,0.0,2.43,50.6,50.62
 6h,"stress (widest quote, current regime)",n/a,253.4,2.0,4.0,0.0,0.0,6.0,51.48,51.53
 6h,"stress-alt (p99, worst past regime)",n/a,253.4,3.4,4.0,0.0,0.0,7.4,51.83,51.89
-overnight,base,long,228.5,1.43,1.0,0.0,4.29,6.72,51.84,52.0
-overnight,base,short,228.5,1.43,1.0,0.0,0.0,2.43,50.66,50.72
-overnight,"stress (widest quote, current regime)",long,228.5,2.0,4.0,0.0,4.29,10.29,52.81,53.05
-overnight,"stress (widest quote, current regime)",short,228.5,2.0,4.0,0.0,0.0,6.0,51.64,51.78
-overnight,"stress-alt (p99, worst past regime)",long,228.5,3.4,4.0,0.0,4.29,11.69,53.2,53.47
-overnight,"stress-alt (p99, worst past regime)",short,228.5,3.4,4.0,0.0,0.0,7.4,52.02,52.2
-5d,base,long,661.5,1.43,1.0,0.0,30.03,32.46,53.07,53.15
-5d,base,short,661.5,1.43,1.0,0.0,0.0,2.43,50.23,50.24
-5d,"stress (widest quote, current regime)",long,661.5,2.0,4.0,0.0,30.03,36.03,53.4,53.49
-5d,"stress (widest quote, current regime)",short,661.5,2.0,4.0,0.0,0.0,6.0,50.57,50.58
-5d,"stress-alt (p99, worst past regime)",long,661.5,3.4,4.0,0.0,30.03,37.43,53.54,53.63
-5d,"stress-alt (p99, worst past regime)",short,661.5,3.4,4.0,0.0,0.0,7.4,50.7,50.72
+overnight,base,n/a,228.5,1.43,1.0,0.0,0.0,2.43,50.66,50.72
+overnight,"stress (widest quote, current regime)",n/a,228.5,2.0,4.0,0.0,0.0,6.0,51.64,51.78
+overnight,"stress-alt (p99, worst past regime)",n/a,228.5,3.4,4.0,0.0,0.0,7.4,52.02,52.2
+5d,base,n/a,661.5,1.43,1.0,0.0,0.0,2.43,50.23,50.24
+5d,"stress (widest quote, current regime)",n/a,661.5,2.0,4.0,0.0,0.0,6.0,50.57,50.58
+5d,"stress-alt (p99, worst past regime)",n/a,661.5,3.4,4.0,0.0,0.0,7.4,50.7,50.72

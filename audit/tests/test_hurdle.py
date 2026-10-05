@@ -37,6 +37,13 @@ def test_stress_alt_uses_worst_past_regime():
     assert alt[("5min", "n/a")] == 3.4 and alt[("overnight", "long")] == pytest.approx(3.5) and alt[("5d", "long")] == 3.6
 
 
+def test_no_swap_collapses_long_and_short():
+    h = hurdle(SIG, MAD, SPREADS, swap_long_pts=0.0, commission_pts=0.0)
+    on = h[h["horizon"] == "overnight"]
+    assert set(on["side"]) == {"n/a"} and (on["swap"] == 0).all()
+    assert on[on["case"] == "base"]["C_total_pts"].iloc[0] == pytest.approx(1.43 + 1.0)
+
+
 def test_comparison_separates_sigma_and_cost():
     h = hurdle(SIG, MAD, SPREADS, swap_long_pts=-4.0, commission_pts=0.0)
     c = compare_with_assumptions(SIG, h, 0.0)
