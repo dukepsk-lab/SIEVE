@@ -312,6 +312,7 @@ def cost_spreads(mm: pd.DataFrame, reg: pd.DataFrame, cur_start: pd.Timestamp) -
         return {"N": int(len(v)), "p50": round(float(v.quantile(.5)), 3), "p99": round(float(v.quantile(.99)), 3),
                 "max_tick": round(float(mm.loc[sel, "s_max_pt"].max()), 3)}
     return {"current_regime_start": str(cur_start.date()),
+            "regime_current": st(cur),          # all minutes; its max_tick (widest quote seen) is the stress spread
             "rth_current": st(rth & cur), "open_bucket_current": st(open_b & cur), "close_bucket_current": st(close_b & cur),
             "worst_regime": {"start": str(worst["start"]), "end": str(worst["end"]), "level_pts": float(worst["level_pts"]),
                              "open_bucket": st(open_b & wsel), "close_bucket": st(close_b & wsel)},

@@ -111,17 +111,20 @@ def hurdle(sig: dict, mad: dict, spreads: dict, swap_long_pts: float, commission
     """sig / mad: {'5min': sigma, ...} and mean |move| in points, measured over the last 12 months. spreads: t2.cost_spreads.
     swap_long_pts: signed index points per night as MT5 books it (negative = the long pays). Round-trip cost
     C = one spread + slippage on both sides + commission + swap x nights; the spread is paid once per round trip
-    (half at entry, half at exit), so for horizons crossing two different time buckets the two p99s are averaged."""
+    (half at entry, half at exit).
+    Spreads: base = RTH median of the current regime. stress = the widest quote (per-minute max) seen anywhere in the
+    current regime, i.e. the worst-case spread at volatile times; a p99 of the per-minute median would equal the base in a
+    quasi-fixed regime. stress-alt = p99 of the per-minute spread in the worst past regime (the broker re-pricing to its
+    worst past level); for horizons crossing two time buckets the two p99s are averaged."""
     s_base = spreads["rth_current"]["p50"]
-    p99_open, p99_close = spreads["open_bucket_current"]["p99"], spreads["close_bucket_current"]["p99"]
+    s_stress = spreads["regime_current"]["max_tick"]
     w_open, w_close = spreads["worst_regime"]["open_bucket"]["p99"], spreads["worst_regime"]["close_bucket"]["p99"]
     rows = []
     for h in HORIZONS:
         intraday = NIGHTS[h] == 0
-        entry_exit = {"base": s_base, "stress (p99, current regime)": p99_open if intraday else (p99_close + p99_open) / 2,
+        entry_exit = {"base": s_base, "stress (widest quote, current regime)": s_stress,
                       "stress-alt (p99, worst past regime)": w_open if intraday else (w_close + w_open) / 2}
         if h == "5d":
-            entry_exit["stress (p99, current regime)"] = p99_close
             entry_exit["stress-alt (p99, worst past regime)"] = w_close
         for case, spr in entry_exit.items():
             slip = 2 * (C.SLIP_BASE_PER_SIDE if case == "base" else C.SLIP_STRESS_PER_SIDE)
@@ -137,7 +140,8 @@ def hurdle(sig: dict, mad: dict, spreads: dict, swap_long_pts: float, commission
 
 def compare_with_assumptions(sig_meas: dict, hurdle_df: pd.DataFrame, commission_pts: float) -> pd.DataFrame:
     """Same formula with the user's earlier assumptions (spread 2/8 pts, swap 4.6 pt/night long, sigma 19/65/160/150/700)
-    and the same ASSUMED slippage, vs the measured base/stress rows."""
+    and the same ASSUMED slippage, vs the measured base/stress rows. 'hit rate: measured sigma, your C' keeps the user's
+    costs but uses the measured sigma, so the change splits into a volatility part and a cost part."""
     A = C.USER_ASSUMED
     rows = []
     for h in HORIZONS:
@@ -150,6 +154,8 @@ def compare_with_assumptions(sig_meas: dict, hurdle_df: pd.DataFrame, commission
             rows.append({"horizon": h, "case": case,
                          "sigma assumed": A["sigma"][h], "sigma measured": meas["sigma_pts"],
                          "C assumed": round(c_assumed, 2), "C measured": meas["C_total_pts"],
-                         "hit rate assumed %": round(100 * rate_assumed, 2), "hit rate measured %": meas["required_hit_rate_%"],
+                         "hit rate assumed %": round(100 * rate_assumed, 2),
+                         "hit rate: measured sigma, your C %": round(100 * required_hit_rate(c_assumed, sig_meas[h]), 2),
+                         "hit rate measured %": meas["required_hit_rate_%"],
                          "verdict": "better" if meas["required_hit_rate_%"] < 100 * rate_assumed - 0.05 else ("worse" if meas["required_hit_rate_%"] > 100 * rate_assumed + 0.05 else "same")})
     return pd.DataFrame(rows)

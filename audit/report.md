@@ -1,9 +1,9 @@
 # USTEC. data and cost audit — IUX, MetaTrader 5
-_Generated 2026-10-05 04:16 UTC · server clock at run 2026-10-05 05:16:51 · read-only audit (no order function was called) · all costs in **index points** (price units) unless stated; 1 index point = 100 `point` units._
+_Generated 2026-10-05 13:36 UTC · server clock at run 2026-10-05 14:36:18 · read-only audit (no order function was called) · all costs in **index points** (price units) unless stated; 1 index point = 100 `point` units._
 Provenance tags: **MEASURED** = computed from MT5 data · **INFERRED** = derived with stated logic · **ASSUMED** = not measured. Sample sizes (N) sit next to every statistic.
 
 ## 1. Summary
-**The data are clean enough to keep researching, but the cost side is a regime-risk problem and the measured numbers differ from your working assumptions in ways that matter.** History: 7.22 years of M1 bars and 5.14 years of ticks, with no duplicate or non-monotonic timestamps, no stale runs ≥ 5 min, and bars that are bid-based aggregates of the ticks; but the bar `spread` field is 0 before 2021-08, so spread history exists only for the tick era, and the server clock is **not** 'NY close' (0.0% of weeks match): it is UTC fixed (UTC+0) until 2021-10-25, then London (UTC+0/+1, EU DST), and the broker's session hours changed several times, so every time-of-day statistic must use the era-aware converter in `audit.tz`. Spread: it floated until early 2022 and since then is a broker-set quasi-fixed markup (re-set 28 times in the tick era, levels 0.6–3.0 pts), currently **1.43 pts** since 2026-05-14 (98.8% of minutes at exactly that value, p99 = 1.43, widest tick 2.0); older regimes show spikes to 69.3 pts around data releases and the daily re-open, so the risk is the broker changing the level, not intraday noise. Financing and commission are not settled: swap_mode is DISABLED although swap_long = -428.93 points is populated (read as points: long pays 4.2893 index pts/night = 5.08% p.a., short 0), and the account's deal history (one USTEC round trip, 0.0 commission) cannot tell whether either is charged — both are UNKNOWN and modelled conservatively. With measured volatility, required hit rates for a 1:1 payoff are 55.3% (5 min), 51.5% (1 h) and 50.6% (6 h) in the base case and 61.8/53.4/51.3% in the stress case (slippage 0.5/2 pts per side is ASSUMED); that is better than your assumptions in every cell, but only because the current spread is low and volatility in points is high. No futures-roll jumps were found. **Verdict: data and costs support further research on horizons of about an hour and longer; sub-hour edges must beat 2.4–5.4 points per round trip and are sensitive to a spread re-pricing.**
+**The data are clean enough to keep researching, but the cost side is a regime-risk problem and the measured numbers differ from your working assumptions in ways that matter.** History: 7.22 years of M1 bars and 5.14 years of ticks, with no duplicate or non-monotonic timestamps, no stale runs ≥ 5 min, and bars that are bid-based aggregates of the ticks; but the bar `spread` field is 0 before 2021-08, so spread history exists only for the tick era, and the server clock is **not** 'NY close' (0.0% of weeks match): it is UTC fixed (UTC+0) until 2021-10-25, then London (UTC+0/+1, EU DST), and the broker's session hours changed several times, so every time-of-day statistic must use the era-aware converter in `audit.tz`. Spread: it floated until early 2022 and since then is a broker-set quasi-fixed markup (re-set 28 times in the tick era, levels 0.6–3.0 pts), currently **1.43 pts** since 2026-05-14 (98.8% of minutes at exactly that value, p99 = 1.43, widest tick 2.0); older regimes show spikes to 69.3 pts around data releases and the daily re-open, so the risk is the broker changing the level, not intraday noise. Financing and commission are not settled: swap_mode is DISABLED although swap_long = -428.93 points is populated (read as points: long pays 4.2893 index pts/night = 5.066% p.a., short 0), and the account's deal history (one USTEC round trip, 0.0 commission) cannot tell whether either is charged — both are UNKNOWN and modelled conservatively. With measured volatility, required hit rates for a 1:1 payoff are 55.3% (5 min), 51.5% (1 h) and 50.6% (6 h) in the base case and 63.1/53.7/51.5% in the stress case (stress spread = the widest quote of the current regime, 2.0 pts; slippage 0.5/2 pts per side is ASSUMED). Every cell needs a lower hit rate than your assumptions. The improvement has two sources, a higher volatility in points and lower costs: of the 26.4 pp drop in the 5-min stress hurdle, 13.3 pp come from volatility and 13.1 pp from the spread (with measured volatility but your 8-pt stress spread, the 5-min stress hurdle would be 76.1%; section 9 splits every cell). The 2.0-pt stress spread rests on one 123-day regime and holds only while the broker does not re-price. No futures-roll jumps were found. **Verdict: data and costs support further research on horizons of about an hour and longer; sub-hour edges must beat 2.4–6.0 points per round trip and are sensitive to a spread re-pricing.**
 
 ## 2. Status of every question
 | # | question | status | answer / what is missing |
@@ -30,13 +30,13 @@ Provenance tags: **MEASURED** = computed from MT5 data · **INFERRED** = derived
 | 5 | Roll / jump check | PARTIAL | no roll signature; cannot separate cash-like from adjusted futures |
 | 5 | Bars vs ticks aggregation | ANSWERED | bid-based OHLC; tick_volume = tick count only approximately |
 | 6 | Realised sigma by year and horizon | ANSWERED | tables by year; last-12-month sigma used |
-| 6 | Hurdle table, measured vs your assumptions | PARTIAL | slippage ASSUMED; swap status UNKNOWN; spread regime risk shown as stress-alt |
+| 6 | Hurdle table, measured vs your assumptions | PARTIAL | slippage ASSUMED; swap status UNKNOWN; stress spread = widest quote of the current regime; re-pricing risk shown as stress-alt |
 
 ## 3. Task 0 — Preflight (MEASURED)
 Redacted terminal/account (login, name, balance, password are never read into the report):
 | item | value | note |
 |---|---|---|
-| terminal | IUX Markets Limited · build 6182 · connected=True · algo trading allowed=False | terminal_info |
+| terminal | IUX Markets Limited · build 6230 · connected=True · algo trading allowed=False | terminal_info |
 | server | IUXMarkets-Live | account_info |
 | account currency | USD | account_info |
 | leverage at run time | 3000 | account_info; **varies**: 400 and 3000 were both seen on the same day |
@@ -95,11 +95,11 @@ On USTEC.: 2 deals, 1 round trip(s), 0.02 lots, commission booked = 0.0 → **0.
 | timeframe | bars | first_bar_server | last_bar_server | earlier_bars_found (copy_rates_from, 1y before) | years |
 |---|---|---|---|---|---|
 | D1 | 2,241 | 2019-07-16 00:00 | 2026-10-04 00:00 | 0 | 7.22 |
-| H1 | 41,813 | 2019-07-16 07:00 | 2026-10-05 04:00 | 0 | 7.22 |
-| M5 | 494,740 | 2019-07-16 07:55 | 2026-10-05 05:10 | 0 | 7.22 |
-| M1 | 2,470,652 | 2019-07-16 07:59 | 2026-10-05 05:15 | 0 | 7.22 |
+| H1 | 41,822 | 2019-07-16 07:00 | 2026-10-05 13:00 | 0 | 7.22 |
+| M5 | 494,852 | 2019-07-16 07:55 | 2026-10-05 14:30 | 0 | 7.22 |
+| M1 | 2,471,212 | 2019-07-16 07:59 | 2026-10-05 14:35 | 0 | 7.22 |
 
-**M1 coverage vs expected session minutes (MEASURED / INFERRED schedule).** The expected schedule is inferred per calendar quarter in New York time: a minute is 'expected' when ≥50% of open days have a bar there. Expected minutes 2,524,952, missing 57,739 (2.29%). Bars outside the inferred schedule: 3,439.
+**M1 coverage vs expected session minutes (MEASURED / INFERRED schedule).** The expected schedule is inferred per calendar quarter in New York time: a minute is 'expected' when ≥50% of open days have a bar there. Expected minutes 2,525,528, missing 57,739 (2.29%). Bars outside the inferred schedule: 3,423.
 | year | open_days | mean_bars | mean_expected | mean_ratio | days_below_95pct |
 |---|---|---|---|---|---|
 | 2019 | 143 | 1,097.0 | 1,136.0 | 96.5 | 14 |
@@ -109,7 +109,7 @@ On USTEC.: 2 deals, 1 round trip(s), 0.02 lots, commission booked = 0.0 → **0.
 | 2023 | 310 | 1,086.0 | 1,098.0 | 98.97 | 17 |
 | 2024 | 313 | 1,132.0 | 1,151.0 | 98.58 | 15 |
 | 2025 | 312 | 1,124.0 | 1,148.0 | 98.21 | 17 |
-| 2026 | 237 | 1,128.0 | 1,141.0 | 98.95 | 8 |
+| 2026 | 238 | 1,125.0 | 1,138.0 | 98.95 | 8 |
 
 Session schedule history (ET), INFERRED from where bars exist (daily break = minutes with no bars). The broker changed its hours several times:
 | from | to | daily break (ET, expected-minute gap) |
@@ -696,14 +696,14 @@ The bar `spread` is one snapshot per bar. Over the overlap (index points = colum
 | Stock | POINTS | 57 | 57 |
 | Thematic Indices | POINTS | 5 | 5 |
 
-Formulas (per 1.0 lot, price 30,820.4; negative = the trader pays). Only the 'points' reading gives a financing rate in a sensible range:
+Formulas (per 1.0 lot, price 30,903.6; negative = the trader pays). Only the 'points' reading gives a financing rate in a sensible range:
 | reading of the numbers | formula | long pts/night | short pts/night | long % p.a. | short % p.a. | plausible? |
 |---|---|---|---|---|---|---|
-| POINTS | swap x point | -4.2893 | 0 | -5.08 | 0 | yes |
-| CURRENCY_DEPOSIT (USD per lot per night) | swap / (tick_value/tick_size) | -428.93 | 0 | -507.97 | 0 | no - absurd financing rate |
-| INTEREST_CURRENT (annual % of price) | price x swap/100 / 365 | -362.19 | 0 | -428.93 | 0 | no - absurd financing rate |
+| POINTS | swap x point | -4.2893 | 0 | -5.066 | 0 | yes |
+| CURRENCY_DEPOSIT (USD per lot per night) | swap / (tick_value/tick_size) | -428.93 | 0 | -506.61 | 0 | no - absurd financing rate |
+| INTEREST_CURRENT (annual % of price) | price x swap/100 / 365 | -363.16 | 0 | -428.93 | 0 | no - absurd financing rate |
 
-**Reading used: POINTS (INFERRED)** → index points per night: long **-4.2893**, short **0.0** (= swap × point). Annualised: long -5.08% of price, short 0.0% (= pts × 365 / price). Short also pays: **no**; short receives: no. Charged per rollover; the Friday rollover counts 3× → 7 night-equivalents per week.
+**Reading used: POINTS (INFERRED)** → index points per night: long **-4.2893**, short **0.0** (= swap × point). Annualised: long -5.066% of price, short 0.0% (= pts × 365 / price). Short also pays: **no**; short receives: no. Charged per rollover; the Friday rollover counts 3× → 7 night-equivalents per week.
 
 Evidence from this account's deals (positions that crossed ≥1 server midnight). Expected charge under the 'points' reading is far below the 0.01 rounding of the booked swap, so this is **inconclusive**:
 | symbol | direction | lots | nights | swap_booked | expected_if_points |
@@ -715,7 +715,7 @@ Evidence from this account's deals (positions that crossed ≥1 server midnight)
 The rollover time cannot be read from the API. INFERRED from the spread spike: the market re-opens at the time shown in 2b; the usual MT5 default (server midnight) would be 19:00 ET in the London-clock era. Please confirm in the terminal (see questions).
 
 ## 7. Task 4 — Server time ↔ UTC ↔ New York
-**Live offset (MEASURED):** latest tick time − UTC now = 3599.7 s → **server = UTC+1h** (residual -0.3 s = tick age; market live = True). PC clock checked against an HTTP time source (1 s resolution): skew 0.89 s.
+**Live offset (MEASURED):** latest tick time − UTC now = 3600.2 s → **server = UTC+1h** (residual 0.2 s = tick age; market live = True). PC clock checked against an HTTP time source (1 s resolution): skew -0.02 s.
 
 **Server clock history (MEASURED weekly, then segmented).** The 09:30 ET cash-open step in 1-min range was detected for 377 weeks (367 informative). The 08:30 ET release spike sits exactly 60 min before the open in 56.1% of weeks (median -60.0 min), which is consistent with a single clock for both events.
 | era_start_week | era_end_week | weeks | convention | weeks_matching | weeks_informative | match_pct |
@@ -800,7 +800,7 @@ Helper: `audit.tz.ServerClock` (eras + rules `fixed` / `ny` / `eu`), saved as `a
 **M1 bars (MEASURED):**
 | item | value | note |
 |---|---|---|
-| bars | 2,470,652 |  |
+| bars | 2,471,212 |  |
 | duplicate_timestamps | 0 |  |
 | non_monotonic_timestamps | 0 |  |
 | nan_prices | 0 |  |
@@ -823,7 +823,7 @@ Helper: `audit.tz.ServerClock` (eras + rules `fixed` / `ny` / `eu`), saved as `a
 | 2023 | 336,658 | 0.04 | 0 |
 | 2024 | 354,286 | 0.01 | 0 |
 | 2025 | 350,730 | 0.01 | 0 |
-| 2026 | 267,300 | 0 | 0 |
+| 2026 | 267,860 | 0 | 0 |
 
 **Ticks (MEASURED, all days):**
 | check | count | share_of_ticks_% | handling |
@@ -855,7 +855,7 @@ Longest runs:
 | 2019-12-06 04:46 | 2019-12-05 23:46 | 2 |
 | 2019-12-31 06:02 | 2019-12-31 01:02 | 2 |
 
-**Outlier returns |ret| > 8× local sigma (past-only, 120-bar window)**: 1,338 of 2,467,647 tested 1-min returns (0.054%), 45.4% inside the 08:30/09:30/10:00/14:00 ET news windows. Heavy tails, not necessarily errors. By year:
+**Outlier returns |ret| > 8× local sigma (past-only, 120-bar window)**: 1,339 of 2,468,207 tested 1-min returns (0.054%), 45.5% inside the 08:30/09:30/10:00/14:00 ET news windows. Heavy tails, not necessarily errors. By year:
 | year | outliers | tested_returns | per_100k |
 |---|---|---|---|
 | 2019 | 160 | 156,333 | 102.30 |
@@ -865,7 +865,7 @@ Longest runs:
 | 2023 | 163 | 336,304 | 48.5 |
 | 2024 | 170 | 353,963 | 48 |
 | 2025 | 185 | 350,399 | 52.8 |
-| 2026 | 129 | 267,060 | 48.3 |
+| 2026 | 130 | 267,620 | 48.6 |
 Largest 30 (full list: `audit/out/outliers_top.csv`):
 | server | et | move_pts | sigma_pts | z | tick_volume | in_news_window |
 |---|---|---|---|---|---|---|
@@ -989,7 +989,7 @@ Bars without any tick in the overlap: 1,390 (a tick-history gap of those minutes
 | 2023 | 336,658 | 62.6 | 43 | 215.00 | 301 | 0 | 0 |
 | 2024 | 354,286 | 83 | 64 | 209.00 | 450 | 0 | 0 |
 | 2025 | 350,730 | 134.60 | 108.00 | 384.00 | 513 | 0 | 0 |
-| 2026 | 267,300 | 342.50 | 352.00 | 576.00 | 591 | 0 | 0 |
+| 2026 | 267,860 | 342.70 | 353.00 | 576.00 | 591 | 0 | 0 |
 
 ## 9. Task 6 — Volatility calibration and cost hurdles
 Definitions: P(T) = open of the M1 bar at ET time T. 5 min/1 h: non-overlapping blocks inside the cash session (RTH) from 09:30; 6 h: 09:30→15:30 ET; overnight: 16:00 ET → next 09:30 ET, Mon–Thu nights; 5 days: Fri 16:00 → next Fri 16:00. σ = std of the price change in **index points** (MEASURED); `mean abs move / σ` is 0.80 for a normal distribution.
@@ -997,7 +997,7 @@ Definitions: P(T) = open of the M1 bar at ET time T. 5 min/1 h: non-overlapping 
 Average price level by year (M1 close mean):
 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | last 12 months |
 |---|---|---|---|---|---|---|---|---|
-| 7,997 | 10,271 | 14,480 | 12,748 | 14,212 | 19,108 | 22,534 | 27,595 | 27,036 |
+| 7,997 | 10,271 | 14,480 | 12,748 | 14,212 | 19,108 | 22,534 | 27,601 | 27,042 |
 
 **5min|RTH**
 | year | N | sigma (idx pts) | mean abs move / sigma |
@@ -1009,9 +1009,9 @@ Average price level by year (M1 close mean):
 | 2023 | 19,539 | 14.28 | 0.72 |
 | 2024 | 19,842 | 18.45 | 0.69 |
 | 2025 | 19,651 | 26.24 | 0.63 |
-| 2026 | 14,968 | 29.71 | 0.69 |
-| ALL | 141,662 | 20.16 | 0.65 |
-| last 12 months | 19,689 | 28.69 | 0.68 |
+| 2026 | 14,969 | 29.72 | 0.69 |
+| ALL | 141,663 | 20.16 | 0.65 |
+| last 12 months | 19,690 | 28.7 | 0.68 |
 
 **1h|RTH**
 | year | N | sigma (idx pts) | mean abs move / sigma |
@@ -1037,9 +1037,9 @@ Average price level by year (M1 close mean):
 | 2023 | 67,132 | 9.23 | 0.62 |
 | 2024 | 70,661 | 12.2 | 0.6 |
 | 2025 | 70,020 | 17.25 | 0.57 |
-| 2026 | 53,358 | 20.58 | 0.65 |
-| ALL | 492,964 | 13.6 | 0.58 |
-| last 12 months | 70,058 | 19.72 | 0.64 |
+| 2026 | 53,470 | 20.57 | 0.65 |
+| ALL | 493,076 | 13.6 | 0.58 |
+| last 12 months | 70,170 | 19.72 | 0.64 |
 
 **1h|all hours**
 | year | N | sigma (idx pts) | mean abs move / sigma |
@@ -1051,9 +1051,9 @@ Average price level by year (M1 close mean):
 | 2023 | 5,276 | 31.91 | 0.65 |
 | 2024 | 5,648 | 42.27 | 0.62 |
 | 2025 | 5,530 | 60.71 | 0.59 |
-| 2026 | 4,094 | 73.61 | 0.66 |
-| ALL | 39,151 | 47.23 | 0.6 |
-| last 12 months | 5,373 | 70.47 | 0.65 |
+| 2026 | 4,103 | 73.54 | 0.66 |
+| ALL | 39,160 | 47.22 | 0.6 |
+| last 12 months | 5,382 | 70.42 | 0.65 |
 
 **6h|09:30-15:30 ET**
 | year | N | sigma (idx pts) | mean abs move / sigma |
@@ -1107,9 +1107,9 @@ Average price level by year (M1 close mean):
 | 2023 | 13 | 68.1 | 0.77 |
 | 2024 | 50 | 170.98 | 0.54 |
 | 2025 | 48 | 246.32 | 0.75 |
-| 2026 | 36 | 261.19 | 0.76 |
-| ALL | 251 | 179.47 | 0.66 |
-| last 12 months | 47 | 249.59 | 0.82 |
+| 2026 | 37 | 257.62 | 0.75 |
+| ALL | 252 | 179.12 | 0.66 |
+| last 12 months | 48 | 247.14 | 0.81 |
 
 **5d|Fri 16:00 - next Fri 16:00**
 | year | N | sigma (idx pts) | mean abs move / sigma |
@@ -1128,46 +1128,46 @@ Average price level by year (M1 close mean):
 Sigma used below = **last 12 months** (volatility in points scales with the price level, so older years are not comparable).
 
 ### Hurdle table (required hit rate for payoff 1:1: 0.5 + C / (1.6 σ))
-C = one spread + slippage on both sides (**ASSUMED**: 0.5 pt/side base, 2 pt/side stress) + commission (0.0, weakly MEASURED) + swap × nights (INFERRED 'points' reading; long pays, short 0; 1 night overnight, 7 for a 5-day hold). Spreads: base = RTH median of the current regime; stress = p99 of the relevant bucket in the current regime (09:30–10:00 ET for intraday, average of the 15:30–16:00 and 09:30–10:00 p99 for overnight); stress-alt = same p99 in the worst past regime. The last column re-computes the hit rate with the measured mean absolute move instead of 0.8σ.
+C = one spread + slippage on both sides (**ASSUMED**: 0.5 pt/side base, 2 pt/side stress) + commission (0.0, weakly MEASURED) + swap × nights (INFERRED 'points' reading; long pays, short 0; 1 night overnight, 7 for a 5-day hold). Spreads: base = RTH median of the current regime; stress = the **widest quote seen anywhere in the current regime** (2.0 pts, MEASURED over 138,682 minutes), i.e. the worst-case spread at volatile times; a p99 of the per-minute median would equal the base in a quasi-fixed regime and would stress nothing. stress-alt = p99 of the per-minute spread in the worst past regime (09:30–10:00 ET for intraday, average of the 15:30–16:00 and 09:30–10:00 p99 for overnight), a scenario in which the broker re-prices to its worst past level. The last column re-computes the hit rate with the measured mean absolute move instead of 0.8σ.
 | horizon | case | side | sigma_pts | spread | slippage (ASSUMED) | commission | swap | C_total_pts | required_hit_rate_% | required_hit_rate_% using measured mean abs move |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 5min | base | n/a | 28.7 | 1.43 | 1 | 0 | 0 | 2.43 | 55.29 | 56.19 |
-| 5min | stress (p99, current regime) | n/a | 28.7 | 1.43 | 4 | 0 | 0 | 5.43 | 61.83 | 63.83 |
-| 5min | stress-alt (p99, worst past regime) | n/a | 28.7 | 3.4 | 4 | 0 | 0 | 7.4 | 66.12 | 68.84 |
+| 5min | stress (widest quote, current regime) | n/a | 28.7 | 2 | 4 | 0 | 0 | 6 | 63.07 | 65.27 |
+| 5min | stress-alt (p99, worst past regime) | n/a | 28.7 | 3.4 | 4 | 0 | 0 | 7.4 | 66.11 | 68.84 |
 | 1h | base | n/a | 101.00 | 1.43 | 1 | 0 | 0 | 2.43 | 51.5 | 51.75 |
-| 1h | stress (p99, current regime) | n/a | 101.00 | 1.43 | 4 | 0 | 0 | 5.43 | 53.36 | 53.9 |
+| 1h | stress (widest quote, current regime) | n/a | 101.00 | 2 | 4 | 0 | 0 | 6 | 53.71 | 54.31 |
 | 1h | stress-alt (p99, worst past regime) | n/a | 101.00 | 3.4 | 4 | 0 | 0 | 7.4 | 54.58 | 55.32 |
 | 6h | base | n/a | 253.40 | 1.43 | 1 | 0 | 0 | 2.43 | 50.6 | 50.62 |
-| 6h | stress (p99, current regime) | n/a | 253.40 | 1.43 | 4 | 0 | 0 | 5.43 | 51.34 | 51.39 |
+| 6h | stress (widest quote, current regime) | n/a | 253.40 | 2 | 4 | 0 | 0 | 6 | 51.48 | 51.53 |
 | 6h | stress-alt (p99, worst past regime) | n/a | 253.40 | 3.4 | 4 | 0 | 0 | 7.4 | 51.83 | 51.89 |
 | overnight | base | long | 228.50 | 1.43 | 1 | 0 | 4.29 | 6.72 | 51.84 | 52 |
 | overnight | base | short | 228.50 | 1.43 | 1 | 0 | 0 | 2.43 | 50.66 | 50.72 |
-| overnight | stress (p99, current regime) | long | 228.50 | 1.43 | 4 | 0 | 4.29 | 9.72 | 52.66 | 52.89 |
-| overnight | stress (p99, current regime) | short | 228.50 | 1.43 | 4 | 0 | 0 | 5.43 | 51.49 | 51.61 |
+| overnight | stress (widest quote, current regime) | long | 228.50 | 2 | 4 | 0 | 4.29 | 10.29 | 52.81 | 53.05 |
+| overnight | stress (widest quote, current regime) | short | 228.50 | 2 | 4 | 0 | 0 | 6 | 51.64 | 51.78 |
 | overnight | stress-alt (p99, worst past regime) | long | 228.50 | 3.4 | 4 | 0 | 4.29 | 11.69 | 53.2 | 53.47 |
 | overnight | stress-alt (p99, worst past regime) | short | 228.50 | 3.4 | 4 | 0 | 0 | 7.4 | 52.02 | 52.2 |
 | 5d | base | long | 661.50 | 1.43 | 1 | 0 | 30.03 | 32.46 | 53.07 | 53.15 |
 | 5d | base | short | 661.50 | 1.43 | 1 | 0 | 0 | 2.43 | 50.23 | 50.24 |
-| 5d | stress (p99, current regime) | long | 661.50 | 1.43 | 4 | 0 | 30.03 | 35.46 | 53.35 | 53.44 |
-| 5d | stress (p99, current regime) | short | 661.50 | 1.43 | 4 | 0 | 0 | 5.43 | 50.51 | 50.53 |
+| 5d | stress (widest quote, current regime) | long | 661.50 | 2 | 4 | 0 | 30.03 | 36.03 | 53.4 | 53.49 |
+| 5d | stress (widest quote, current regime) | short | 661.50 | 2 | 4 | 0 | 0 | 6 | 50.57 | 50.58 |
 | 5d | stress-alt (p99, worst past regime) | long | 661.50 | 3.4 | 4 | 0 | 30.03 | 37.43 | 53.54 | 53.63 |
 | 5d | stress-alt (p99, worst past regime) | short | 661.50 | 3.4 | 4 | 0 | 0 | 7.4 | 50.7 | 50.72 |
 
 ### Against your earlier assumptions (spread 2/8 pts, swap 4.6 pt/night long, σ 19/65/160/150/700; same ASSUMED slippage)
-| horizon | case | sigma assumed | sigma measured | C assumed | C measured | hit rate assumed % | hit rate measured % | verdict |
-|---|---|---|---|---|---|---|---|---|
-| 5min | base | 19 | 28.7 | 3 | 2.43 | 59.87 | 55.29 | better |
-| 5min | stress | 19 | 28.7 | 12 | 5.43 | 89.47 | 61.83 | better |
-| 1h | base | 65 | 101.00 | 3 | 2.43 | 52.88 | 51.5 | better |
-| 1h | stress | 65 | 101.00 | 12 | 5.43 | 61.54 | 53.36 | better |
-| 6h | base | 160 | 253.40 | 3 | 2.43 | 51.17 | 50.6 | better |
-| 6h | stress | 160 | 253.40 | 12 | 5.43 | 54.69 | 51.34 | better |
-| overnight | base | 150 | 228.50 | 7.6 | 6.72 | 53.17 | 51.84 | better |
-| overnight | stress | 150 | 228.50 | 16.6 | 9.72 | 56.92 | 52.66 | better |
-| 5d | base | 700 | 661.50 | 35.2 | 32.46 | 53.14 | 53.07 | better |
-| 5d | stress | 700 | 661.50 | 44.2 | 35.46 | 53.95 | 53.35 | better |
+| horizon | case | sigma assumed | sigma measured | C assumed | C measured | hit rate assumed % | hit rate: measured sigma, your C % | hit rate measured % | verdict |
+|---|---|---|---|---|---|---|---|---|---|
+| 5min | base | 19 | 28.7 | 3 | 2.43 | 59.87 | 56.53 | 55.29 | better |
+| 5min | stress | 19 | 28.7 | 12 | 6 | 89.47 | 76.13 | 63.07 | better |
+| 1h | base | 65 | 101.00 | 3 | 2.43 | 52.88 | 51.86 | 51.5 | better |
+| 1h | stress | 65 | 101.00 | 12 | 6 | 61.54 | 57.42 | 53.71 | better |
+| 6h | base | 160 | 253.40 | 3 | 2.43 | 51.17 | 50.74 | 50.6 | better |
+| 6h | stress | 160 | 253.40 | 12 | 6 | 54.69 | 52.96 | 51.48 | better |
+| overnight | base | 150 | 228.50 | 7.6 | 6.72 | 53.17 | 52.08 | 51.84 | better |
+| overnight | stress | 150 | 228.50 | 16.6 | 10.29 | 56.92 | 54.54 | 52.81 | better |
+| 5d | base | 700 | 661.50 | 35.2 | 32.46 | 53.14 | 53.33 | 53.07 | better |
+| 5d | stress | 700 | 661.50 | 44.2 | 36.03 | 53.95 | 54.18 | 53.4 | better |
 
-**Reading.** Measured sigma (last 12 months, index points) is higher than assumed at 5min, 1h, 6h, overnight and lower at 5d; sigma in points scales with the price level. The current-regime spread (1.43 pts) is below your 2-pt base. 10 of 10 cells need a lower hit rate than you assumed, 0 a higher one. Caveat: the stress spread in this comparison is the *current* regime's p99 (1.43 pts), not your 8 pts; this broker has run spreads up to 3.0 pts for months (stress-alt rows) and quoted single ticks up to 69.3 pts in earlier regimes. The improvement is real today but depends on the broker not re-pricing.
+**Reading.** Measured sigma (last 12 months, index points) is higher than assumed at 5min, 1h, 6h, overnight and lower at 5d; sigma in points scales with the price level. The current-regime spread (1.43 pts) is below your 2-pt base. 10 of 10 cells need a lower hit rate than you assumed, 0 a higher one. The column 'hit rate: measured sigma, your C' keeps your costs and swaps in the measured sigma, so it splits each change into a volatility part and a cost part. At 5 min the hurdle falls by 4.6 pp in the base case (3.3 from sigma, 1.2 from cost) and by 26.4 pp at stress (13.3 from sigma, 13.1 from the 2.0-pt vs 8-pt stress spread). Caveat: the measured stress spread (2.0 pts) is the widest quote of a single regime that started 2026-05-14 (123 days, including 21 detected 08:30 ET release days and 6 14:00 ET Fed days). It holds only while the broker keeps this regime: it has run spreads up to 3.0 pts for months (stress-alt rows) and quoted single ticks up to 69.3 pts in earlier regimes. Re-measure it after any re-pricing. While the quoted spread stays fixed, event-time costs show up as slippage, which is still ASSUMED.
 
 ## 10. Limitations and what could not be verified
 - Slippage cannot be measured without live executions; 0.5 / 2.0 points per side are ASSUMED, and market-execution fills at this broker may differ from quote-based costs.

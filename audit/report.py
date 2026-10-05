@@ -92,7 +92,8 @@ def facts(x: dict) -> dict:
     if sp is not None:
         f["cur_level"] = sp["rth_current"]["p50"]
         f["cur_p99"] = sp["open_bucket_current"]["p99"]
-        f["cur_max"] = sp["open_bucket_current"]["max_tick"]
+        f["cur_max"] = sp["regime_current"]["max_tick"]          # widest quote in the current regime = stress spread
+        f["cur_minutes"] = sp["regime_current"]["N"]
         f["cur_start"] = sp["current_regime_start"]
         f["worst"] = sp["worst_regime"]
         f["cur_n"] = sp["rth_current"]["N"]
@@ -119,6 +120,12 @@ def facts(x: dict) -> dict:
         f["hr"] = {hz: (hr(hz, "base"), hr(hz, "stress")) for hz in ("5min", "1h", "6h")}
         f["hr_on"] = {s: (hr("overnight", "base", s), hr("overnight", "stress", s)) for s in ("long", "short")}
         f["hr_5d"] = {s: (hr("5d", "base", s), hr("5d", "stress", s)) for s in ("long", "short")}
+    cmp = x.get("t6", {}).get("compare")
+    if cmp is not None:
+        r = cmp[(cmp["horizon"] == "5min") & (cmp["case"] == "stress")]
+        f["hr5_stress_your_c"] = float(r["hit rate: measured sigma, your C %"].iloc[0]) if len(r) else float("nan")
+    ev = x.get("t2", {}).get("events") or {}
+    f["ev_cur"] = {label.split(" ")[0]: a["n_event_days_cur"] for label, a in ev.items()}
     return f
 
 
@@ -397,8 +404,11 @@ def build(x: dict) -> str:
     if t6.get("hurdle") is not None:
         add("\n### Hurdle table (required hit rate for payoff 1:1: 0.5 + C / (1.6 σ))")
         add("C = one spread + slippage on both sides (**ASSUMED**: 0.5 pt/side base, 2 pt/side stress) + commission (0.0, weakly MEASURED) + swap × nights "
-            "(INFERRED 'points' reading; long pays, short 0; 1 night overnight, 7 for a 5-day hold). Spreads: base = RTH median of the current regime; stress = p99 of the relevant bucket in the current regime "
-            "(09:30–10:00 ET for intraday, average of the 15:30–16:00 and 09:30–10:00 p99 for overnight); stress-alt = same p99 in the worst past regime. "
+            "(INFERRED 'points' reading; long pays, short 0; 1 night overnight, 7 for a 5-day hold). Spreads: base = RTH median of the current regime; "
+            f"stress = the **widest quote seen anywhere in the current regime** ({f.get('cur_max')} pts, MEASURED over {num(f.get('cur_minutes'))} minutes), i.e. the worst-case spread "
+            "at volatile times; a p99 of the per-minute median would equal the base in a quasi-fixed regime and would stress nothing. "
+            "stress-alt = p99 of the per-minute spread in the worst past regime (09:30–10:00 ET for intraday, average of the 15:30–16:00 and 09:30–10:00 p99 for overnight), "
+            "a scenario in which the broker re-prices to its worst past level. "
             "The last column re-computes the hit rate with the measured mean absolute move instead of 0.8σ.")
         add(md(t6["hurdle"], nd=2))
         add("\n### Against your earlier assumptions (spread 2/8 pts, swap 4.6 pt/night long, σ 19/65/160/150/700; same ASSUMED slippage)")
@@ -433,6 +443,19 @@ def roll_verdict(r) -> str:
             "The series looks **cash-like (or continuously/back-adjusted)**. These tests cannot separate 'cash index CFD' from 'adjusted futures'; a 0.2–1% basis jump on every roll would have been visible, a smoothly amortised basis would not.")
 
 
+def split_5min(cmp: pd.DataFrame | None) -> dict:
+    """5-min hurdle change vs the user's assumptions, split into (total, sigma part, cost part) in percentage points."""
+    out = {}
+    if cmp is None:
+        return out
+    for case in ("base", "stress"):
+        r = cmp[(cmp["horizon"] == "5min") & (cmp["case"] == case)]
+        if len(r):
+            a, m_sig, m = r.iloc[0][["hit rate assumed %", "hit rate: measured sigma, your C %", "hit rate measured %"]].astype(float)
+            out[case] = (a - m, a - m_sig, m_sig - m)
+    return out
+
+
 def compare_text(cmp: pd.DataFrame, f: dict) -> str:
     base = cmp[cmp["case"] == "base"]
     higher = [h for h, a, m in zip(base["horizon"], base["sigma assumed"], base["sigma measured"]) if m > a]
@@ -440,8 +463,16 @@ def compare_text(cmp: pd.DataFrame, f: dict) -> str:
     better, worse = int((cmp["verdict"] == "better").sum()), int((cmp["verdict"] == "worse").sum())
     s = (f"\n**Reading.** Measured sigma (last 12 months, index points) is higher than assumed at {', '.join(higher) or 'no horizon'} and lower at {', '.join(lower) or 'no horizon'}; "
          f"sigma in points scales with the price level. The current-regime spread ({f.get('cur_level')} pts) is below your 2-pt base. {better} of {len(cmp)} cells need a lower hit rate than you assumed, {worse} a higher one. ")
-    s += (f"Caveat: the stress spread in this comparison is the *current* regime's p99 ({f.get('cur_p99')} pts), not your 8 pts; this broker has run spreads up to {f.get('lvl_max')} pts for months "
-          f"(stress-alt rows) and quoted single ticks up to {f.get('tick_spike_max')} pts in earlier regimes. The improvement is real today but depends on the broker not re-pricing.")
+    ev = f.get("ev_cur") or {}
+    ev_txt = f", including {ev.get('08:30', '?')} detected 08:30 ET release days and {ev.get('14:00', '?')} 14:00 ET Fed days" if ev else ""
+    s += "The column 'hit rate: measured sigma, your C' keeps your costs and swaps in the measured sigma, so it splits each change into a volatility part and a cost part. "
+    sp = split_5min(cmp)
+    if sp:
+        s += (f"At 5 min the hurdle falls by {sp['base'][0]:.1f} pp in the base case ({sp['base'][1]:.1f} from sigma, {sp['base'][2]:.1f} from cost) "
+              f"and by {sp['stress'][0]:.1f} pp at stress ({sp['stress'][1]:.1f} from sigma, {sp['stress'][2]:.1f} from the {f.get('cur_max')}-pt vs 8-pt stress spread). ")
+    s += (f"Caveat: the measured stress spread ({f.get('cur_max')} pts) is the widest quote of a single regime that started {f.get('cur_start')} ({f.get('cur_days')} days{ev_txt}). "
+          f"It holds only while the broker keeps this regime: it has run spreads up to {f.get('lvl_max')} pts for months (stress-alt rows) and quoted single ticks up to {f.get('tick_spike_max')} pts in earlier regimes. "
+          "Re-measure it after any re-pricing. While the quoted spread stays fixed, event-time costs show up as slippage, which is still ASSUMED.")
     return s
 
 
@@ -475,10 +506,15 @@ def summary_paragraph(x: dict, f: dict) -> str:
         c5 = (float(r5[r5["case"] == "base"]["C_total_pts"].iloc[0]), float(r5[r5["case"] != "base"]["C_total_pts"].iloc[0]))
     if hr:
         all_better = cmp is not None and bool((cmp["verdict"] == "better").all())
+        split = split_5min(cmp)
         p.append(f"With measured volatility, required hit rates for a 1:1 payoff are {hr['5min'][0]:.1f}% (5 min), {hr['1h'][0]:.1f}% (1 h) and {hr['6h'][0]:.1f}% (6 h) in the base case and "
-                 f"{hr['5min'][1]:.1f}/{hr['1h'][1]:.1f}/{hr['6h'][1]:.1f}% in the stress case (slippage 0.5/2 pts per side is ASSUMED); "
-                 + ("that is better than your assumptions in every cell, " if all_better else "that is better than your assumptions in most but not all cells (see section 9), ")
-                 + "but only because the current spread is low and volatility in points is high. ")
+                 f"{hr['5min'][1]:.1f}/{hr['1h'][1]:.1f}/{hr['6h'][1]:.1f}% in the stress case (stress spread = the widest quote of the current regime, {f.get('cur_max')} pts; slippage 0.5/2 pts per side is ASSUMED). "
+                 + ("Every cell needs a lower hit rate than your assumptions. " if all_better else "Most but not all cells need a lower hit rate than your assumptions (see section 9). ")
+                 + "The improvement has two sources, a higher volatility in points and lower costs"
+                 + (f": of the {split['stress'][0]:.1f} pp drop in the 5-min stress hurdle, {split['stress'][1]:.1f} pp come from volatility and {split['stress'][2]:.1f} pp from the spread "
+                    if "stress" in split else " ")
+                 + f"(with measured volatility but your 8-pt stress spread, the 5-min stress hurdle would be {f.get('hr5_stress_your_c', float('nan')):.1f}%; section 9 splits every cell). "
+                 f"The {f.get('cur_max')}-pt stress spread rests on one {f.get('cur_days')}-day regime and holds only while the broker does not re-price. ")
     if t5.get("roll"):
         p.append("No futures-roll jumps were found. ")
     p.append("**Verdict: data and costs support further research on horizons of about an hour and longer; "
@@ -512,7 +548,7 @@ def status_rows(x: dict, f: dict) -> list:
         ("5", "Roll / jump check", "PARTIAL" if t5.get("roll") else "UNKNOWN", "no roll signature; cannot separate cash-like from adjusted futures"),
         ("5", "Bars vs ticks aggregation", ok(t5.get("bvt")), "bid-based OHLC; tick_volume = tick count only approximately"),
         ("6", "Realised sigma by year and horizon", ok(t6.get("sigma")), "tables by year; last-12-month sigma used"),
-        ("6", "Hurdle table, measured vs your assumptions", "PARTIAL" if t6.get("hurdle") is not None else "UNKNOWN", "slippage ASSUMED; swap status UNKNOWN; spread regime risk shown as stress-alt"),
+        ("6", "Hurdle table, measured vs your assumptions", "PARTIAL" if t6.get("hurdle") is not None else "UNKNOWN", "slippage ASSUMED; swap status UNKNOWN; stress spread = widest quote of the current regime; re-pricing risk shown as stress-alt"),
     ]
     return rows
 
@@ -561,7 +597,10 @@ def cost_inputs(x: dict) -> dict:
         out["spread"] = {
             "regime_note": "broker-set quasi-fixed markup, re-priced in steps; do not pool across regimes",
             "current_regime_start": P(sp["current_regime_start"], "M"),
-            "current_regime": {"rth_0930_1600_ET": blk(sp["rth_current"]), "open_bucket_0930_1000_ET": blk(sp["open_bucket_current"]), "close_bucket_1530_1600_ET": blk(sp["close_bucket_current"])},
+            "current_regime": {"all_minutes": blk(sp["regime_current"]),
+                               "stress_spread": P(sp["regime_current"]["max_tick"], "M", sp["regime_current"]["N"], "index_points",
+                                                  note="widest quote seen anywhere in the current regime; the stress spread used in hurdle_table"),
+                               "rth_0930_1600_ET": blk(sp["rth_current"]), "open_bucket_0930_1000_ET": blk(sp["open_bucket_current"]), "close_bucket_1530_1600_ET": blk(sp["close_bucket_current"])},
             "worst_past_regime": {"start": sp["worst_regime"]["start"], "end": sp["worst_regime"]["end"], "level": P(sp["worst_regime"]["level_pts"], "M", unit="index_points"),
                                   "open_bucket": blk(sp["worst_regime"]["open_bucket"]), "close_bucket": blk(sp["worst_regime"]["close_bucket"])},
             "all_history_tick_era": {"rth": blk(sp["rth_all_history"]), "open_bucket": blk(sp["open_bucket_all_history"])},

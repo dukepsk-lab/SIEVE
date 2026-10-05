@@ -16,7 +16,6 @@ J = json.loads((AUDIT / "out" / "cost_model_inputs.json").read_text(encoding="ut
 sig = {h: v["value"] for h, v in J["volatility"]["sigma_last_12m_index_points"].items()}
 cur = J["spread"]["current_regime"]
 base = cur["rth_0930_1600_ET"]["p50"]["value"]
-p99o, p99c = cur["open_bucket_0930_1000_ET"]["p99"]["value"], cur["close_bucket_1530_1600_ET"]["p99"]["value"]
 w = J["spread"]["worst_past_regime"]
 wo, wc = w["open_bucket"]["p99"]["value"], w["close_bucket"]["p99"]["value"]
 swap = -J["swap"]["long_pts_per_night_if_points"]["value"]          # positive = cost to the long
@@ -29,9 +28,8 @@ rows = []
 for h in nights:
     intraday = nights[h] == 0
     spreads = {"base": base,
-               "stress (p99, current regime)": p99o if intraday else (p99c if h == "5d" else (p99o + p99c) / 2),
+               "stress (widest quote, current regime)": alt_max_cur,          # reviewer's own value from raw ticks (F1 fix)
                "stress-alt (p99, worst past regime)": wo if intraday else (wc if h == "5d" else (wo + wc) / 2),
-               "REVIEWER stress: current-regime worst tick at open": alt_max_cur,
                "REVIEWER stress: all-history p99 of minute-max at open": alt_p99max_all,
                "REVIEWER stress: user's 8 pt spread": 8.0}
     for case, s in spreads.items():

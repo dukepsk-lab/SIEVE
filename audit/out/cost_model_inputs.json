@@ -1,8 +1,8 @@
 {
   "meta": {
     "symbol": "USTEC.",
-    "generated_utc": "2026-10-05 04:16",
-    "server_time_at_run": "2026-10-05 05:16:51",
+    "generated_utc": "2026-10-05 13:36",
+    "server_time_at_run": "2026-10-05 14:36:18",
     "units": "index points (price units) unless stated; 1 index point = 100 'point' units",
     "provenance_legend": {
       "M": "MEASURED",
@@ -18,6 +18,33 @@
       "provenance": "MEASURED"
     },
     "current_regime": {
+      "all_minutes": {
+        "p50": {
+          "value": 1.43,
+          "provenance": "MEASURED",
+          "n": 138682,
+          "unit": "index_points"
+        },
+        "p99": {
+          "value": 1.43,
+          "provenance": "MEASURED",
+          "n": 138682,
+          "unit": "index_points"
+        },
+        "max_tick": {
+          "value": 2.0,
+          "provenance": "MEASURED",
+          "n": 138682,
+          "unit": "index_points"
+        }
+      },
+      "stress_spread": {
+        "value": 2.0,
+        "provenance": "MEASURED",
+        "n": 138682,
+        "unit": "index_points",
+        "note": "widest quote seen anywhere in the current regime; the stress spread used in hurdle_table"
+      },
       "rth_0930_1600_ET": {
         "p50": {
           "value": 1.43,
@@ -773,7 +800,7 @@
       "unit": "index_points/night"
     },
     "annual_pct_long": {
-      "value": -5.08,
+      "value": -5.066,
       "provenance": "INFERRED",
       "unit": "% of price p.a. (negative = paid)"
     },
@@ -834,9 +861,9 @@
   "volatility": {
     "sigma_last_12m_index_points": {
       "5min": {
-        "value": 28.69400382930307,
+        "value": 28.701973241513944,
         "provenance": "MEASURED",
-        "n": 19689,
+        "n": 19690,
         "unit": "index_points"
       },
       "1h": {
@@ -866,9 +893,9 @@
     },
     "mean_abs_move_last_12m_index_points": {
       "5min": {
-        "value": 19.6359865914978,
+        "value": 19.64002539360082,
         "provenance": "MEASURED",
-        "n": 19689,
+        "n": 19690,
         "unit": "index_points"
       },
       "1h": {
@@ -897,7 +924,7 @@
       }
     },
     "price_level_last_12m": {
-      "value": 27036.0,
+      "value": 27042.0,
       "provenance": "MEASURED",
       "unit": "index_points"
     },
@@ -946,15 +973,15 @@
           "unit": "index_points"
         },
         "2026": {
-          "value": 29.71320528855589,
+          "value": 29.723235329085483,
           "provenance": "MEASURED",
-          "n": 14968,
+          "n": 14969,
           "unit": "index_points"
         },
         "last 12 months": {
-          "value": 28.69400382930307,
+          "value": 28.701973241513944,
           "provenance": "MEASURED",
-          "n": 19689,
+          "n": 19690,
           "unit": "index_points"
         }
       },
@@ -1201,16 +1228,16 @@
     },
     {
       "horizon": "5min",
-      "case": "stress (p99, current regime)",
+      "case": "stress (widest quote, current regime)",
       "side": "n/a",
       "sigma_pts": 28.7,
-      "spread": 1.43,
+      "spread": 2.0,
       "slippage (ASSUMED)": 4.0,
       "commission": 0.0,
       "swap": 0.0,
-      "C_total_pts": 5.43,
-      "required_hit_rate_%": 61.83,
-      "required_hit_rate_% using measured mean abs move": 63.83
+      "C_total_pts": 6.0,
+      "required_hit_rate_%": 63.07,
+      "required_hit_rate_% using measured mean abs move": 65.27
     },
     {
       "horizon": "5min",
@@ -1222,7 +1249,7 @@
       "commission": 0.0,
       "swap": 0.0,
       "C_total_pts": 7.4,
-      "required_hit_rate_%": 66.12,
+      "required_hit_rate_%": 66.11,
       "required_hit_rate_% using measured mean abs move": 68.84
     },
     {
@@ -1240,16 +1267,16 @@
     },
     {
       "horizon": "1h",
-      "case": "stress (p99, current regime)",
+      "case": "stress (widest quote, current regime)",
       "side": "n/a",
       "sigma_pts": 101.0,
-      "spread": 1.43,
+      "spread": 2.0,
       "slippage (ASSUMED)": 4.0,
       "commission": 0.0,
       "swap": 0.0,
-      "C_total_pts": 5.43,
-      "required_hit_rate_%": 53.36,
-      "required_hit_rate_% using measured mean abs move": 53.9
+      "C_total_pts": 6.0,
+      "required_hit_rate_%": 53.71,
+      "required_hit_rate_% using measured mean abs move": 54.31
     },
     {
       "horizon": "1h",
@@ -1279,16 +1306,16 @@
     },
     {
       "horizon": "6h",
-      "case": "stress (p99, current regime)",
+      "case": "stress (widest quote, current regime)",
       "side": "n/a",
       "sigma_pts": 253.4,
-      "spread": 1.43,
+      "spread": 2.0,
       "slippage (ASSUMED)": 4.0,
       "commission": 0.0,
       "swap": 0.0,
-      "C_total_pts": 5.43,
-      "required_hit_rate_%": 51.34,
-      "required_hit_rate_% using measured mean abs move": 51.39
+      "C_total_pts": 6.0,
+      "required_hit_rate_%": 51.48,
+      "required_hit_rate_% using measured mean abs move": 51.53
     },
     {
       "horizon": "6h",
@@ -1331,29 +1358,29 @@
     },
     {
       "horizon": "overnight",
-      "case": "stress (p99, current regime)",
+      "case": "stress (widest quote, current regime)",
       "side": "long",
       "sigma_pts": 228.5,
-      "spread": 1.43,
+      "spread": 2.0,
       "slippage (ASSUMED)": 4.0,
       "commission": 0.0,
       "swap": 4.29,
-      "C_total_pts": 9.72,
-      "required_hit_rate_%": 52.66,
-      "required_hit_rate_% using measured mean abs move": 52.89
+      "C_total_pts": 10.29,
+      "required_hit_rate_%": 52.81,
+      "required_hit_rate_% using measured mean abs move": 53.05
     },
     {
       "horizon": "overnight",
-      "case": "stress (p99, current regime)",
+      "case": "stress (widest quote, current regime)",
       "side": "short",
       "sigma_pts": 228.5,
-      "spread": 1.43,
+      "spread": 2.0,
       "slippage (ASSUMED)": 4.0,
       "commission": 0.0,
       "swap": 0.0,
-      "C_total_pts": 5.43,
-      "required_hit_rate_%": 51.49,
-      "required_hit_rate_% using measured mean abs move": 51.61
+      "C_total_pts": 6.0,
+      "required_hit_rate_%": 51.64,
+      "required_hit_rate_% using measured mean abs move": 51.78
     },
     {
       "horizon": "overnight",
@@ -1409,29 +1436,29 @@
     },
     {
       "horizon": "5d",
-      "case": "stress (p99, current regime)",
+      "case": "stress (widest quote, current regime)",
       "side": "long",
       "sigma_pts": 661.5,
-      "spread": 1.43,
+      "spread": 2.0,
       "slippage (ASSUMED)": 4.0,
       "commission": 0.0,
       "swap": 30.03,
-      "C_total_pts": 35.46,
-      "required_hit_rate_%": 53.35,
-      "required_hit_rate_% using measured mean abs move": 53.44
+      "C_total_pts": 36.03,
+      "required_hit_rate_%": 53.4,
+      "required_hit_rate_% using measured mean abs move": 53.49
     },
     {
       "horizon": "5d",
-      "case": "stress (p99, current regime)",
+      "case": "stress (widest quote, current regime)",
       "side": "short",
       "sigma_pts": 661.5,
-      "spread": 1.43,
+      "spread": 2.0,
       "slippage (ASSUMED)": 4.0,
       "commission": 0.0,
       "swap": 0.0,
-      "C_total_pts": 5.43,
-      "required_hit_rate_%": 50.51,
-      "required_hit_rate_% using measured mean abs move": 50.53
+      "C_total_pts": 6.0,
+      "required_hit_rate_%": 50.57,
+      "required_hit_rate_% using measured mean abs move": 50.58
     },
     {
       "horizon": "5d",
@@ -1469,6 +1496,7 @@
       "C assumed": 3.0,
       "C measured": 2.43,
       "hit rate assumed %": 59.87,
+      "hit rate: measured sigma, your C %": 56.53,
       "hit rate measured %": 55.29,
       "verdict": "better"
     },
@@ -1478,9 +1506,10 @@
       "sigma assumed": 19,
       "sigma measured": 28.7,
       "C assumed": 12.0,
-      "C measured": 5.43,
+      "C measured": 6.0,
       "hit rate assumed %": 89.47,
-      "hit rate measured %": 61.83,
+      "hit rate: measured sigma, your C %": 76.13,
+      "hit rate measured %": 63.07,
       "verdict": "better"
     },
     {
@@ -1491,6 +1520,7 @@
       "C assumed": 3.0,
       "C measured": 2.43,
       "hit rate assumed %": 52.88,
+      "hit rate: measured sigma, your C %": 51.86,
       "hit rate measured %": 51.5,
       "verdict": "better"
     },
@@ -1500,9 +1530,10 @@
       "sigma assumed": 65,
       "sigma measured": 101.0,
       "C assumed": 12.0,
-      "C measured": 5.43,
+      "C measured": 6.0,
       "hit rate assumed %": 61.54,
-      "hit rate measured %": 53.36,
+      "hit rate: measured sigma, your C %": 57.42,
+      "hit rate measured %": 53.71,
       "verdict": "better"
     },
     {
@@ -1513,6 +1544,7 @@
       "C assumed": 3.0,
       "C measured": 2.43,
       "hit rate assumed %": 51.17,
+      "hit rate: measured sigma, your C %": 50.74,
       "hit rate measured %": 50.6,
       "verdict": "better"
     },
@@ -1522,9 +1554,10 @@
       "sigma assumed": 160,
       "sigma measured": 253.4,
       "C assumed": 12.0,
-      "C measured": 5.43,
+      "C measured": 6.0,
       "hit rate assumed %": 54.69,
-      "hit rate measured %": 51.34,
+      "hit rate: measured sigma, your C %": 52.96,
+      "hit rate measured %": 51.48,
       "verdict": "better"
     },
     {
@@ -1535,6 +1568,7 @@
       "C assumed": 7.6,
       "C measured": 6.72,
       "hit rate assumed %": 53.17,
+      "hit rate: measured sigma, your C %": 52.08,
       "hit rate measured %": 51.84,
       "verdict": "better"
     },
@@ -1544,9 +1578,10 @@
       "sigma assumed": 150,
       "sigma measured": 228.5,
       "C assumed": 16.6,
-      "C measured": 9.72,
+      "C measured": 10.29,
       "hit rate assumed %": 56.92,
-      "hit rate measured %": 52.66,
+      "hit rate: measured sigma, your C %": 54.54,
+      "hit rate measured %": 52.81,
       "verdict": "better"
     },
     {
@@ -1557,6 +1592,7 @@
       "C assumed": 35.2,
       "C measured": 32.46,
       "hit rate assumed %": 53.14,
+      "hit rate: measured sigma, your C %": 53.33,
       "hit rate measured %": 53.07,
       "verdict": "better"
     },
@@ -1566,9 +1602,10 @@
       "sigma assumed": 700,
       "sigma measured": 661.5,
       "C assumed": 44.2,
-      "C measured": 35.46,
+      "C measured": 36.03,
       "hit rate assumed %": 53.95,
-      "hit rate measured %": 53.35,
+      "hit rate: measured sigma, your C %": 54.18,
+      "hit rate measured %": 53.4,
       "verdict": "better"
     }
   ],
@@ -1697,7 +1734,7 @@
   },
   "data_gaps": {
     "expected_minutes": {
-      "value": 2524952,
+      "value": 2525528,
       "provenance": "INFERRED"
     },
     "missing_minutes": {
@@ -1705,7 +1742,7 @@
       "provenance": "INFERRED"
     },
     "bars_outside_schedule": {
-      "value": 3439,
+      "value": 3423,
       "provenance": "INFERRED"
     }
   },
