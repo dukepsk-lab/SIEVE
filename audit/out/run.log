@@ -1,7 +1,7 @@
-2026-10-05 20:36:17,691 INFO connected: {'terminal_company': 'IUX Markets Limited', 'terminal_name': 'IUX Markets MT5 Terminal', 'build': 6230, 'connected': True, 'algo_trading_allowed': False, 'maxbars': 100000000, 'server': 'IUXMarkets-Live', 'currency': 'USD', 'leverage': 3000, 'account_trade_mode': 'REAL', 'margin_mode': 'RETAIL_HEDGING', 'terminal_path': 'C:\\Program Files\\IUX Markets MT5 Terminal\\terminal64.exe'}
-2026-10-05 20:36:17,694 INFO symbol USTEC., server now 2026-10-05 14:36:18
-2026-10-05 20:36:18,340 INFO loaded USTEC. D1: 2241 bars 2019-07-16 00:00:00 .. 2026-10-04 00:00:00
-2026-10-05 20:36:18,949 INFO loaded USTEC. H1: 41822 bars 2019-07-16 07:00:00 .. 2026-10-05 13:00:00
-2026-10-05 20:36:19,629 INFO loaded USTEC. M5: 494852 bars 2019-07-16 07:55:00 .. 2026-10-05 14:30:00
-2026-10-05 20:36:20,910 INFO loaded USTEC. M1: 2471212 bars 2019-07-16 07:59:00 .. 2026-10-05 14:35:00
-2026-10-05 20:36:49,571 INFO wrote audit/report.md and audit/out/cost_model_inputs.json; 0 problem(s)
+2026-10-05 20:51:28,584 INFO connected: {'terminal_company': 'IUX Markets Limited', 'terminal_name': 'IUX Markets MT5 Terminal', 'build': 6230, 'connected': True, 'algo_trading_allowed': False, 'maxbars': 100000000, 'server': 'IUXMarkets-Live', 'currency': 'USD', 'leverage': 3000, 'account_trade_mode': 'REAL', 'margin_mode': 'RETAIL_HEDGING', 'terminal_path': 'C:\\Program Files\\IUX Markets MT5 Terminal\\terminal64.exe'}
+2026-10-05 20:51:28,587 INFO symbol USTEC., server now 2026-10-05 14:51:28
+2026-10-05 20:51:29,222 INFO loaded USTEC. D1: 2241 bars 2019-07-16 00:00:00 .. 2026-10-04 00:00:00
+2026-10-05 20:51:29,871 INFO loaded USTEC. H1: 41822 bars 2019-07-16 07:00:00 .. 2026-10-05 13:00:00
+2026-10-05 20:51:30,577 INFO loaded USTEC. M5: 494855 bars 2019-07-16 07:55:00 .. 2026-10-05 14:45:00
+2026-10-05 20:51:31,745 INFO loaded USTEC. M1: 2471227 bars 2019-07-16 07:59:00 .. 2026-10-05 14:50:00
+2026-10-05 20:51:55,848 INFO wrote audit/report.md and audit/out/cost_model_inputs.json; 0 problem(s)

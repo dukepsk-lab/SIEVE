@@ -69,6 +69,8 @@ def export(x: dict):
     save((t5r.get("roll") or {}).get("windows"), "roll_windows.csv")
     for name, tbl in (t6r.get("sigma") or {}).items():
         save(tbl, "sigma_" + "".join(ch if ch.isalnum() else "_" for ch in name) + ".csv", True)
+    save(t6r.get("dropped"), "sigma_dropped_samples.csv")
+    save(t1g.get("shortened"), "session_shortened_days.csv")
     save(t6r.get("hurdle"), "hurdle_table.csv")
     save(t6r.get("compare"), "hurdle_vs_assumptions.csv")
 
@@ -186,10 +188,11 @@ def main():
             mad = {h: float(st[k].loc["last 12 months", "sigma_pts"] * st[k].loc["last 12 months", "mean_abs_over_sigma"]) for h, k in SIGMA_KEY.items()}
             n = {h: int(st[k].loc["last 12 months", "N"]) for h, k in SIGMA_KEY.items()}
             usd_pt = spec["_units"]["usd_per_index_point_per_lot"]
-            comm_pts = (deals.get("sym_commission_per_lot_round_trip_usd") or 0.0) / usd_pt
-            hur = t6.hurdle(sig, mad, t2r["spreads"], x["t3"]["swap_long_pts_per_night_if_points"], comm_pts)
+            comm_pts = C.COMMISSION_RT_USD_PER_LOT / usd_pt                                      # USER-CONFIRMED; deal history is a cross-check
+            swap_pts = x["t3"]["swap_long_pts_per_night_if_points"] if C.SWAP_CHARGED else 0.0    # USER-CONFIRMED: no swap on this account
+            hur = t6.hurdle(sig, mad, t2r["spreads"], swap_pts, comm_pts)
             x["t6"] = {"sigma": st, "levels": t6.price_levels(m1, last_date), "sig": sig, "mad": mad, "n": n, "hurdle": hur,
-                       "compare": t6.compare_with_assumptions(sig, hur, comm_pts)}
+                       "compare": t6.compare_with_assumptions(sig, hur, comm_pts), "dropped": t6.dropped_samples(smp)}
 
         x["problems"] = problems
         export(x)

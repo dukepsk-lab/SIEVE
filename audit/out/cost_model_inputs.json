@@ -1,13 +1,14 @@
 {
   "meta": {
     "symbol": "USTEC.",
-    "generated_utc": "2026-10-05 13:36",
-    "server_time_at_run": "2026-10-05 14:36:18",
+    "generated_utc": "2026-10-05 13:51",
+    "server_time_at_run": "2026-10-05 14:51:28",
     "units": "index points (price units) unless stated; 1 index point = 100 'point' units",
     "provenance_legend": {
       "M": "MEASURED",
       "I": "INFERRED",
-      "A": "ASSUMED"
+      "A": "ASSUMED",
+      "U": "USER-CONFIRMED"
     },
     "usd_per_index_point_per_lot": 1.0
   },
@@ -755,19 +756,30 @@
       }
     }
   },
+  "account_type": {
+    "value": "Pro",
+    "provenance": "USER-CONFIRMED",
+    "note": "stated by the account owner on 2026-10-05 (Pro account)"
+  },
   "commission": {
     "round_trip_per_lot_usd": {
+      "value": 0.0,
+      "provenance": "USER-CONFIRMED",
+      "unit": "USD/lot",
+      "note": "stated by the account owner on 2026-10-05 (Pro account)"
+    },
+    "round_trip_index_points": {
+      "value": 0.0,
+      "provenance": "USER-CONFIRMED",
+      "unit": "index_points",
+      "note": "the value used in hurdle_table"
+    },
+    "deal_history_round_trip_per_lot_usd": {
       "value": 0.0,
       "provenance": "MEASURED",
       "n": 1,
       "unit": "USD/lot",
-      "note": "weak: single round trip; other symbols also 0.0; account type unconfirmed"
-    },
-    "round_trip_index_points": {
-      "value": 0.0,
-      "provenance": "MEASURED",
-      "n": 1,
-      "unit": "index_points"
+      "note": "cross-check from the account's own deals"
     }
   },
   "swap": {
@@ -784,15 +796,21 @@
       "provenance": "MEASURED"
     },
     "charged": {
-      "value": null,
-      "provenance": "MEASURED",
-      "note": "UNKNOWN: swap_mode DISABLED but values populated; deal history inconclusive"
+      "value": false,
+      "provenance": "USER-CONFIRMED",
+      "note": "stated by the account owner on 2026-10-05 (Pro account); matches swap_mode DISABLED"
+    },
+    "cost_per_night_index_points_used": {
+      "value": 0.0,
+      "provenance": "USER-CONFIRMED",
+      "unit": "index_points/night",
+      "note": "long side; the value used in hurdle_table"
     },
     "long_pts_per_night_if_points": {
       "value": -4.2893,
       "provenance": "INFERRED",
       "unit": "index_points/night",
-      "note": "negative = paid; reading = POINTS"
+      "note": "negative = paid; reading = POINTS; reference only, not charged"
     },
     "short_pts_per_night_if_points": {
       "value": 0.0,
@@ -800,7 +818,7 @@
       "unit": "index_points/night"
     },
     "annual_pct_long": {
-      "value": -5.066,
+      "value": -5.063,
       "provenance": "INFERRED",
       "unit": "% of price p.a. (negative = paid)"
     },
@@ -861,9 +879,9 @@
   "volatility": {
     "sigma_last_12m_index_points": {
       "5min": {
-        "value": 28.701973241513944,
+        "value": 28.709043383720015,
         "provenance": "MEASURED",
-        "n": 19690,
+        "n": 19711,
         "unit": "index_points"
       },
       "1h": {
@@ -893,9 +911,9 @@
     },
     "mean_abs_move_last_12m_index_points": {
       "5min": {
-        "value": 19.64002539360082,
+        "value": 19.643284967784492,
         "provenance": "MEASURED",
-        "n": 19690,
+        "n": 19711,
         "unit": "index_points"
       },
       "1h": {
@@ -931,58 +949,67 @@
     "sigma_by_year_index_points": {
       "5min": {
         "2019": {
-          "value": 6.660783578657803,
+          "value": 6.660663242378699,
           "provenance": "MEASURED",
-          "n": 8820,
-          "unit": "index_points"
+          "n": 8823,
+          "unit": "index_points",
+          "note": "537 of 9360 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2020": {
-          "value": 16.990026615491516,
+          "value": 17.06788502404865,
           "provenance": "MEASURED",
-          "n": 19706,
-          "unit": "index_points"
+          "n": 19714,
+          "unit": "index_points",
+          "note": "488 of 20202 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2021": {
-          "value": 14.860321586413505,
+          "value": 14.859646922925574,
           "provenance": "MEASURED",
-          "n": 19477,
-          "unit": "index_points"
+          "n": 19704,
+          "unit": "index_points",
+          "note": "498 of 20202 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2022": {
-          "value": 22.208648569448158,
+          "value": 22.18625645807267,
           "provenance": "MEASURED",
-          "n": 19659,
-          "unit": "index_points"
+          "n": 19767,
+          "unit": "index_points",
+          "note": "513 of 20280 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2023": {
-          "value": 14.284997787336756,
+          "value": 14.28054825214065,
           "provenance": "MEASURED",
-          "n": 19539,
-          "unit": "index_points"
+          "n": 19716,
+          "unit": "index_points",
+          "note": "564 of 20280 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2024": {
-          "value": 18.445845697175,
+          "value": 18.44840836563741,
           "provenance": "MEASURED",
-          "n": 19842,
-          "unit": "index_points"
+          "n": 19853,
+          "unit": "index_points",
+          "note": "583 of 20436 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2025": {
-          "value": 26.23925423282581,
+          "value": 26.242905740520136,
           "provenance": "MEASURED",
-          "n": 19651,
-          "unit": "index_points"
+          "n": 19676,
+          "unit": "index_points",
+          "note": "604 of 20280 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2026": {
-          "value": 29.723235329085483,
+          "value": 29.73570255818833,
           "provenance": "MEASURED",
-          "n": 14969,
-          "unit": "index_points"
+          "n": 14984,
+          "unit": "index_points",
+          "note": "386 of 15370 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "last 12 months": {
-          "value": 28.701973241513944,
+          "value": 28.709043383720015,
           "provenance": "MEASURED",
-          "n": 19690,
-          "unit": "index_points"
+          "n": 19711,
+          "unit": "index_points",
+          "note": "573 of 20284 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         }
       },
       "1h": {
@@ -990,55 +1017,64 @@
           "value": 22.954674619679523,
           "provenance": "MEASURED",
           "n": 700,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "20 of 720 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2020": {
-          "value": 52.10427910580321,
+          "value": 52.09045385747305,
           "provenance": "MEASURED",
-          "n": 1518,
-          "unit": "index_points"
+          "n": 1521,
+          "unit": "index_points",
+          "note": "33 of 1554 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2021": {
-          "value": 50.495322160563056,
+          "value": 50.47876589329922,
           "provenance": "MEASURED",
-          "n": 1510,
-          "unit": "index_points"
+          "n": 1511,
+          "unit": "index_points",
+          "note": "43 of 1554 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2022": {
           "value": 77.56362095212592,
           "provenance": "MEASURED",
           "n": 1518,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "42 of 1560 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2023": {
-          "value": 49.469257115641554,
+          "value": 49.44768899053134,
           "provenance": "MEASURED",
-          "n": 1512,
-          "unit": "index_points"
+          "n": 1514,
+          "unit": "index_points",
+          "note": "46 of 1560 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2024": {
           "value": 63.611411645460926,
           "provenance": "MEASURED",
           "n": 1524,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "48 of 1572 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2025": {
           "value": 91.29597823754108,
           "provenance": "MEASURED",
           "n": 1512,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "48 of 1560 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2026": {
           "value": 102.55784087196763,
           "provenance": "MEASURED",
           "n": 1150,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "32 of 1182 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "last 12 months": {
           "value": 101.01775200311376,
           "provenance": "MEASURED",
           "n": 1513,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "47 of 1560 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         }
       },
       "6h": {
@@ -1046,55 +1082,64 @@
           "value": 55.76229013411649,
           "provenance": "MEASURED",
           "n": 114,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "6 of 120 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2020": {
-          "value": 124.30218457528913,
+          "value": 124.73618004596123,
           "provenance": "MEASURED",
-          "n": 244,
-          "unit": "index_points"
+          "n": 247,
+          "unit": "index_points",
+          "note": "12 of 259 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2021": {
-          "value": 130.44332437799878,
+          "value": 130.17232230417846,
           "provenance": "MEASURED",
-          "n": 240,
-          "unit": "index_points"
+          "n": 241,
+          "unit": "index_points",
+          "note": "18 of 259 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2022": {
           "value": 205.17323827230524,
           "provenance": "MEASURED",
           "n": 246,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "14 of 260 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2023": {
           "value": 131.4976961034331,
           "provenance": "MEASURED",
           "n": 247,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "13 of 260 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2024": {
           "value": 165.1946105966654,
           "provenance": "MEASURED",
           "n": 249,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "13 of 262 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2025": {
           "value": 250.17529599752262,
           "provenance": "MEASURED",
           "n": 247,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "13 of 260 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2026": {
           "value": 253.42724449801307,
           "provenance": "MEASURED",
           "n": 189,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "8 of 197 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "last 12 months": {
           "value": 253.37098301867152,
           "provenance": "MEASURED",
           "n": 248,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "12 of 260 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         }
       },
       "overnight": {
@@ -1102,55 +1147,64 @@
           "value": 40.87797697343615,
           "provenance": "MEASURED",
           "n": 91,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "5 of 96 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2020": {
-          "value": 105.10231108599822,
+          "value": 108.86398047488754,
           "provenance": "MEASURED",
-          "n": 197,
-          "unit": "index_points"
+          "n": 198,
+          "unit": "index_points",
+          "note": "12 of 210 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2021": {
-          "value": 78.41093812302823,
+          "value": 91.60876040452358,
           "provenance": "MEASURED",
-          "n": 25,
-          "unit": "index_points"
+          "n": 192,
+          "unit": "index_points",
+          "note": "16 of 208 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2022": {
-          "value": 131.93593141695925,
+          "value": 143.2926872174295,
           "provenance": "MEASURED",
-          "n": 116,
-          "unit": "index_points"
+          "n": 195,
+          "unit": "index_points",
+          "note": "13 of 208 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2023": {
-          "value": 81.1889400468646,
+          "value": 93.24802433654436,
           "provenance": "MEASURED",
-          "n": 62,
-          "unit": "index_points"
+          "n": 196,
+          "unit": "index_points",
+          "note": "12 of 208 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2024": {
           "value": 127.1286495376204,
           "provenance": "MEASURED",
           "n": 197,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "13 of 210 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2025": {
-          "value": 152.5580069081246,
+          "value": 173.85889681327862,
           "provenance": "MEASURED",
-          "n": 190,
-          "unit": "index_points"
+          "n": 196,
+          "unit": "index_points",
+          "note": "13 of 209 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2026": {
           "value": 244.8863127228135,
           "provenance": "MEASURED",
           "n": 151,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "6 of 157 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "last 12 months": {
           "value": 228.51721663561776,
           "provenance": "MEASURED",
           "n": 198,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "10 of 208 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         }
       },
       "5d": {
@@ -1158,55 +1212,64 @@
           "value": 129.80362887639362,
           "provenance": "MEASURED",
           "n": 22,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "2 of 24 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2020": {
           "value": 389.55490026369085,
           "provenance": "MEASURED",
           "n": 42,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "7 of 49 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2021": {
-          "value": 500.90523491974034,
+          "value": 315.31932711430534,
           "provenance": "MEASURED",
-          "n": 5,
-          "unit": "index_points"
+          "n": 45,
+          "unit": "index_points",
+          "note": "6 of 51 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2022": {
-          "value": 502.6633815242532,
+          "value": 503.3516769465749,
           "provenance": "MEASURED",
-          "n": 28,
-          "unit": "index_points"
+          "n": 48,
+          "unit": "index_points",
+          "note": "4 of 52 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2023": {
-          "value": 424.463699487268,
+          "value": 359.8625219034967,
           "provenance": "MEASURED",
-          "n": 14,
-          "unit": "index_points"
+          "n": 48,
+          "unit": "index_points",
+          "note": "4 of 52 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2024": {
           "value": 488.3568088792038,
           "provenance": "MEASURED",
           "n": 48,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "4 of 52 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2025": {
-          "value": 515.7011899030183,
+          "value": 606.6109526454102,
           "provenance": "MEASURED",
-          "n": 44,
-          "unit": "index_points"
+          "n": 46,
+          "unit": "index_points",
+          "note": "5 of 51 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "2026": {
           "value": 696.2522645360594,
           "provenance": "MEASURED",
           "n": 33,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "6 of 39 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         },
         "last 12 months": {
           "value": 661.4601107443896,
           "provenance": "MEASURED",
           "n": 43,
-          "unit": "index_points"
+          "unit": "index_points",
+          "note": "8 of 51 scheduled samples dropped (no price at one end); see sigma_dropped_samples.csv"
         }
       }
     },
@@ -1236,7 +1299,7 @@
       "commission": 0.0,
       "swap": 0.0,
       "C_total_pts": 6.0,
-      "required_hit_rate_%": 63.07,
+      "required_hit_rate_%": 63.06,
       "required_hit_rate_% using measured mean abs move": 65.27
     },
     {
@@ -1333,20 +1396,7 @@
     {
       "horizon": "overnight",
       "case": "base",
-      "side": "long",
-      "sigma_pts": 228.5,
-      "spread": 1.43,
-      "slippage (ASSUMED)": 1.0,
-      "commission": 0.0,
-      "swap": 4.29,
-      "C_total_pts": 6.72,
-      "required_hit_rate_%": 51.84,
-      "required_hit_rate_% using measured mean abs move": 52.0
-    },
-    {
-      "horizon": "overnight",
-      "case": "base",
-      "side": "short",
+      "side": "n/a",
       "sigma_pts": 228.5,
       "spread": 1.43,
       "slippage (ASSUMED)": 1.0,
@@ -1359,20 +1409,7 @@
     {
       "horizon": "overnight",
       "case": "stress (widest quote, current regime)",
-      "side": "long",
-      "sigma_pts": 228.5,
-      "spread": 2.0,
-      "slippage (ASSUMED)": 4.0,
-      "commission": 0.0,
-      "swap": 4.29,
-      "C_total_pts": 10.29,
-      "required_hit_rate_%": 52.81,
-      "required_hit_rate_% using measured mean abs move": 53.05
-    },
-    {
-      "horizon": "overnight",
-      "case": "stress (widest quote, current regime)",
-      "side": "short",
+      "side": "n/a",
       "sigma_pts": 228.5,
       "spread": 2.0,
       "slippage (ASSUMED)": 4.0,
@@ -1385,20 +1422,7 @@
     {
       "horizon": "overnight",
       "case": "stress-alt (p99, worst past regime)",
-      "side": "long",
-      "sigma_pts": 228.5,
-      "spread": 3.4,
-      "slippage (ASSUMED)": 4.0,
-      "commission": 0.0,
-      "swap": 4.29,
-      "C_total_pts": 11.69,
-      "required_hit_rate_%": 53.2,
-      "required_hit_rate_% using measured mean abs move": 53.47
-    },
-    {
-      "horizon": "overnight",
-      "case": "stress-alt (p99, worst past regime)",
-      "side": "short",
+      "side": "n/a",
       "sigma_pts": 228.5,
       "spread": 3.4,
       "slippage (ASSUMED)": 4.0,
@@ -1411,20 +1435,7 @@
     {
       "horizon": "5d",
       "case": "base",
-      "side": "long",
-      "sigma_pts": 661.5,
-      "spread": 1.43,
-      "slippage (ASSUMED)": 1.0,
-      "commission": 0.0,
-      "swap": 30.03,
-      "C_total_pts": 32.46,
-      "required_hit_rate_%": 53.07,
-      "required_hit_rate_% using measured mean abs move": 53.15
-    },
-    {
-      "horizon": "5d",
-      "case": "base",
-      "side": "short",
+      "side": "n/a",
       "sigma_pts": 661.5,
       "spread": 1.43,
       "slippage (ASSUMED)": 1.0,
@@ -1437,20 +1448,7 @@
     {
       "horizon": "5d",
       "case": "stress (widest quote, current regime)",
-      "side": "long",
-      "sigma_pts": 661.5,
-      "spread": 2.0,
-      "slippage (ASSUMED)": 4.0,
-      "commission": 0.0,
-      "swap": 30.03,
-      "C_total_pts": 36.03,
-      "required_hit_rate_%": 53.4,
-      "required_hit_rate_% using measured mean abs move": 53.49
-    },
-    {
-      "horizon": "5d",
-      "case": "stress (widest quote, current regime)",
-      "side": "short",
+      "side": "n/a",
       "sigma_pts": 661.5,
       "spread": 2.0,
       "slippage (ASSUMED)": 4.0,
@@ -1463,20 +1461,7 @@
     {
       "horizon": "5d",
       "case": "stress-alt (p99, worst past regime)",
-      "side": "long",
-      "sigma_pts": 661.5,
-      "spread": 3.4,
-      "slippage (ASSUMED)": 4.0,
-      "commission": 0.0,
-      "swap": 30.03,
-      "C_total_pts": 37.43,
-      "required_hit_rate_%": 53.54,
-      "required_hit_rate_% using measured mean abs move": 53.63
-    },
-    {
-      "horizon": "5d",
-      "case": "stress-alt (p99, worst past regime)",
-      "side": "short",
+      "side": "n/a",
       "sigma_pts": 661.5,
       "spread": 3.4,
       "slippage (ASSUMED)": 4.0,
@@ -1508,8 +1493,8 @@
       "C assumed": 12.0,
       "C measured": 6.0,
       "hit rate assumed %": 89.47,
-      "hit rate: measured sigma, your C %": 76.13,
-      "hit rate measured %": 63.07,
+      "hit rate: measured sigma, your C %": 76.12,
+      "hit rate measured %": 63.06,
       "verdict": "better"
     },
     {
@@ -1566,10 +1551,10 @@
       "sigma assumed": 150,
       "sigma measured": 228.5,
       "C assumed": 7.6,
-      "C measured": 6.72,
+      "C measured": 2.43,
       "hit rate assumed %": 53.17,
       "hit rate: measured sigma, your C %": 52.08,
-      "hit rate measured %": 51.84,
+      "hit rate measured %": 50.66,
       "verdict": "better"
     },
     {
@@ -1578,10 +1563,10 @@
       "sigma assumed": 150,
       "sigma measured": 228.5,
       "C assumed": 16.6,
-      "C measured": 10.29,
+      "C measured": 6.0,
       "hit rate assumed %": 56.92,
       "hit rate: measured sigma, your C %": 54.54,
-      "hit rate measured %": 52.81,
+      "hit rate measured %": 51.64,
       "verdict": "better"
     },
     {
@@ -1590,10 +1575,10 @@
       "sigma assumed": 700,
       "sigma measured": 661.5,
       "C assumed": 35.2,
-      "C measured": 32.46,
+      "C measured": 2.43,
       "hit rate assumed %": 53.14,
       "hit rate: measured sigma, your C %": 53.33,
-      "hit rate measured %": 53.07,
+      "hit rate measured %": 50.23,
       "verdict": "better"
     },
     {
@@ -1602,10 +1587,10 @@
       "sigma assumed": 700,
       "sigma measured": 661.5,
       "C assumed": 44.2,
-      "C measured": 36.03,
+      "C measured": 6.0,
       "hit rate assumed %": 53.95,
       "hit rate: measured sigma, your C %": 54.18,
-      "hit rate measured %": 53.4,
+      "hit rate measured %": 50.57,
       "verdict": "better"
     }
   ],
@@ -1734,7 +1719,7 @@
   },
   "data_gaps": {
     "expected_minutes": {
-      "value": 2525528,
+      "value": 2525543,
       "provenance": "INFERRED"
     },
     "missing_minutes": {
@@ -1744,6 +1729,28 @@
     "bars_outside_schedule": {
       "value": 3423,
       "provenance": "INFERRED"
+    },
+    "session_shift_days_after_dst": {
+      "value": [
+        "2021-11-08",
+        "2021-11-09",
+        "2021-11-10",
+        "2021-11-11",
+        "2022-03-28",
+        "2022-03-29",
+        "2022-03-30",
+        "2023-03-27",
+        "2024-11-04",
+        "2025-03-31",
+        "2025-04-01",
+        "2025-04-02",
+        "2025-04-03",
+        "2025-04-04",
+        "2025-04-07",
+        "2025-04-08"
+      ],
+      "provenance": "INFERRED",
+      "note": "the CFD stopped quoting ~1 h before its regular daily break; full calendar in session_shortened_days.csv"
     }
   },
   "history": {

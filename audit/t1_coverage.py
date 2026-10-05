@@ -18,6 +18,9 @@ from . import mt5io as io
 log = logging.getLogger("audit")
 EXPECTED_SHARE = 0.5
 MIN_BARS_OPEN_DAY = 30
+DST_LAG_DAYS = 21          # the broker sets its session in server time and has moved it up to ~9 days late after a DST change
+KIND_CLOSURE, KIND_DST, KIND_EARLY, KIND_OTHER = ("closure >=10h (holiday or outage)", "session shift after a DST change",
+                                                  "early close (runs to the daily break)", "other")
 
 
 # ------------------------------------------------------------------ earliest tick (binary search)
@@ -114,6 +117,34 @@ def hhmm(m) -> str:
     return f"{int(m) // 60:02d}:{int(m) % 60:02d}"
 
 
+def dst_change_days(first: pd.Timestamp, last: pd.Timestamp) -> pd.DatetimeIndex:
+    """Calendar days on which New York or London changed its UTC offset, from the tz database (no hand-entered dates)."""
+    days = pd.date_range(pd.Timestamp(first).normalize() - pd.Timedelta(days=1), pd.Timestamp(last).normalize() + pd.Timedelta(days=1), freq="D")
+    noon = pd.DatetimeIndex(days + pd.Timedelta(hours=12)).as_unit("ns")
+    changed = np.zeros(len(days), dtype=bool)
+    for zone in (C.ET, "Europe/London"):
+        off = (noon.tz_localize("UTC").tz_convert(zone).tz_localize(None) - noon).to_numpy()
+        changed[1:] |= off[1:] != off[:-1]
+    return days[changed]
+
+
+def classify_gaps(gaps: pd.DataFrame, dst_days: pd.DatetimeIndex) -> np.ndarray:
+    """Kind of each gap (columns start_et, end_et, minutes_missing).
+    - closure: >= 10 h missing (holiday or outage)
+    - session shift after a DST change: 50-70 min missing, running up to the daily break, within DST_LAG_DAYS after a
+      US or EU DST change; the broker ended its session one hour early because its server-time schedule moved late
+    - early close: >= 60 min missing, running up to the daily break (mostly US holidays, some broker schedule changes)
+    - other: an intraday data gap"""
+    end_mod = (gaps["end_et"].dt.hour * 60 + gaps["end_et"].dt.minute).to_numpy()
+    n_miss = gaps["minutes_missing"].to_numpy()
+    to_break = (end_mod >= 15 * 60 + 55) & (end_mod <= 17 * 60)
+    day = gaps["start_et"].dt.normalize().to_numpy()
+    k = np.searchsorted(dst_days.to_numpy(), day, side="right") - 1         # most recent DST change on or before the gap day
+    since = np.where(k >= 0, (day - dst_days.to_numpy()[np.clip(k, 0, None)]) / np.timedelta64(1, "D"), np.inf)
+    dst_shift = to_break & (n_miss >= 50) & (n_miss <= 70) & (since <= DST_LAG_DAYS)
+    return np.select([n_miss >= 600, dst_shift, to_break & (n_miss >= 60)], [KIND_CLOSURE, KIND_DST, KIND_EARLY], KIND_OTHER)
+
+
 def gap_analysis(m1: pd.DataFrame, clock) -> dict:
     server = pd.DatetimeIndex(pd.to_datetime(m1["time"], unit="s")).as_unit("ns")
     et = clock.to_et(server)
@@ -133,20 +164,22 @@ def gap_analysis(m1: pd.DataFrame, clock) -> dict:
     gaps = pd.DataFrame({"start_et": grid[s], "minutes_missing": e - s})
     gaps["end_et"] = grid[e - 1]
     gaps["year"] = gaps["start_et"].dt.year
-    end_mod = gaps["end_et"].dt.hour * 60 + gaps["end_et"].dt.minute
-    early_close = (gaps["minutes_missing"] >= 60) & (end_mod >= 15 * 60 + 55) & (end_mod <= 17 * 60)       # runs up to the daily break
-    full_closure = gaps["minutes_missing"] >= 600
-    gaps["kind"] = np.where(full_closure, "closure >=10h (holiday or outage)", np.where(early_close, "early close (runs to the daily break)", "other"))
-    scheduled = full_closure | early_close
+    gaps["kind"] = classify_gaps(gaps, dst_change_days(start, et.max()))
+    scheduled = gaps["kind"] != KIND_OTHER
     srv = clock.et_to_server(pd.DatetimeIndex(gaps["start_et"]))
     gaps["start_server"] = srv
 
     cat = pd.DataFrame({"year": gaps["year"],
                         ">1 min": gaps["minutes_missing"] >= 1, ">5 min": gaps["minutes_missing"] >= 5, ">60 min": gaps["minutes_missing"] >= 60}) \
         .groupby("year").sum().astype(int)
-    cat[">60 min, excluding holiday closures / early closes"] = (gaps["kind"].eq("other") & (gaps["minutes_missing"] >= 60)).groupby(gaps["year"]).sum().astype(int)
+    cat[">60 min, excluding closures, early closes and DST session shifts"] = (gaps["kind"].eq(KIND_OTHER) & (gaps["minutes_missing"] >= 60)).groupby(gaps["year"]).sum().astype(int)
     cat.loc["all"] = cat.sum()
-    gaps_other = gaps[gaps["kind"] == "other"].nlargest(20, "minutes_missing")
+    gaps_other = gaps[gaps["kind"] == KIND_OTHER].nlargest(20, "minutes_missing")
+    # tradability calendar: days on which the CFD stopped quoting before the regular daily break
+    s = gaps[gaps["kind"].isin([KIND_DST, KIND_EARLY])]
+    shortened = pd.DataFrame({"date_et": s["start_et"].dt.strftime("%Y-%m-%d"), "weekday": s["start_et"].dt.day_name().str[:3],
+                              "no_quotes_from_et": s["start_et"].dt.strftime("%H:%M"), "regular_break_from_et": (s["end_et"] + pd.Timedelta(minutes=1)).dt.strftime("%H:%M"),
+                              "minutes_lost": s["minutes_missing"], "kind": s["kind"], "no_quotes_from_server": s["start_server"].dt.strftime("%Y-%m-%d %H:%M")})
 
     # bars per day vs expected active-session minutes
     exp_per_day = pd.Series(sched.sum(axis=2)[(_period(open_days.index) - p0), open_days.index.dayofweek], index=open_days.index)
@@ -173,6 +206,7 @@ def gap_analysis(m1: pd.DataFrame, clock) -> dict:
                                "minutes": int(b - a)})
     outside = int((~sched[_period(et) - p0, et.dayofweek.to_numpy(), (et.hour * 60 + et.minute).to_numpy()]).sum())
     return {"gaps": gaps, "gap_counts": cat, "top20": gaps.nlargest(20, "minutes_missing"), "top_other": gaps_other, "holiday_gaps": int(scheduled.sum()),
+            "shortened": shortened.reset_index(drop=True), "kind_counts": gaps["kind"].value_counts(),
             "coverage_by_year": by_year, "schedule_latest_year": pd.DataFrame(sched_rows), "schedule_period": f"{2000 + (p0 + ylast) // 4}Q{(p0 + ylast) % 4 + 1}",
             "schedule_history": schedule_history(sched, p0, n_open_p), "bars_outside_schedule": outside, "expected_minutes_total": int(expected.sum()), "missing_minutes_total": int(missing.sum())}
 
