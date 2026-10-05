@@ -1,0 +1,372 @@
+{
+  "symbol_info": {
+    "name": "USTEC.",
+    "digits": 2,
+    "point": 0.01,
+    "trade_tick_size": 0.01,
+    "trade_tick_value": 0.01,
+    "trade_tick_value_profit": 0.01,
+    "trade_tick_value_loss": 0.01,
+    "trade_contract_size": 1.0,
+    "currency_profit": "USD",
+    "currency_margin": "USD",
+    "spread": 143,
+    "spread_float": true,
+    "swap_mode": 0,
+    "swap_long": -428.93,
+    "swap_short": 0.0,
+    "swap_rollover3days": 5,
+    "trade_calc_mode": 2,
+    "trade_exemode": 2,
+    "filling_mode": 3,
+    "path": "IUX Markets Pro\\Index\\USTEC.",
+    "bid": 30799.87,
+    "ask": 30801.3
+  },
+  "swap_by_hand": {
+    "usd_per_index_point_per_lot": 1.0,
+    "contract_size_x_1pt": 1.0,
+    "long_pts_per_night_if_POINTS": -4.2893,
+    "short_pts_per_night_if_POINTS": 0.0,
+    "long_usd_per_lot_per_night_if_POINTS": -4.2893,
+    "long_pct_pa_if_POINTS_at_live_mid": -5.083002481933379,
+    "live_mid": 30800.585,
+    "live_spread_idx_pts_from_bid_ask": 1.43,
+    "live_spread_field_x_point": 1.43
+  },
+  "live_offset": {
+    "tick_server_label": "2026-10-05 05:36:59.081000",
+    "pc_utc_now": "2026-10-05 04:36:59.365443",
+    "tick_minus_pc_s": 3599.72,
+    "offset_h": 1,
+    "resid_s": -0.28,
+    "pc_minus_http_date_s": "unavailable: HTTP Error 403: Forbidden"
+  },
+  "extent": {
+    "M1": {
+      "n_returned": 2470673,
+      "first": "2019-07-16 07:59:00",
+      "last": "2026-10-05 05:36:00",
+      "requested": 4000000
+    },
+    "M5": {
+      "n_returned": 494745,
+      "first": "2019-07-16 07:55:00",
+      "last": "2026-10-05 05:35:00",
+      "requested": 1000000
+    },
+    "H1": {
+      "n_returned": 41814,
+      "first": "2019-07-16 07:00:00",
+      "last": "2026-10-05 05:00:00",
+      "requested": 200000
+    },
+    "D1": {
+      "n_returned": 2242,
+      "first": "2019-07-16 00:00:00",
+      "last": "2026-10-05 00:00:00",
+      "requested": 20000
+    },
+    "M1_range_2010_to_2019-07-16": {
+      "n": 1,
+      "times": [
+        "2019-07-16 07:59:00"
+      ]
+    },
+    "D1_range_2010_to_2019-07-15": {
+      "n": 1,
+      "times": [
+        "2019-07-16 00:00:00"
+      ]
+    }
+  },
+  "first_tick_from_2015": "2021-08-16 13:54:26.625000",
+  "tick_probes_pre_2021_08": [
+    {
+      "from": "2019-07-16",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2019-07-30",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2019-08-13",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2019-08-27",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2019-09-10",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2019-09-24",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2019-10-08",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2019-10-22",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2019-11-05",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2019-11-19",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2019-12-03",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2019-12-17",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2019-12-31",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-01-14",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-01-28",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-02-11",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-02-25",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-03-10",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-03-24",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-04-07",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-04-21",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-05-05",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-05-19",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-06-02",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-06-16",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-06-30",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-07-14",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-07-28",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-08-11",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-08-25",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-09-08",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-09-22",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-10-06",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-10-20",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-11-03",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-11-17",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-12-01",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-12-15",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2020-12-29",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-01-12",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-01-26",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-02-09",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-02-23",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-03-09",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-03-23",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-04-06",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-04-20",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-05-04",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-05-18",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-06-01",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-06-15",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-06-29",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-07-13",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-07-27",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-08-10",
+      "n_ticks_3d": 0
+    },
+    {
+      "from": "2021-08-24",
+      "n_ticks_3d": 103792
+    }
+  ],
+  "tick_cache_vs_live": {
+    "2024-08-14": {
+      "live_ticks": 124612,
+      "cache_ticks": 124612,
+      "same_length": true,
+      "time_equal": true,
+      "bid_equal": true,
+      "ask_equal": true,
+      "live_spread_price_units_median_tickweighted": 3.0,
+      "cache_spread_points_median_tickweighted": 300.0,
+      "bars_vs_ticks": {
+        "minutes": 1366,
+        "open==bid_first %": 100.0,
+        "high==bid_max %": 100.0,
+        "low==bid_min %": 100.0,
+        "close==bid_last %": 100.0,
+        "close==ask_last %": 0.0,
+        "tick_volume==n_ticks %": 86.97,
+        "bar_spread_pts_median": 300.0
+      }
+    },
+    "2026-09-16": {
+      "live_ticks": 537542,
+      "cache_ticks": 537542,
+      "same_length": true,
+      "time_equal": true,
+      "bid_equal": true,
+      "ask_equal": true,
+      "live_spread_price_units_median_tickweighted": 1.430000000000291,
+      "cache_spread_points_median_tickweighted": 143.0,
+      "bars_vs_ticks": {
+        "minutes": 1373,
+        "open==bid_first %": 100.0,
+        "high==bid_max %": 100.0,
+        "low==bid_min %": 100.0,
+        "close==bid_last %": 100.0,
+        "close==ask_last %": 0.0,
+        "tick_volume==n_ticks %": 99.93,
+        "bar_spread_pts_median": 143.0
+      }
+    },
+    "2022-03-09": {
+      "live_ticks": 314826,
+      "cache_ticks": 314826,
+      "same_length": true,
+      "time_equal": true,
+      "bid_equal": true,
+      "ask_equal": true,
+      "live_spread_price_units_median_tickweighted": 2.149999999999636,
+      "cache_spread_points_median_tickweighted": 215.0,
+      "bars_vs_ticks": {
+        "minutes": 1289,
+        "open==bid_first %": 100.0,
+        "high==bid_max %": 100.0,
+        "low==bid_min %": 100.0,
+        "close==bid_last %": 99.92,
+        "close==ask_last %": 0.0,
+        "tick_volume==n_ticks %": 62.45,
+        "bar_spread_pts_median": 215.0
+      }
+    }
+  }
+}

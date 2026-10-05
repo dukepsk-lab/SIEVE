@@ -1,0 +1,54 @@
+{
+ "1h|RTH 2024": {
+  "N": 1524,
+  "sigma": 63.61
+ },
+ "6h|09:30-15:30 2025": {
+  "N": 247,
+  "sigma": 250.18
+ },
+ "5min|RTH last12m": {
+  "N": 19689,
+  "sigma": 28.69
+ },
+ "overnight last12m (impl rule)": {
+  "N": 198,
+  "sigma": 228.52
+ },
+ "overnight last12m (last price <=16:00 rule)": {
+  "N": 199,
+  "sigma": 228.05
+ },
+ "overnight last12m candidate nights": 209,
+ "overnight 2021 (impl rule)": {
+  "N": 25,
+  "sigma": 78.41
+ },
+ "overnight 2021 (last price <=16:00 rule)": {
+  "N": 193,
+  "sigma": 91.39
+ },
+ "overnight 2021 candidate nights": 208,
+ "overnight 2023 (impl rule)": {
+  "N": 62,
+  "sigma": 81.19
+ },
+ "overnight 2023 (last price <=16:00 rule)": {
+  "N": 197,
+  "sigma": 93.01
+ },
+ "overnight 2023 candidate nights": 208,
+ "overnight 2025 (impl rule)": {
+  "N": 190,
+  "sigma": 152.56
+ },
+ "overnight 2025 (last price <=16:00 rule)": {
+  "N": 196,
+  "sigma": 173.86
+ },
+ "overnight 2025 candidate nights": 209,
+ "5d last12m (impl rule)": {
+  "N": 43,
+  "sigma": 661.46
+ }
+}

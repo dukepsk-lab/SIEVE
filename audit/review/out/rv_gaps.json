@@ -1,0 +1,174 @@
+{
+ "2024-09": {
+  "live_bars": 28661,
+  "cache_bars": 28661,
+  "live_equals_cache": true,
+  "reviewer_gaps_ge5": 5,
+  "implementer_gaps_ge5": 6,
+  "reviewer_list": [
+   {
+    "start_et": "2024-09-02 13:01:00",
+    "end_et": "2024-09-02 18:04:00",
+    "start_server": "2024-09-02 18:01:00",
+    "missing": "304"
+   },
+   {
+    "start_et": "2024-09-05 10:19:00",
+    "end_et": "2024-09-05 10:23:00",
+    "start_server": "2024-09-05 15:19:00",
+    "missing": "5"
+   },
+   {
+    "start_et": "2024-09-22 20:05:00",
+    "end_et": "2024-09-22 20:12:00",
+    "start_server": "2024-09-23 01:05:00",
+    "missing": "8"
+   },
+   {
+    "start_et": "2024-09-23 01:35:00",
+    "end_et": "2024-09-23 01:41:00",
+    "start_server": "2024-09-23 06:35:00",
+    "missing": "7"
+   },
+   {
+    "start_et": "2024-09-23 06:32:00",
+    "end_et": "2024-09-23 07:23:00",
+    "start_server": "2024-09-23 11:32:00",
+    "missing": "52"
+   }
+  ],
+  "implementer_list": [
+   {
+    "start_et": "2024-09-02 13:01:00",
+    "end_et": "2024-09-02 16:58:00",
+    "minutes_missing": "238",
+    "kind": "early close (runs to the daily break)"
+   },
+   {
+    "start_et": "2024-09-02 18:00:00",
+    "end_et": "2024-09-02 18:04:00",
+    "minutes_missing": "5",
+    "kind": "other"
+   },
+   {
+    "start_et": "2024-09-05 10:19:00",
+    "end_et": "2024-09-05 10:23:00",
+    "minutes_missing": "5",
+    "kind": "other"
+   },
+   {
+    "start_et": "2024-09-22 20:05:00",
+    "end_et": "2024-09-22 20:12:00",
+    "minutes_missing": "8",
+    "kind": "other"
+   },
+   {
+    "start_et": "2024-09-23 01:35:00",
+    "end_et": "2024-09-23 01:41:00",
+    "minutes_missing": "7",
+    "kind": "other"
+   },
+   {
+    "start_et": "2024-09-23 06:32:00",
+    "end_et": "2024-09-23 07:23:00",
+    "minutes_missing": "52",
+    "kind": "other"
+   }
+  ]
+ },
+ "2025-11": {
+  "live_bars": 26357,
+  "cache_bars": 26357,
+  "live_equals_cache": true,
+  "reviewer_gaps_ge5": 7,
+  "implementer_gaps_ge5": 7,
+  "reviewer_list": [
+   {
+    "start_et": "2025-11-24 12:58:00",
+    "end_et": "2025-11-24 13:16:00",
+    "start_server": "2025-11-24 17:58:00",
+    "missing": "19"
+   },
+   {
+    "start_et": "2025-11-27 13:00:00",
+    "end_et": "2025-11-27 18:04:00",
+    "start_server": "2025-11-27 18:00:00",
+    "missing": "305"
+   },
+   {
+    "start_et": "2025-11-27 21:46:00",
+    "end_et": "2025-11-27 22:15:00",
+    "start_server": "2025-11-28 02:46:00",
+    "missing": "30"
+   },
+   {
+    "start_et": "2025-11-27 22:17:00",
+    "end_et": "2025-11-27 22:23:00",
+    "start_server": "2025-11-28 03:17:00",
+    "missing": "7"
+   },
+   {
+    "start_et": "2025-11-27 22:25:00",
+    "end_et": "2025-11-28 06:02:00",
+    "start_server": "2025-11-28 03:25:00",
+    "missing": "458"
+   },
+   {
+    "start_et": "2025-11-28 06:04:00",
+    "end_et": "2025-11-28 08:49:00",
+    "start_server": "2025-11-28 11:04:00",
+    "missing": "166"
+   },
+   {
+    "start_et": "2025-11-28 13:15:00",
+    "end_et": "2025-11-30 18:04:00",
+    "start_server": "2025-11-28 18:15:00",
+    "missing": "3170"
+   }
+  ],
+  "implementer_list": [
+   {
+    "start_et": "2025-11-24 12:58:00",
+    "end_et": "2025-11-24 13:16:00",
+    "minutes_missing": "19",
+    "kind": "other"
+   },
+   {
+    "start_et": "2025-11-27 13:00:00",
+    "end_et": "2025-11-27 16:57:00",
+    "minutes_missing": "238",
+    "kind": "early close (runs to the daily break)"
+   },
+   {
+    "start_et": "2025-11-27 21:46:00",
+    "end_et": "2025-11-27 22:15:00",
+    "minutes_missing": "30",
+    "kind": "other"
+   },
+   {
+    "start_et": "2025-11-27 22:17:00",
+    "end_et": "2025-11-27 22:23:00",
+    "minutes_missing": "7",
+    "kind": "other"
+   },
+   {
+    "start_et": "2025-11-27 22:25:00",
+    "end_et": "2025-11-28 06:02:00",
+    "minutes_missing": "458",
+    "kind": "other"
+   },
+   {
+    "start_et": "2025-11-28 06:04:00",
+    "end_et": "2025-11-28 08:49:00",
+    "minutes_missing": "166",
+    "kind": "other"
+   },
+   {
+    "start_et": "2025-11-28 13:15:00",
+    "end_et": "2025-11-28 16:54:00",
+    "minutes_missing": "220",
+    "kind": "early close (runs to the daily break)"
+   }
+  ]
+ }
+}

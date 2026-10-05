@@ -1,0 +1,43 @@
+horizon,case,side,sigma,spread,C,hit_rate_%,C_total_pts,required_hit_rate_%,abs_diff_pp
+5min,base,n/a,28.69,1.43,2.43,55.29,2.43,55.29,0.0
+5min,"stress (p99, current regime)",n/a,28.69,1.43,5.43,61.83,5.43,61.83,0.0
+5min,"stress-alt (p99, worst past regime)",n/a,28.69,3.4,7.4,66.12,7.4,66.12,0.0
+5min,REVIEWER stress: current-regime worst tick at open,n/a,28.69,2.0,6.0,63.07,,,
+5min,REVIEWER stress: all-history p99 of minute-max at open,n/a,28.69,5.32,9.32,70.3,,,
+5min,REVIEWER stress: user's 8 pt spread,n/a,28.69,8.0,12.0,76.14,,,
+1h,base,n/a,101.02,1.43,2.43,51.5,2.43,51.5,0.0
+1h,"stress (p99, current regime)",n/a,101.02,1.43,5.43,53.36,5.43,53.36,0.0
+1h,"stress-alt (p99, worst past regime)",n/a,101.02,3.4,7.4,54.58,7.4,54.58,0.0
+1h,REVIEWER stress: current-regime worst tick at open,n/a,101.02,2.0,6.0,53.71,,,
+1h,REVIEWER stress: all-history p99 of minute-max at open,n/a,101.02,5.32,9.32,55.77,,,
+1h,REVIEWER stress: user's 8 pt spread,n/a,101.02,8.0,12.0,57.42,,,
+6h,base,n/a,253.37,1.43,2.43,50.6,2.43,50.6,0.0
+6h,"stress (p99, current regime)",n/a,253.37,1.43,5.43,51.34,5.43,51.34,0.0
+6h,"stress-alt (p99, worst past regime)",n/a,253.37,3.4,7.4,51.83,7.4,51.83,0.0
+6h,REVIEWER stress: current-regime worst tick at open,n/a,253.37,2.0,6.0,51.48,,,
+6h,REVIEWER stress: all-history p99 of minute-max at open,n/a,253.37,5.32,9.32,52.3,,,
+6h,REVIEWER stress: user's 8 pt spread,n/a,253.37,8.0,12.0,52.96,,,
+overnight,base,long,228.52,1.43,6.719,51.84,6.72,51.84,0.0
+overnight,base,short,228.52,1.43,2.43,50.66,2.43,50.66,0.0
+overnight,"stress (p99, current regime)",long,228.52,1.43,9.719,52.66,9.72,52.66,0.0
+overnight,"stress (p99, current regime)",short,228.52,1.43,5.43,51.49,5.43,51.49,0.0
+overnight,"stress-alt (p99, worst past regime)",long,228.52,3.4,11.689,53.2,11.69,53.2,0.0
+overnight,"stress-alt (p99, worst past regime)",short,228.52,3.4,7.4,52.02,7.4,52.02,0.0
+overnight,REVIEWER stress: current-regime worst tick at open,long,228.52,2.0,10.289,52.81,,,
+overnight,REVIEWER stress: current-regime worst tick at open,short,228.52,2.0,6.0,51.64,,,
+overnight,REVIEWER stress: all-history p99 of minute-max at open,long,228.52,5.32,13.609,53.72,,,
+overnight,REVIEWER stress: all-history p99 of minute-max at open,short,228.52,5.32,9.32,52.55,,,
+overnight,REVIEWER stress: user's 8 pt spread,long,228.52,8.0,16.289,54.46,,,
+overnight,REVIEWER stress: user's 8 pt spread,short,228.52,8.0,12.0,53.28,,,
+5d,base,long,661.46,1.43,32.455,53.07,32.46,53.07,0.0
+5d,base,short,661.46,1.43,2.43,50.23,2.43,50.23,0.0
+5d,"stress (p99, current regime)",long,661.46,1.43,35.455,53.35,35.46,53.35,0.0
+5d,"stress (p99, current regime)",short,661.46,1.43,5.43,50.51,5.43,50.51,0.0
+5d,"stress-alt (p99, worst past regime)",long,661.46,3.4,37.425,53.54,37.43,53.54,0.0
+5d,"stress-alt (p99, worst past regime)",short,661.46,3.4,7.4,50.7,7.4,50.7,0.0
+5d,REVIEWER stress: current-regime worst tick at open,long,661.46,2.0,36.025,53.4,,,
+5d,REVIEWER stress: current-regime worst tick at open,short,661.46,2.0,6.0,50.57,,,
+5d,REVIEWER stress: all-history p99 of minute-max at open,long,661.46,5.32,39.345,53.72,,,
+5d,REVIEWER stress: all-history p99 of minute-max at open,short,661.46,5.32,9.32,50.88,,,
+5d,REVIEWER stress: user's 8 pt spread,long,661.46,8.0,42.025,53.97,,,
+5d,REVIEWER stress: user's 8 pt spread,short,661.46,8.0,12.0,51.13,,,
