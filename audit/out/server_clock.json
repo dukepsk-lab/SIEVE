@@ -1,0 +1,35 @@
+{
+  "eras": [
+    {
+      "start_utc": "1900-01-01 00:00:00",
+      "kind": "fixed",
+      "param": 0.0
+    },
+    {
+      "start_utc": "2021-11-01 00:00:00",
+      "kind": "eu",
+      "param": 0.0
+    }
+  ],
+  "note": "era-aware server clock measured by audit.t4_timemap",
+  "eras_table": [
+    {
+      "era_start_week": "2019-07-15",
+      "era_end_week": "2021-10-25",
+      "weeks": "120",
+      "convention": "UTC fixed (UTC+0)",
+      "weeks_matching": "118",
+      "weeks_informative": "118",
+      "match_pct": "100.0"
+    },
+    {
+      "era_start_week": "2021-11-01",
+      "era_end_week": "2026-09-28",
+      "weeks": "257",
+      "convention": "London (UTC+0/+1, EU DST)",
+      "weeks_matching": "244",
+      "weeks_informative": "249",
+      "match_pct": "98.0"
+    }
+  ]
+}
