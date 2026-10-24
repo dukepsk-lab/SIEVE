@@ -1,0 +1,8 @@
+variant,role,trades,trades_per_year,position_changes,skipped,skip_next_day_not_a_trading_day,skip_signal_unavailable,skip_missing_entry_price,skip_missing_exit_price,gross_mean_bp,net_base_mean_bp,net_stress_mean_bp,net_pt_mean_bp,days,t_stress,sharpe_stress,hit_rate_stress,max_dd_stress_bp,total_net_stress_bp,years_positive,years,alpha_bp_day,alpha_t_nw,beta_c2,sharpe_c2,resid_years_positive,avg_w,turnover_per_year,h8a_minus_e0_bp,welch_t,welch_df,n_h8a,n_e0,gate_pass,status
+H6a,candidate,1078,241.558,150,80,0,21,59,0,9.7834,9.7732,9.7581,9.7209,1158,2.3524,1.0974,0.5594,3203.6477,10519.262,4,5,3.5505,2.1189,0.7193,0.7507,3.0,0.9629,6.0136,,,,,,True,PASS
+H6b,candidate,1078,241.558,55,80,0,21,59,0,7.5367,7.5332,7.5282,7.5136,1158,2.0943,0.977,0.5594,2915.5744,8115.3624,4,5,1.9769,1.7166,0.654,0.7507,3.0,0.7706,2.0267,,,,,,False,FAIL
+H3a,candidate,35,7.8428,0,0,0,0,0,0,46.8298,46.006,44.7956,41.7998,1158,2.2448,1.0472,0.6286,368.901,1567.8461,3,5,,,,,,,,,,,,,True,PASS
+H8a,candidate,135,30.2508,0,4,0,1,1,2,16.9638,16.14,14.9296,11.9355,1158,1.0061,0.4693,0.5333,1572.894,2015.4978,3,5,,,,,,,,,,,,,False,FAIL
+H8b,candidate,102,22.8561,0,4,0,1,1,2,3.9774,3.1535,1.9431,-1.0811,1158,0.161,0.0751,0.5882,1613.6473,198.2012,3,5,,,,,,,,,,,,,False,FAIL
+C2,control,1099,246.2637,1,59,0,0,59,0,8.1078,8.1071,8.106,8.1027,1158,1.6092,0.7507,0.5569,3965.6396,8908.4513,4,5,,,,,,,,,,,,,,control
+E0,control,912,204.3607,0,103,0,1,58,44,7.7549,6.9311,5.7207,2.6568,1158,1.0312,0.4811,0.5559,3682.8716,5217.2838,4,5,,,,,,,,9.2089,0.5813,173.5754,135.0,912.0,,control
