@@ -6,7 +6,7 @@ import pandas as pd
 import pytest
 
 from audit.tz import ServerClock
-from research.data import COST_JSON, Costs, build_market, cost_points, p_ref
+from research.data import COST_JSON, M1_DIR, Costs, build_market, cost_points, p_ref
 from research.evaluate import HoldoutError, score_positions, score_trades
 from research.variants import TRADE_COLS
 
@@ -38,6 +38,7 @@ def test_bp_conversion_and_p_ref_window():
     assert c.base_bp == pytest.approx(2.43 / 150 * 1e4) and c.stress_bp == pytest.approx(6.0 / 150 * 1e4)
 
 
+@pytest.mark.skipif(not any(M1_DIR.glob("*.parquet")), reason="needs the local MT5 audit cache (gitignored)")
 def test_p_ref_real_value_is_about_29495():
     from research.data import load_m1
     j = json.loads(COST_JSON.read_text(encoding="utf-8"))
