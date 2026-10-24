@@ -2,8 +2,7 @@
 
 Data-integrity, cost and pre-registered hypothesis testing on US100 (`USTEC.`, IUX Pro, MetaTrader 5).
 
-The premise: most intraday backtests are wrong before the model runs, because of clock, DST and spread assumptions.
-SIEVE measures those first, then tests ideas under a frozen protocol and reports what fails.
+Most intraday backtests go wrong before any model runs: clock, DST and spread assumptions. SIEVE measures those first, then tests ideas under a protocol fixed in advance, and reports what fails.
 
 ## Phases
 
@@ -19,7 +18,7 @@ SIEVE measures those first, then tests ideas under a frozen protocol and reports
 - **Batch 2** (pre-registered events: CPI, NFP, FOMC; vol-managed exposure; pre-FOMC drift): near-misses in Stage A fail in Stage B; no variant survives ([`BATCH2_REVIEW.md`](research/BATCH2_REVIEW.md)).
 - The only positive returns found are long exposure to a rising market, indistinguishable from buy and hold.
 
-This is a negative result, reported as such. Scope: one instrument, one broker, the tested variants and costs only.
+None of the tested ideas worked. This covers one instrument, one broker, and only the variants and costs listed in the plan.
 
 ## Method
 
@@ -36,7 +35,3 @@ Requires Windows, Python 3.10+ and a logged-in MT5 terminal for the audit (`pip 
 python -m audit.run
 python -m pytest audit/tests research -q
 ```
-
-## AI-assisted development
-
-Implementation was done with LLM coding agents under a written plan and reviewed by an independent pass; hypotheses, gates and interpretation are mine. The review notes record what was checked.
