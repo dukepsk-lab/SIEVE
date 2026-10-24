@@ -1,0 +1,38 @@
+# SOURCE: the four BLS release pages affected by the Oct 1 - Nov 12 2025 federal lapse in appropriations.
+# RETRIEVED: 2026-10-05 via the Claude desktop Browser pane (curl gets HTTP 403). Text = document.body.innerText, from the "Transmission of material ... embargoed until" line onward (whitespace-collapsed by the extractor, otherwise verbatim).
+
+## https://www.bls.gov/news.release/archives/cpi_10242025.htm   (title: "Consumer Price Index News Release - 2025 M09 Results")
+Transmission of material in this release is embargoed until
+8:30 a.m. (ET) Friday, October 24, 2025 USDL-25-1502
+Contact information: (202) 691-5902 * PressOffice@bls.gov
+CONSUMER PRICE INDEX - SEPTEMBER 2025
+The Consumer Price Index for All Urban Consumers (CPI-U) increased 0.3 percent on a seasonally adjusted basis in September, after rising 0.4 percent in August, the U.S. Bureau of Labor Statistics reported today. Over the last 12 months, the all items index increased 3.0 percent before seasonal adjustment. Note that September CPI data collection was completed before the lapse in appropriations.
+
+## https://www.bls.gov/news.release/archives/cpi_12182025.htm   (title: "Consumer Price Index News Release - 2025 M11 Results")
+Transmission of material in this release is embargoed until
+8:30 a.m. (ET) Thursday, December 18, 2025 USDL-25-1584
+Technical information: (202) 691-7000 * cpi_info@bls.gov * www.bls.gov/cpi
+CONSUMER PRICE INDEX - NOVEMBER 2025
+The Consumer Price Index for All Urban Consumers (CPI-U) increased 0.2 percent on a seasonally adjusted basis over the 2 months from September 2025 to November 2025, the U.S. Bureau of Labor Statistics reported today. Over the last 12 months, the all items index increased 2.7 percent before seasonal adjustment. BLS did not collect survey data for October 2025 due to a lapse in appropriations.
+[also on the page] "Note: The Oct and Nov 2025 data values are not available due to the 2025 lapse in appropriations."
+
+## https://www.bls.gov/news.release/archives/empsit_11202025.htm   (title: "Employment Situation News Release - 2025 M09 Results")
+Transmission of material in this news release is embargoed until USDL-25-1487
+8:30 a.m. (ET) Thursday, November 20, 2025
+THE EMPLOYMENT SITUATION -- SEPTEMBER 2025
+Total nonfarm payroll employment edged up by 119,000 in September but has shown little change since April, the U.S. Bureau of Labor Statistics reported today. The unemployment rate, at 4.4 percent, changed little in September.
+Federal Government Shutdown: "Publication of September data was delayed by more than 6 weeks because of a lapse in federal appropriations. Collection of September data for the household survey had been completed in accordance with our normal schedule prior to the federal government shutdown." (box continues beyond this excerpt)
+
+## https://www.bls.gov/news.release/archives/empsit_12162025.htm   (title: "Employment Situation News Release - 2025 M11 Results")
+Transmission of material in this news release is embargoed until USDL-25-1581
+8:30 a.m. (ET) Tuesday, December 16, 2025
+THE EMPLOYMENT SITUATION -- NOVEMBER 2025
+Total nonfarm payroll employment changed little in November (+64,000) and has shown little net change since April, the U.S. Bureau of Labor Statistics reported today. In November, the unemployment rate, at 4.6 percent, was little changed from September.
+Federal Government Shutdown: "Publication of November 2025 data was delayed by more than a week because of a lapse in federal appropriations (from October 1 through November 12). Both the household and establishment surveys required additional data collection and processing time in November. BLS did not publish an October 2025 Employment Situation news release."
+[also on the page] "The lapse in appropriations lasted from October 1 through November 12, 2025." and "Data for October 2025 were not collected due to the federal government shutdown." (household survey)
+
+## https://www.bls.gov/schedule/news_release/cpi.htm   ("Schedule of Releases for the Consumer Price Index"; current rolling schedule, page text)
+Reference Month Release Date Release Time
+November 2025 Dec. 18, 2025 08:30 AM
+December 2025 Jan. 13, 2026 08:30 AM
+(further 2026 rows omitted: outside the study window)

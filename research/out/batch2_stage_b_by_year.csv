@@ -1,0 +1,5 @@
+variant,role,year,trades,net_base_bp,net_stress_bp,positive,resid_bp
+H6a,candidate,2024,249,3160.9775,3154.5304,True,736.0412
+H6a,candidate,2025,247,2051.6485,2046.5279,True,-5.6133
+H3a,candidate,2024,8,368.5587,358.8758,True,
+H3a,candidate,2025,8,25.4223,15.7394,True,

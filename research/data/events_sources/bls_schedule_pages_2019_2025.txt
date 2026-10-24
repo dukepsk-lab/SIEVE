@@ -1,0 +1,180 @@
+# SOURCE: BLS "Schedule of Selected Releases <year>" pages, https://www.bls.gov/schedule/<year>/home.htm  (years 2019..2025; one section per page below)
+# RETRIEVED: 2026-10-05 via the Claude desktop Browser pane (curl gets HTTP 403 from Akamai).
+# METHOD: JavaScript in the loaded page: every <tr> whose text is <200 chars and matches "Employment Situation for" or "Consumer Price Index for", whitespace-collapsed, de-duplicated.
+#         Each row = "<Weekday>, <Month> <D>, <YYYY> <HH:MM AM|PM> <release title> for <reference month>"; times on the BLS calendar are Eastern Time ("NOTE: All times on calendar are Eastern Time").
+#         This is a second, independent BLS page type (the release calendar), used to cross-check the dates in the release archive pages (bls_*_archive_anchors.txt).
+# Each section starts with "## <year> | <url> | n=<rows> | sha256=<hash>"; the hash covers the section's body lines joined with \n (no trailing newline), as computed in the browser.
+# 2025 page footer: "Last Modified Date: December 11, 2025" (last month block); Oct-Nov 2025 blocks were last modified Nov 20, 2025 and contain only the releases BLS actually rescheduled/issued after the shutdown.
+## 2019 | https://www.bls.gov/schedule/2019/home.htm | n=24 | sha256=6449fec67d79aa97412290abb0e5cf375c400d95d9b97586caf90b7563bf4961
+Friday, January 04, 2019 08:30 AM Employment Situation for December 2018
+Friday, January 11, 2019 08:30 AM Consumer Price Index for December 2018
+Friday, February 01, 2019 08:30 AM Employment Situation for January 2019
+Wednesday, February 13, 2019 08:30 AM Consumer Price Index for January 2019
+Friday, March 08, 2019 08:30 AM Employment Situation for February 2019
+Tuesday, March 12, 2019 08:30 AM Consumer Price Index for February 2019
+Friday, April 05, 2019 08:30 AM Employment Situation for March 2019
+Wednesday, April 10, 2019 08:30 AM Consumer Price Index for March 2019
+Friday, May 03, 2019 08:30 AM Employment Situation for April 2019
+Friday, May 10, 2019 08:30 AM Consumer Price Index for April 2019
+Friday, June 07, 2019 08:30 AM Employment Situation for May 2019
+Wednesday, June 12, 2019 08:30 AM Consumer Price Index for May 2019
+Friday, July 05, 2019 08:30 AM Employment Situation for June 2019
+Thursday, July 11, 2019 08:30 AM Consumer Price Index for June 2019
+Friday, August 02, 2019 08:30 AM Employment Situation for July 2019
+Tuesday, August 13, 2019 08:30 AM Consumer Price Index for July 2019
+Friday, September 06, 2019 08:30 AM Employment Situation for August 2019
+Thursday, September 12, 2019 08:30 AM Consumer Price Index for August 2019
+Friday, October 04, 2019 08:30 AM Employment Situation for September 2019
+Thursday, October 10, 2019 08:30 AM Consumer Price Index for September 2019
+Friday, November 01, 2019 08:30 AM Employment Situation for October 2019
+Wednesday, November 13, 2019 08:30 AM Consumer Price Index for October 2019
+Friday, December 06, 2019 08:30 AM Employment Situation for November 2019
+Wednesday, December 11, 2019 08:30 AM Consumer Price Index for November 2019
+## 2020 | https://www.bls.gov/schedule/2020/home.htm | n=24 | sha256=adaa0da2735ae2ad1bb76d313730b362f9c8af923c47ed1833c718dfa5c1937d
+Friday, January 10, 2020 08:30 AM Employment Situation for December 2019
+Tuesday, January 14, 2020 08:30 AM Consumer Price Index for December 2019
+Friday, February 07, 2020 08:30 AM Employment Situation for January 2020
+Thursday, February 13, 2020 08:30 AM Consumer Price Index for January 2020
+Friday, March 06, 2020 08:30 AM Employment Situation for February 2020
+Wednesday, March 11, 2020 08:30 AM Consumer Price Index for February 2020
+Friday, April 03, 2020 08:30 AM Employment Situation for March 2020
+Friday, April 10, 2020 08:30 AM Consumer Price Index for March 2020
+Friday, May 08, 2020 08:30 AM Employment Situation for April 2020
+Tuesday, May 12, 2020 08:30 AM Consumer Price Index for April 2020
+Friday, June 05, 2020 08:30 AM Employment Situation for May 2020
+Wednesday, June 10, 2020 08:30 AM Consumer Price Index for May 2020
+Thursday, July 02, 2020 08:30 AM Employment Situation for June 2020
+Tuesday, July 14, 2020 08:30 AM Consumer Price Index for June 2020
+Friday, August 07, 2020 08:30 AM Employment Situation for July 2020
+Wednesday, August 12, 2020 08:30 AM Consumer Price Index for July 2020
+Friday, September 04, 2020 08:30 AM Employment Situation for August 2020
+Friday, September 11, 2020 08:30 AM Consumer Price Index for August 2020
+Friday, October 02, 2020 08:30 AM Employment Situation for September 2020
+Tuesday, October 13, 2020 08:30 AM Consumer Price Index for September 2020
+Friday, November 6, 2020 08:30 AM Employment Situation for October 2020
+Thursday, November 12, 2020 08:30 AM Consumer Price Index for October 2020
+Friday, December 4, 2020 08:30 AM Employment Situation for November 2020
+Thursday, December 10, 2020 08:30 AM Consumer Price Index for November 2020
+## 2021 | https://www.bls.gov/schedule/2021/home.htm | n=24 | sha256=40c00dd1ce4635c45af9d13cde1be458b688ddce8eb383ac72c73b6af9d5644d
+Friday, January 8, 2021 08:30 AM Employment Situation for December 2020
+Wednesday, January 13, 2021 08:30 AM Consumer Price Index for December 2020
+Friday, February 5, 2021 08:30 AM Employment Situation for January 2021
+Wednesday, February 10, 2021 08:30 AM Consumer Price Index for January 2021
+Friday, March 5, 2021 08:30 AM Employment Situation for February 2021
+Wednesday, March 10, 2021 08:30 AM Consumer Price Index for February 2021
+Friday, April 2, 2021 08:30 AM Employment Situation for March 2021
+Tuesday, April 13, 2021 08:30 AM Consumer Price Index for March 2021
+Friday, May 07, 2021 08:30 AM Employment Situation for April 2021
+Wednesday, May 12, 2021 08:30 AM Consumer Price Index for April 2021
+Friday, June 04, 2021 08:30 AM Employment Situation for May 2021
+Thursday, June 10, 2021 08:30 AM Consumer Price Index for May 2021
+Friday, July 2, 2021 08:30 AM Employment Situation for June 2021
+Tuesday, July 13, 2021 08:30 AM Consumer Price Index for June 2021
+Friday, August 6, 2021 08:30 AM Employment Situation for July 2021
+Wednesday, August 11, 2021 08:30 AM Consumer Price Index for July 2021
+Friday, September 3, 2021 08:30 AM Employment Situation for August 2021
+Tuesday, September 14, 2021 08:30 AM Consumer Price Index for August 2021
+Friday, October 8, 2021 08:30 AM Employment Situation for September 2021
+Wednesday, October 13, 2021 08:30 AM Consumer Price Index for September 2021
+Friday, November 05, 2021 08:30 AM Employment Situation for October 2021
+Wednesday, November 10, 2021 08:30 AM Consumer Price Index for October 2021
+Friday, December 3, 2021 08:30 AM Employment Situation for November 2021
+Friday, December 10, 2021 08:30 AM Consumer Price Index for November 2021
+## 2022 | https://www.bls.gov/schedule/2022/home.htm | n=24 | sha256=4af470a7607969725a83dbd453b23ee0dcebbab8bb870f73b34e5ff70b7c52a3
+Friday, January 07, 2022 08:30 AM Employment Situation for December 2021
+Wednesday, January 12, 2022 08:30 AM Consumer Price Index for December 2021
+Friday, February 04, 2022 08:30 AM Employment Situation for January 2022
+Thursday, February 10, 2022 08:30 AM Consumer Price Index for January 2022
+Friday, March 4, 2022 08:30 AM Employment Situation for February 2022
+Thursday, March 10, 2022 08:30 AM Consumer Price Index for February 2022
+Friday, April 1, 2022 08:30 AM Employment Situation for March 2022
+Tuesday, April 12, 2022 08:30 AM Consumer Price Index for March 2022
+Friday, May 06, 2022 08:30 AM Employment Situation for April 2022
+Wednesday, May 11, 2022 08:30 AM Consumer Price Index for April 2022
+Friday, June 3, 2022 08:30 AM Employment Situation for May 2022
+Friday, June 10, 2022 08:30 AM Consumer Price Index for May 2022
+Friday, July 8, 2022 08:30 AM Employment Situation for June 2022
+Wednesday, July 13, 2022 08:30 AM Consumer Price Index for June 2022
+Friday, August 05, 2022 08:30 AM Employment Situation for July 2022
+Wednesday, August 10, 2022 08:30 AM Consumer Price Index for July 2022
+Friday, September 02, 2022 08:30 AM Employment Situation for August 2022
+Tuesday, September 13, 2022 08:30 AM Consumer Price Index for August 2022
+Friday, October 07, 2022 08:30 AM Employment Situation for September 2022
+Thursday, October 13, 2022 08:30 AM Consumer Price Index for September 2022
+Friday, November 04, 2022 08:30 AM Employment Situation for October 2022
+Thursday, November 10, 2022 08:30 AM Consumer Price Index for October 2022
+Friday, December 02, 2022 08:30 AM Employment Situation for November 2022
+Tuesday, December 13, 2022 08:30 AM Consumer Price Index for November 2022
+## 2023 | https://www.bls.gov/schedule/2023/home.htm | n=24 | sha256=c362f4c1cd8ae29d89c813d0b7347e91930925514f37b865d636cc3538a2fb1b
+Friday, January 06, 2023 08:30 AM Employment Situation for December 2022
+Thursday, January 12, 2023 08:30 AM Consumer Price Index for December 2022
+Friday, February 03, 2023 08:30 AM Employment Situation for January 2023
+Tuesday, February 14, 2023 08:30 AM Consumer Price Index for January 2023
+Friday, March 10, 2023 08:30 AM Employment Situation for February 2023
+Tuesday, March 14, 2023 08:30 AM Consumer Price Index for February 2023
+Friday, April 07, 2023 08:30 AM Employment Situation for March 2023
+Wednesday, April 12, 2023 08:30 AM Consumer Price Index for March 2023
+Friday, May 05, 2023 08:30 AM Employment Situation for April 2023
+Wednesday, May 10, 2023 08:30 AM Consumer Price Index for April 2023
+Friday, June 02, 2023 08:30 AM Employment Situation for May 2023
+Tuesday, June 13, 2023 08:30 AM Consumer Price Index for May 2023
+Friday, July 07, 2023 08:30 AM Employment Situation for June 2023
+Wednesday, July 12, 2023 08:30 AM Consumer Price Index for June 2023
+Friday, August 04, 2023 08:30 AM Employment Situation for July 2023
+Thursday, August 10, 2023 08:30 AM Consumer Price Index for July 2023
+Friday, September 01, 2023 08:30 AM Employment Situation for August 2023
+Wednesday, September 13, 2023 08:30 AM Consumer Price Index for August 2023
+Friday, October 06, 2023 08:30 AM Employment Situation for September 2023
+Thursday, October 12, 2023 08:30 AM Consumer Price Index for September 2023
+Friday, November 03, 2023 08:30 AM Employment Situation for October 2023
+Tuesday, November 14, 2023 08:30 AM Consumer Price Index for October 2023
+Friday, December 08, 2023 08:30 AM Employment Situation for November 2023
+Tuesday, December 12, 2023 08:30 AM Consumer Price Index for November 2023
+## 2024 | https://www.bls.gov/schedule/2024/home.htm | n=24 | sha256=66e7846322d4f86d940387eb76a0427c172c96b2295a2e71397df259d0ff56c0
+Friday, January 05, 2024 08:30 AM Employment Situation for December 2023
+Thursday, January 11, 2024 08:30 AM Consumer Price Index for December 2023
+Friday, February 02, 2024 08:30 AM Employment Situation for January 2024
+Tuesday, February 13, 2024 08:30 AM Consumer Price Index for January 2024
+Friday, March 08, 2024 08:30 AM Employment Situation for February 2024
+Tuesday, March 12, 2024 08:30 AM Consumer Price Index for February 2024
+Friday, April 5, 2024 08:30 AM Employment Situation for March 2024
+Wednesday, April 10, 2024 08:30 AM Consumer Price Index for March 2024
+Friday, May 3, 2024 08:30 AM Employment Situation for April 2024
+Wednesday, May 15, 2024 08:30 AM Consumer Price Index for April 2024
+Friday, June 7, 2024 08:30 AM Employment Situation for May 2024
+Wednesday, June 12, 2024 08:30 AM Consumer Price Index for May 2024
+Friday, July 05, 2024 08:30 AM Employment Situation for June 2024
+Thursday, July 11, 2024 08:30 AM Consumer Price Index for June 2024
+Friday, August 2, 2024 08:30 AM Employment Situation for July 2024
+Wednesday, August 14, 2024 08:30 AM Consumer Price Index for July 2024
+Friday, September 6, 2024 08:30 AM Employment Situation for August 2024
+Wednesday, September 11, 2024 08:30 AM Consumer Price Index for August 2024
+Friday, October 04, 2024 08:30 AM Employment Situation for September 2024
+Thursday, October 10, 2024 08:30 AM Consumer Price Index for September 2024
+Friday, November 1, 2024 08:30 AM Employment Situation for October 2024
+Wednesday, November 13, 2024 08:30 AM Consumer Price Index for October 2024
+Friday, December 06, 2024 08:30 AM Employment Situation for November 2024
+Wednesday, December 11, 2024 08:30 AM Consumer Price Index for November 2024
+## 2025 | https://www.bls.gov/schedule/2025/home.htm | n=22 | sha256=be35ae2350425de1c6d2fbe0c12105cbc119d664ceec5b9461b8456d304b373b
+Friday, January 10, 2025 08:30 AM Employment Situation for December 2024
+Wednesday, January 15, 2025 08:30 AM Consumer Price Index for December 2024
+Friday, February 7, 2025 08:30 AM Employment Situation for January 2025
+Wednesday, February 12, 2025 08:30 AM Consumer Price Index for January 2025
+Friday, March 7, 2025 08:30 AM Employment Situation for February 2025
+Wednesday, March 12, 2025 08:30 AM Consumer Price Index for February 2025
+Friday, April 4, 2025 08:30 AM Employment Situation for March 2025
+Thursday, April 10, 2025 08:30 AM Consumer Price Index for March 2025
+Friday, May 2, 2025 08:30 AM Employment Situation for April 2025
+Tuesday, May 13, 2025 08:30 AM Consumer Price Index for April 2025
+Friday, June 6, 2025 08:30 AM Employment Situation for May 2025
+Wednesday, June 11, 2025 08:30 AM Consumer Price Index for May 2025
+Thursday, July 3, 2025 08:30 AM Employment Situation for June 2025
+Tuesday, July 15, 2025 08:30 AM Consumer Price Index for June 2025
+Friday, August 1, 2025 08:30 AM Employment Situation for July 2025
+Tuesday, August 12, 2025 08:30 AM Consumer Price Index for July 2025
+Friday, September 5, 2025 08:30 AM Employment Situation for August 2025
+Thursday, September 11, 2025 08:30 AM Consumer Price Index for August 2025
+Friday, October 24, 2025 08:30 AM Consumer Price Index for September 2025
+Thursday, November 20, 2025 08:30 AM Employment Situation for September 2025
+Tuesday, December 16, 2025 08:30 AM Employment Situation for November 2025
+Thursday, December 18, 2025 08:30 AM Consumer Price Index for November 2025

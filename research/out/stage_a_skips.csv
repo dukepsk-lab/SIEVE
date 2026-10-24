@@ -1,0 +1,872 @@
+variant,date,reason
+H1a,2019-09-02,missing entry price
+H1a,2019-11-28,missing entry price
+H1a,2019-12-24,next day not a trading day
+H1a,2019-12-26,missing entry price
+H1a,2019-12-31,missing entry price
+H1a,2020-01-01,missing entry price
+H1a,2020-01-20,missing entry price
+H1a,2020-02-17,missing entry price
+H1a,2020-03-17,missing exit price
+H1a,2020-03-23,missing exit price
+H1a,2020-04-09,next day not a trading day
+H1a,2020-04-30,next day not a trading day
+H1a,2020-05-25,missing entry price
+H1a,2020-09-07,missing entry price
+H1a,2020-11-26,missing entry price
+H1a,2020-12-24,next day not a trading day
+H1a,2020-12-31,next day not a trading day
+H1a,2021-01-18,missing entry price
+H1a,2021-02-15,missing entry price
+H1a,2021-04-01,missing exit price
+H1a,2021-05-31,missing entry price
+H1a,2021-06-07,missing entry price
+H1a,2021-06-14,missing entry price
+H1a,2021-06-21,missing entry price
+H1a,2021-06-28,missing entry price
+H1a,2021-07-05,missing entry price
+H1a,2021-09-06,missing entry price
+H1a,2021-11-08,missing entry price
+H1a,2021-11-09,missing entry price
+H1a,2021-11-10,missing entry price
+H1a,2021-11-11,missing entry price
+H1a,2021-11-25,missing entry price
+H1a,2021-12-23,next day not a trading day
+H1a,2022-01-17,missing entry price
+H1a,2022-01-24,missing entry price
+H1a,2022-02-21,missing entry price
+H1a,2022-03-28,missing entry price
+H1a,2022-03-29,missing entry price
+H1a,2022-03-30,missing entry price
+H1a,2022-04-14,missing exit price
+H1a,2022-05-30,missing entry price
+H1a,2022-06-20,missing entry price
+H1a,2022-07-04,missing entry price
+H1a,2022-09-05,missing entry price
+H1a,2022-11-24,missing entry price
+H1a,2022-12-26,missing entry price
+H1a,2023-01-02,missing entry price
+H1a,2023-01-16,missing entry price
+H1a,2023-02-20,missing entry price
+H1a,2023-03-27,missing entry price
+H1a,2023-04-06,missing exit price
+H1a,2023-05-29,missing entry price
+H1a,2023-06-19,missing entry price
+H1a,2023-07-03,missing entry price
+H1a,2023-07-04,missing entry price
+H1a,2023-09-04,missing entry price
+H1a,2023-11-23,missing entry price
+H1a,2023-12-25,missing entry price
+H1b,2019-11-29,missing entry price
+H1b,2020-03-13,missing exit price
+H1b,2020-07-03,missing entry price
+H1b,2020-11-27,missing entry price
+H1b,2021-04-02,missing entry price
+H1b,2021-11-26,missing entry price
+H1b,2021-12-31,missing entry price
+H1b,2022-04-15,missing entry price
+H1b,2022-11-25,missing entry price
+H1b,2022-12-23,missing exit price
+H1b,2022-12-30,missing exit price
+H1b,2023-04-07,missing entry price
+H1b,2023-11-24,missing entry price
+H1b,2023-12-22,missing exit price
+H1b,2023-12-29,missing exit price
+H2a,2019-07-16,signal unavailable (warm-up or missing input)
+H2a,2019-09-02,missing entry price
+H2a,2019-09-03,signal unavailable (warm-up or missing input)
+H2a,2019-11-28,missing entry price
+H2a,2019-11-29,signal unavailable (warm-up or missing input)
+H2a,2019-12-02,signal unavailable (warm-up or missing input)
+H2a,2019-12-24,missing entry price
+H2a,2019-12-26,signal unavailable (warm-up or missing input)
+H2a,2019-12-27,signal unavailable (warm-up or missing input)
+H2a,2019-12-31,missing entry price
+H2a,2020-01-01,signal unavailable (warm-up or missing input)
+H2a,2020-01-02,signal unavailable (warm-up or missing input)
+H2a,2020-01-20,missing entry price
+H2a,2020-01-21,signal unavailable (warm-up or missing input)
+H2a,2020-02-17,missing entry price
+H2a,2020-02-18,signal unavailable (warm-up or missing input)
+H2a,2020-05-25,missing entry price
+H2a,2020-05-26,signal unavailable (warm-up or missing input)
+H2a,2020-07-03,missing entry price
+H2a,2020-07-06,signal unavailable (warm-up or missing input)
+H2a,2020-09-07,missing entry price
+H2a,2020-09-08,signal unavailable (warm-up or missing input)
+H2a,2020-11-26,missing entry price
+H2a,2020-11-27,signal unavailable (warm-up or missing input)
+H2a,2020-11-30,signal unavailable (warm-up or missing input)
+H2a,2020-12-24,missing entry price
+H2a,2020-12-28,signal unavailable (warm-up or missing input)
+H2a,2021-01-12,missing entry price
+H2a,2021-01-18,missing entry price
+H2a,2021-01-19,signal unavailable (warm-up or missing input)
+H2a,2021-02-15,missing entry price
+H2a,2021-02-16,signal unavailable (warm-up or missing input)
+H2a,2021-04-02,signal unavailable (warm-up or missing input)
+H2a,2021-04-05,signal unavailable (warm-up or missing input)
+H2a,2021-05-31,missing entry price
+H2a,2021-06-01,signal unavailable (warm-up or missing input)
+H2a,2021-06-07,missing entry price
+H2a,2021-06-08,signal unavailable (warm-up or missing input)
+H2a,2021-06-14,missing entry price
+H2a,2021-06-15,signal unavailable (warm-up or missing input)
+H2a,2021-06-21,missing entry price
+H2a,2021-06-22,signal unavailable (warm-up or missing input)
+H2a,2021-06-28,missing entry price
+H2a,2021-06-29,signal unavailable (warm-up or missing input)
+H2a,2021-07-05,missing entry price
+H2a,2021-07-06,signal unavailable (warm-up or missing input)
+H2a,2021-09-06,missing entry price
+H2a,2021-09-07,signal unavailable (warm-up or missing input)
+H2a,2021-11-08,missing entry price
+H2a,2021-11-09,signal unavailable (warm-up or missing input)
+H2a,2021-11-10,signal unavailable (warm-up or missing input)
+H2a,2021-11-11,signal unavailable (warm-up or missing input)
+H2a,2021-11-12,signal unavailable (warm-up or missing input)
+H2a,2021-11-25,missing entry price
+H2a,2021-11-26,signal unavailable (warm-up or missing input)
+H2a,2021-11-29,signal unavailable (warm-up or missing input)
+H2a,2021-12-31,missing entry price
+H2a,2022-01-03,signal unavailable (warm-up or missing input)
+H2a,2022-01-17,missing entry price
+H2a,2022-01-18,signal unavailable (warm-up or missing input)
+H2a,2022-01-24,missing entry price
+H2a,2022-01-25,signal unavailable (warm-up or missing input)
+H2a,2022-02-21,missing entry price
+H2a,2022-02-22,signal unavailable (warm-up or missing input)
+H2a,2022-03-28,missing entry price
+H2a,2022-03-29,signal unavailable (warm-up or missing input)
+H2a,2022-03-30,signal unavailable (warm-up or missing input)
+H2a,2022-03-31,signal unavailable (warm-up or missing input)
+H2a,2022-04-15,signal unavailable (warm-up or missing input)
+H2a,2022-04-18,signal unavailable (warm-up or missing input)
+H2a,2022-05-30,missing entry price
+H2a,2022-05-31,signal unavailable (warm-up or missing input)
+H2a,2022-06-20,missing entry price
+H2a,2022-06-21,signal unavailable (warm-up or missing input)
+H2a,2022-07-04,missing entry price
+H2a,2022-07-05,signal unavailable (warm-up or missing input)
+H2a,2022-09-05,missing entry price
+H2a,2022-09-06,signal unavailable (warm-up or missing input)
+H2a,2022-11-24,missing entry price
+H2a,2022-11-25,signal unavailable (warm-up or missing input)
+H2a,2022-11-28,signal unavailable (warm-up or missing input)
+H2a,2022-12-26,signal unavailable (warm-up or missing input)
+H2a,2022-12-27,signal unavailable (warm-up or missing input)
+H2a,2023-01-02,signal unavailable (warm-up or missing input)
+H2a,2023-01-03,signal unavailable (warm-up or missing input)
+H2a,2023-01-16,missing entry price
+H2a,2023-01-17,signal unavailable (warm-up or missing input)
+H2a,2023-02-20,missing entry price
+H2a,2023-02-21,signal unavailable (warm-up or missing input)
+H2a,2023-03-27,missing entry price
+H2a,2023-03-28,signal unavailable (warm-up or missing input)
+H2a,2023-04-07,signal unavailable (warm-up or missing input)
+H2a,2023-04-10,signal unavailable (warm-up or missing input)
+H2a,2023-05-29,missing entry price
+H2a,2023-05-30,signal unavailable (warm-up or missing input)
+H2a,2023-06-19,missing entry price
+H2a,2023-06-20,signal unavailable (warm-up or missing input)
+H2a,2023-07-03,missing entry price
+H2a,2023-07-04,signal unavailable (warm-up or missing input)
+H2a,2023-07-05,signal unavailable (warm-up or missing input)
+H2a,2023-09-04,missing entry price
+H2a,2023-09-05,signal unavailable (warm-up or missing input)
+H2a,2023-11-23,missing entry price
+H2a,2023-11-24,signal unavailable (warm-up or missing input)
+H2a,2023-11-27,signal unavailable (warm-up or missing input)
+H2a,2023-12-25,signal unavailable (warm-up or missing input)
+H2a,2023-12-26,signal unavailable (warm-up or missing input)
+H2b,2019-07-16,signal unavailable (warm-up or missing input)
+H2b,2019-09-02,signal unavailable (warm-up or missing input)
+H2b,2019-09-03,signal unavailable (warm-up or missing input)
+H2b,2019-11-28,signal unavailable (warm-up or missing input)
+H2b,2019-11-29,signal unavailable (warm-up or missing input)
+H2b,2019-12-02,signal unavailable (warm-up or missing input)
+H2b,2019-12-24,signal unavailable (warm-up or missing input)
+H2b,2019-12-26,signal unavailable (warm-up or missing input)
+H2b,2019-12-27,signal unavailable (warm-up or missing input)
+H2b,2019-12-31,signal unavailable (warm-up or missing input)
+H2b,2020-01-01,signal unavailable (warm-up or missing input)
+H2b,2020-01-02,signal unavailable (warm-up or missing input)
+H2b,2020-01-20,signal unavailable (warm-up or missing input)
+H2b,2020-01-21,signal unavailable (warm-up or missing input)
+H2b,2020-02-17,signal unavailable (warm-up or missing input)
+H2b,2020-02-18,signal unavailable (warm-up or missing input)
+H2b,2020-05-25,signal unavailable (warm-up or missing input)
+H2b,2020-05-26,signal unavailable (warm-up or missing input)
+H2b,2020-07-03,signal unavailable (warm-up or missing input)
+H2b,2020-07-06,signal unavailable (warm-up or missing input)
+H2b,2020-09-07,signal unavailable (warm-up or missing input)
+H2b,2020-09-08,signal unavailable (warm-up or missing input)
+H2b,2020-11-26,signal unavailable (warm-up or missing input)
+H2b,2020-11-27,signal unavailable (warm-up or missing input)
+H2b,2020-11-30,signal unavailable (warm-up or missing input)
+H2b,2020-12-24,signal unavailable (warm-up or missing input)
+H2b,2020-12-28,signal unavailable (warm-up or missing input)
+H2b,2021-01-12,signal unavailable (warm-up or missing input)
+H2b,2021-01-18,signal unavailable (warm-up or missing input)
+H2b,2021-01-19,signal unavailable (warm-up or missing input)
+H2b,2021-02-15,signal unavailable (warm-up or missing input)
+H2b,2021-02-16,signal unavailable (warm-up or missing input)
+H2b,2021-04-02,signal unavailable (warm-up or missing input)
+H2b,2021-04-05,signal unavailable (warm-up or missing input)
+H2b,2021-05-31,signal unavailable (warm-up or missing input)
+H2b,2021-06-01,signal unavailable (warm-up or missing input)
+H2b,2021-06-07,signal unavailable (warm-up or missing input)
+H2b,2021-06-08,signal unavailable (warm-up or missing input)
+H2b,2021-06-14,signal unavailable (warm-up or missing input)
+H2b,2021-06-15,signal unavailable (warm-up or missing input)
+H2b,2021-06-21,signal unavailable (warm-up or missing input)
+H2b,2021-06-22,signal unavailable (warm-up or missing input)
+H2b,2021-06-28,signal unavailable (warm-up or missing input)
+H2b,2021-06-29,signal unavailable (warm-up or missing input)
+H2b,2021-07-05,signal unavailable (warm-up or missing input)
+H2b,2021-07-06,signal unavailable (warm-up or missing input)
+H2b,2021-09-06,signal unavailable (warm-up or missing input)
+H2b,2021-09-07,signal unavailable (warm-up or missing input)
+H2b,2021-11-08,signal unavailable (warm-up or missing input)
+H2b,2021-11-09,signal unavailable (warm-up or missing input)
+H2b,2021-11-10,signal unavailable (warm-up or missing input)
+H2b,2021-11-11,signal unavailable (warm-up or missing input)
+H2b,2021-11-12,signal unavailable (warm-up or missing input)
+H2b,2021-11-25,signal unavailable (warm-up or missing input)
+H2b,2021-11-26,signal unavailable (warm-up or missing input)
+H2b,2021-11-29,signal unavailable (warm-up or missing input)
+H2b,2021-12-31,signal unavailable (warm-up or missing input)
+H2b,2022-01-03,signal unavailable (warm-up or missing input)
+H2b,2022-01-17,signal unavailable (warm-up or missing input)
+H2b,2022-01-18,signal unavailable (warm-up or missing input)
+H2b,2022-01-24,signal unavailable (warm-up or missing input)
+H2b,2022-01-25,signal unavailable (warm-up or missing input)
+H2b,2022-02-21,signal unavailable (warm-up or missing input)
+H2b,2022-02-22,signal unavailable (warm-up or missing input)
+H2b,2022-03-28,signal unavailable (warm-up or missing input)
+H2b,2022-03-29,signal unavailable (warm-up or missing input)
+H2b,2022-03-30,signal unavailable (warm-up or missing input)
+H2b,2022-03-31,signal unavailable (warm-up or missing input)
+H2b,2022-04-15,signal unavailable (warm-up or missing input)
+H2b,2022-04-18,signal unavailable (warm-up or missing input)
+H2b,2022-05-30,signal unavailable (warm-up or missing input)
+H2b,2022-05-31,signal unavailable (warm-up or missing input)
+H2b,2022-06-20,signal unavailable (warm-up or missing input)
+H2b,2022-06-21,signal unavailable (warm-up or missing input)
+H2b,2022-07-04,signal unavailable (warm-up or missing input)
+H2b,2022-07-05,signal unavailable (warm-up or missing input)
+H2b,2022-09-05,signal unavailable (warm-up or missing input)
+H2b,2022-09-06,signal unavailable (warm-up or missing input)
+H2b,2022-11-24,signal unavailable (warm-up or missing input)
+H2b,2022-11-25,signal unavailable (warm-up or missing input)
+H2b,2022-11-28,signal unavailable (warm-up or missing input)
+H2b,2022-12-26,signal unavailable (warm-up or missing input)
+H2b,2022-12-27,signal unavailable (warm-up or missing input)
+H2b,2023-01-02,signal unavailable (warm-up or missing input)
+H2b,2023-01-03,signal unavailable (warm-up or missing input)
+H2b,2023-01-16,signal unavailable (warm-up or missing input)
+H2b,2023-01-17,signal unavailable (warm-up or missing input)
+H2b,2023-02-20,signal unavailable (warm-up or missing input)
+H2b,2023-02-21,signal unavailable (warm-up or missing input)
+H2b,2023-03-27,signal unavailable (warm-up or missing input)
+H2b,2023-03-28,signal unavailable (warm-up or missing input)
+H2b,2023-04-07,signal unavailable (warm-up or missing input)
+H2b,2023-04-10,signal unavailable (warm-up or missing input)
+H2b,2023-05-29,signal unavailable (warm-up or missing input)
+H2b,2023-05-30,signal unavailable (warm-up or missing input)
+H2b,2023-06-19,signal unavailable (warm-up or missing input)
+H2b,2023-06-20,signal unavailable (warm-up or missing input)
+H2b,2023-07-03,signal unavailable (warm-up or missing input)
+H2b,2023-07-04,signal unavailable (warm-up or missing input)
+H2b,2023-07-05,signal unavailable (warm-up or missing input)
+H2b,2023-09-04,signal unavailable (warm-up or missing input)
+H2b,2023-09-05,signal unavailable (warm-up or missing input)
+H2b,2023-11-23,signal unavailable (warm-up or missing input)
+H2b,2023-11-24,signal unavailable (warm-up or missing input)
+H2b,2023-11-27,signal unavailable (warm-up or missing input)
+H2b,2023-12-25,signal unavailable (warm-up or missing input)
+H2b,2023-12-26,signal unavailable (warm-up or missing input)
+H4a,2019-07-16,signal unavailable (warm-up or missing input)
+H4a,2019-07-17,signal unavailable (warm-up or missing input)
+H4a,2019-07-18,signal unavailable (warm-up or missing input)
+H4a,2019-07-19,signal unavailable (warm-up or missing input)
+H4a,2019-07-22,signal unavailable (warm-up or missing input)
+H4a,2019-07-23,signal unavailable (warm-up or missing input)
+H4a,2019-07-24,signal unavailable (warm-up or missing input)
+H4a,2019-07-25,signal unavailable (warm-up or missing input)
+H4a,2019-07-26,signal unavailable (warm-up or missing input)
+H4a,2019-07-29,signal unavailable (warm-up or missing input)
+H4a,2019-07-30,signal unavailable (warm-up or missing input)
+H4a,2019-07-31,signal unavailable (warm-up or missing input)
+H4a,2019-08-01,signal unavailable (warm-up or missing input)
+H4a,2019-08-02,signal unavailable (warm-up or missing input)
+H4a,2019-08-05,signal unavailable (warm-up or missing input)
+H4a,2019-08-06,signal unavailable (warm-up or missing input)
+H4a,2019-08-07,signal unavailable (warm-up or missing input)
+H4a,2019-08-08,signal unavailable (warm-up or missing input)
+H4a,2019-08-09,signal unavailable (warm-up or missing input)
+H4a,2019-08-12,signal unavailable (warm-up or missing input)
+H4a,2019-08-13,signal unavailable (warm-up or missing input)
+H4a,2019-08-14,signal unavailable (warm-up or missing input)
+H4a,2019-08-15,signal unavailable (warm-up or missing input)
+H4a,2019-08-16,signal unavailable (warm-up or missing input)
+H4a,2019-08-19,signal unavailable (warm-up or missing input)
+H4a,2019-08-20,signal unavailable (warm-up or missing input)
+H4a,2019-08-21,signal unavailable (warm-up or missing input)
+H4a,2019-08-22,signal unavailable (warm-up or missing input)
+H4a,2019-08-23,signal unavailable (warm-up or missing input)
+H4a,2019-08-26,signal unavailable (warm-up or missing input)
+H4a,2019-08-27,signal unavailable (warm-up or missing input)
+H4a,2019-08-28,signal unavailable (warm-up or missing input)
+H4a,2019-08-29,signal unavailable (warm-up or missing input)
+H4a,2019-08-30,signal unavailable (warm-up or missing input)
+H4a,2019-09-02,signal unavailable (warm-up or missing input)
+H4a,2019-09-03,signal unavailable (warm-up or missing input)
+H4a,2019-09-04,signal unavailable (warm-up or missing input)
+H4a,2019-09-05,signal unavailable (warm-up or missing input)
+H4a,2019-09-06,signal unavailable (warm-up or missing input)
+H4a,2019-09-09,signal unavailable (warm-up or missing input)
+H4a,2019-09-10,signal unavailable (warm-up or missing input)
+H4a,2019-09-11,signal unavailable (warm-up or missing input)
+H4a,2019-11-29,signal unavailable (warm-up or missing input)
+H4a,2019-12-02,signal unavailable (warm-up or missing input)
+H4a,2019-12-26,signal unavailable (warm-up or missing input)
+H4a,2019-12-27,signal unavailable (warm-up or missing input)
+H4a,2020-01-01,signal unavailable (warm-up or missing input)
+H4a,2020-01-02,signal unavailable (warm-up or missing input)
+H4a,2020-01-21,signal unavailable (warm-up or missing input)
+H4a,2020-02-18,signal unavailable (warm-up or missing input)
+H4a,2020-03-16,signal unavailable (warm-up or missing input)
+H4a,2020-03-18,signal unavailable (warm-up or missing input)
+H4a,2020-03-24,signal unavailable (warm-up or missing input)
+H4a,2020-05-26,signal unavailable (warm-up or missing input)
+H4a,2020-07-06,signal unavailable (warm-up or missing input)
+H4a,2020-09-07,missing exit price
+H4a,2020-09-08,signal unavailable (warm-up or missing input)
+H4a,2020-11-27,signal unavailable (warm-up or missing input)
+H4a,2020-11-30,signal unavailable (warm-up or missing input)
+H4a,2020-12-28,signal unavailable (warm-up or missing input)
+H4a,2021-01-19,signal unavailable (warm-up or missing input)
+H4a,2021-02-16,signal unavailable (warm-up or missing input)
+H4a,2021-04-02,signal unavailable (warm-up or missing input)
+H4a,2021-04-05,signal unavailable (warm-up or missing input)
+H4a,2021-06-01,signal unavailable (warm-up or missing input)
+H4a,2021-06-08,signal unavailable (warm-up or missing input)
+H4a,2021-06-15,signal unavailable (warm-up or missing input)
+H4a,2021-06-22,signal unavailable (warm-up or missing input)
+H4a,2021-06-29,signal unavailable (warm-up or missing input)
+H4a,2021-07-06,signal unavailable (warm-up or missing input)
+H4a,2021-09-07,signal unavailable (warm-up or missing input)
+H4a,2021-11-09,signal unavailable (warm-up or missing input)
+H4a,2021-11-10,signal unavailable (warm-up or missing input)
+H4a,2021-11-11,signal unavailable (warm-up or missing input)
+H4a,2021-11-12,signal unavailable (warm-up or missing input)
+H4a,2021-11-26,signal unavailable (warm-up or missing input)
+H4a,2021-11-29,signal unavailable (warm-up or missing input)
+H4a,2022-01-03,signal unavailable (warm-up or missing input)
+H4a,2022-01-18,signal unavailable (warm-up or missing input)
+H4a,2022-01-24,missing exit price
+H4a,2022-01-25,signal unavailable (warm-up or missing input)
+H4a,2022-02-21,missing exit price
+H4a,2022-02-22,signal unavailable (warm-up or missing input)
+H4a,2022-03-29,signal unavailable (warm-up or missing input)
+H4a,2022-03-30,signal unavailable (warm-up or missing input)
+H4a,2022-03-31,signal unavailable (warm-up or missing input)
+H4a,2022-04-15,signal unavailable (warm-up or missing input)
+H4a,2022-04-18,signal unavailable (warm-up or missing input)
+H4a,2022-05-31,signal unavailable (warm-up or missing input)
+H4a,2022-06-21,signal unavailable (warm-up or missing input)
+H4a,2022-07-05,signal unavailable (warm-up or missing input)
+H4a,2022-09-06,signal unavailable (warm-up or missing input)
+H4a,2022-11-25,signal unavailable (warm-up or missing input)
+H4a,2022-11-28,signal unavailable (warm-up or missing input)
+H4a,2022-12-26,signal unavailable (warm-up or missing input)
+H4a,2022-12-27,signal unavailable (warm-up or missing input)
+H4a,2023-01-02,signal unavailable (warm-up or missing input)
+H4a,2023-01-03,signal unavailable (warm-up or missing input)
+H4a,2023-01-17,signal unavailable (warm-up or missing input)
+H4a,2023-02-21,signal unavailable (warm-up or missing input)
+H4a,2023-03-28,signal unavailable (warm-up or missing input)
+H4a,2023-04-07,signal unavailable (warm-up or missing input)
+H4a,2023-04-10,signal unavailable (warm-up or missing input)
+H4a,2023-05-30,signal unavailable (warm-up or missing input)
+H4a,2023-06-20,signal unavailable (warm-up or missing input)
+H4a,2023-07-04,signal unavailable (warm-up or missing input)
+H4a,2023-07-05,signal unavailable (warm-up or missing input)
+H4a,2023-09-05,signal unavailable (warm-up or missing input)
+H4a,2023-11-24,signal unavailable (warm-up or missing input)
+H4a,2023-11-27,signal unavailable (warm-up or missing input)
+H4a,2023-12-25,signal unavailable (warm-up or missing input)
+H4a,2023-12-26,signal unavailable (warm-up or missing input)
+H4b,2019-07-16,signal unavailable (warm-up or missing input)
+H4b,2019-07-17,signal unavailable (warm-up or missing input)
+H4b,2019-07-18,signal unavailable (warm-up or missing input)
+H4b,2019-07-19,signal unavailable (warm-up or missing input)
+H4b,2019-07-22,signal unavailable (warm-up or missing input)
+H4b,2019-07-23,signal unavailable (warm-up or missing input)
+H4b,2019-07-24,signal unavailable (warm-up or missing input)
+H4b,2019-07-25,signal unavailable (warm-up or missing input)
+H4b,2019-07-26,signal unavailable (warm-up or missing input)
+H4b,2019-07-29,signal unavailable (warm-up or missing input)
+H4b,2019-07-30,signal unavailable (warm-up or missing input)
+H4b,2019-07-31,signal unavailable (warm-up or missing input)
+H4b,2019-08-01,signal unavailable (warm-up or missing input)
+H4b,2019-08-02,signal unavailable (warm-up or missing input)
+H4b,2019-08-05,signal unavailable (warm-up or missing input)
+H4b,2019-08-06,signal unavailable (warm-up or missing input)
+H4b,2019-08-07,signal unavailable (warm-up or missing input)
+H4b,2019-08-08,signal unavailable (warm-up or missing input)
+H4b,2019-08-09,signal unavailable (warm-up or missing input)
+H4b,2019-08-12,signal unavailable (warm-up or missing input)
+H4b,2019-08-13,signal unavailable (warm-up or missing input)
+H4b,2019-08-14,signal unavailable (warm-up or missing input)
+H4b,2019-08-15,signal unavailable (warm-up or missing input)
+H4b,2019-08-16,signal unavailable (warm-up or missing input)
+H4b,2019-08-19,signal unavailable (warm-up or missing input)
+H4b,2019-08-20,signal unavailable (warm-up or missing input)
+H4b,2019-08-21,signal unavailable (warm-up or missing input)
+H4b,2019-08-22,signal unavailable (warm-up or missing input)
+H4b,2019-08-23,signal unavailable (warm-up or missing input)
+H4b,2019-08-26,signal unavailable (warm-up or missing input)
+H4b,2019-08-27,signal unavailable (warm-up or missing input)
+H4b,2019-08-28,signal unavailable (warm-up or missing input)
+H4b,2019-08-29,signal unavailable (warm-up or missing input)
+H4b,2019-08-30,signal unavailable (warm-up or missing input)
+H4b,2019-09-02,signal unavailable (warm-up or missing input)
+H4b,2019-09-03,signal unavailable (warm-up or missing input)
+H4b,2019-09-04,signal unavailable (warm-up or missing input)
+H4b,2019-09-05,signal unavailable (warm-up or missing input)
+H4b,2019-09-06,signal unavailable (warm-up or missing input)
+H4b,2019-09-09,signal unavailable (warm-up or missing input)
+H4b,2019-09-10,signal unavailable (warm-up or missing input)
+H4b,2019-09-11,signal unavailable (warm-up or missing input)
+H4b,2019-11-29,signal unavailable (warm-up or missing input)
+H4b,2019-12-02,signal unavailable (warm-up or missing input)
+H4b,2019-12-26,signal unavailable (warm-up or missing input)
+H4b,2019-12-27,signal unavailable (warm-up or missing input)
+H4b,2020-01-01,signal unavailable (warm-up or missing input)
+H4b,2020-01-02,signal unavailable (warm-up or missing input)
+H4b,2020-01-21,signal unavailable (warm-up or missing input)
+H4b,2020-02-18,signal unavailable (warm-up or missing input)
+H4b,2020-03-16,signal unavailable (warm-up or missing input)
+H4b,2020-03-18,signal unavailable (warm-up or missing input)
+H4b,2020-03-24,signal unavailable (warm-up or missing input)
+H4b,2020-05-26,signal unavailable (warm-up or missing input)
+H4b,2020-07-06,signal unavailable (warm-up or missing input)
+H4b,2020-09-07,missing exit price
+H4b,2020-09-08,signal unavailable (warm-up or missing input)
+H4b,2020-11-27,signal unavailable (warm-up or missing input)
+H4b,2020-11-30,signal unavailable (warm-up or missing input)
+H4b,2020-12-28,signal unavailable (warm-up or missing input)
+H4b,2021-01-19,signal unavailable (warm-up or missing input)
+H4b,2021-02-16,signal unavailable (warm-up or missing input)
+H4b,2021-04-02,signal unavailable (warm-up or missing input)
+H4b,2021-04-05,signal unavailable (warm-up or missing input)
+H4b,2021-06-01,signal unavailable (warm-up or missing input)
+H4b,2021-06-08,signal unavailable (warm-up or missing input)
+H4b,2021-06-15,signal unavailable (warm-up or missing input)
+H4b,2021-06-22,signal unavailable (warm-up or missing input)
+H4b,2021-06-29,signal unavailable (warm-up or missing input)
+H4b,2021-07-06,signal unavailable (warm-up or missing input)
+H4b,2021-09-07,signal unavailable (warm-up or missing input)
+H4b,2021-11-09,signal unavailable (warm-up or missing input)
+H4b,2021-11-10,signal unavailable (warm-up or missing input)
+H4b,2021-11-11,signal unavailable (warm-up or missing input)
+H4b,2021-11-12,signal unavailable (warm-up or missing input)
+H4b,2021-11-26,signal unavailable (warm-up or missing input)
+H4b,2021-11-29,signal unavailable (warm-up or missing input)
+H4b,2022-01-03,signal unavailable (warm-up or missing input)
+H4b,2022-01-18,signal unavailable (warm-up or missing input)
+H4b,2022-01-24,missing exit price
+H4b,2022-01-25,signal unavailable (warm-up or missing input)
+H4b,2022-02-22,signal unavailable (warm-up or missing input)
+H4b,2022-03-29,signal unavailable (warm-up or missing input)
+H4b,2022-03-30,signal unavailable (warm-up or missing input)
+H4b,2022-03-31,signal unavailable (warm-up or missing input)
+H4b,2022-04-15,signal unavailable (warm-up or missing input)
+H4b,2022-04-18,signal unavailable (warm-up or missing input)
+H4b,2022-05-31,signal unavailable (warm-up or missing input)
+H4b,2022-06-21,signal unavailable (warm-up or missing input)
+H4b,2022-07-05,signal unavailable (warm-up or missing input)
+H4b,2022-09-06,signal unavailable (warm-up or missing input)
+H4b,2022-11-25,signal unavailable (warm-up or missing input)
+H4b,2022-11-28,signal unavailable (warm-up or missing input)
+H4b,2022-12-26,signal unavailable (warm-up or missing input)
+H4b,2022-12-27,signal unavailable (warm-up or missing input)
+H4b,2023-01-02,signal unavailable (warm-up or missing input)
+H4b,2023-01-03,signal unavailable (warm-up or missing input)
+H4b,2023-01-17,signal unavailable (warm-up or missing input)
+H4b,2023-02-21,signal unavailable (warm-up or missing input)
+H4b,2023-03-28,signal unavailable (warm-up or missing input)
+H4b,2023-04-07,signal unavailable (warm-up or missing input)
+H4b,2023-04-10,signal unavailable (warm-up or missing input)
+H4b,2023-05-30,signal unavailable (warm-up or missing input)
+H4b,2023-06-20,signal unavailable (warm-up or missing input)
+H4b,2023-07-04,signal unavailable (warm-up or missing input)
+H4b,2023-07-05,signal unavailable (warm-up or missing input)
+H4b,2023-09-05,signal unavailable (warm-up or missing input)
+H4b,2023-11-24,signal unavailable (warm-up or missing input)
+H4b,2023-11-27,signal unavailable (warm-up or missing input)
+H4b,2023-12-25,signal unavailable (warm-up or missing input)
+H4b,2023-12-26,signal unavailable (warm-up or missing input)
+H5a,2019-07-16,signal unavailable (warm-up or missing input)
+H5a,2019-07-17,signal unavailable (warm-up or missing input)
+H5a,2019-07-18,signal unavailable (warm-up or missing input)
+H5a,2019-07-19,signal unavailable (warm-up or missing input)
+H5a,2019-07-22,signal unavailable (warm-up or missing input)
+H5a,2019-07-23,signal unavailable (warm-up or missing input)
+H5a,2019-07-24,signal unavailable (warm-up or missing input)
+H5a,2019-07-25,signal unavailable (warm-up or missing input)
+H5a,2019-07-26,signal unavailable (warm-up or missing input)
+H5a,2019-07-29,signal unavailable (warm-up or missing input)
+H5a,2019-07-30,signal unavailable (warm-up or missing input)
+H5a,2019-07-31,signal unavailable (warm-up or missing input)
+H5a,2019-08-01,signal unavailable (warm-up or missing input)
+H5a,2019-08-02,signal unavailable (warm-up or missing input)
+H5a,2019-08-05,signal unavailable (warm-up or missing input)
+H5a,2019-08-06,signal unavailable (warm-up or missing input)
+H5a,2019-08-07,signal unavailable (warm-up or missing input)
+H5a,2019-08-08,signal unavailable (warm-up or missing input)
+H5a,2019-08-09,signal unavailable (warm-up or missing input)
+H5a,2019-08-12,signal unavailable (warm-up or missing input)
+H5a,2019-08-13,signal unavailable (warm-up or missing input)
+H5a,2019-08-14,signal unavailable (warm-up or missing input)
+H5a,2019-08-15,signal unavailable (warm-up or missing input)
+H5a,2019-08-16,signal unavailable (warm-up or missing input)
+H5a,2019-08-19,signal unavailable (warm-up or missing input)
+H5a,2019-08-20,signal unavailable (warm-up or missing input)
+H5a,2019-08-21,signal unavailable (warm-up or missing input)
+H5a,2019-08-22,signal unavailable (warm-up or missing input)
+H5a,2019-08-23,signal unavailable (warm-up or missing input)
+H5a,2019-08-26,signal unavailable (warm-up or missing input)
+H5a,2019-08-27,signal unavailable (warm-up or missing input)
+H5a,2019-08-28,signal unavailable (warm-up or missing input)
+H5a,2019-08-29,signal unavailable (warm-up or missing input)
+H5a,2019-08-30,signal unavailable (warm-up or missing input)
+H5a,2019-09-02,missing entry price
+H5a,2019-09-03,signal unavailable (warm-up or missing input)
+H5a,2019-09-04,signal unavailable (warm-up or missing input)
+H5a,2019-09-05,signal unavailable (warm-up or missing input)
+H5a,2019-09-06,signal unavailable (warm-up or missing input)
+H5a,2019-09-09,signal unavailable (warm-up or missing input)
+H5a,2019-09-10,signal unavailable (warm-up or missing input)
+H5a,2019-09-11,signal unavailable (warm-up or missing input)
+H5a,2019-09-12,signal unavailable (warm-up or missing input)
+H5a,2019-09-13,signal unavailable (warm-up or missing input)
+H5a,2019-09-16,signal unavailable (warm-up or missing input)
+H5a,2019-09-17,signal unavailable (warm-up or missing input)
+H5a,2019-09-18,signal unavailable (warm-up or missing input)
+H5a,2019-09-19,signal unavailable (warm-up or missing input)
+H5a,2019-09-20,signal unavailable (warm-up or missing input)
+H5a,2019-09-23,signal unavailable (warm-up or missing input)
+H5a,2019-09-24,signal unavailable (warm-up or missing input)
+H5a,2019-09-25,signal unavailable (warm-up or missing input)
+H5a,2019-09-26,signal unavailable (warm-up or missing input)
+H5a,2019-09-27,signal unavailable (warm-up or missing input)
+H5a,2019-09-30,signal unavailable (warm-up or missing input)
+H5a,2019-10-01,signal unavailable (warm-up or missing input)
+H5a,2019-10-02,signal unavailable (warm-up or missing input)
+H5a,2019-10-03,signal unavailable (warm-up or missing input)
+H5a,2019-10-04,signal unavailable (warm-up or missing input)
+H5a,2019-10-07,signal unavailable (warm-up or missing input)
+H5a,2019-10-08,signal unavailable (warm-up or missing input)
+H5a,2019-10-09,signal unavailable (warm-up or missing input)
+H5a,2019-11-28,missing entry price
+H5a,2019-11-29,missing entry price
+H5a,2019-12-24,missing entry price
+H5a,2019-12-26,missing entry price
+H5a,2019-12-31,missing entry price
+H5a,2020-01-01,missing entry price
+H5a,2020-01-20,missing entry price
+H5a,2020-02-17,missing entry price
+H5a,2020-05-25,missing entry price
+H5a,2020-07-03,missing entry price
+H5a,2020-09-07,missing entry price
+H5a,2020-11-26,missing entry price
+H5a,2020-11-27,missing entry price
+H5a,2020-12-24,missing entry price
+H5a,2021-01-18,missing entry price
+H5a,2021-02-15,missing entry price
+H5a,2021-04-02,missing entry price
+H5a,2021-05-31,missing entry price
+H5a,2021-06-07,missing entry price
+H5a,2021-06-14,missing entry price
+H5a,2021-06-21,missing entry price
+H5a,2021-06-28,missing entry price
+H5a,2021-07-05,missing entry price
+H5a,2021-09-06,missing entry price
+H5a,2021-11-08,missing entry price
+H5a,2021-11-09,missing entry price
+H5a,2021-11-10,missing entry price
+H5a,2021-11-11,missing entry price
+H5a,2021-11-25,missing entry price
+H5a,2021-11-26,missing entry price
+H5a,2021-12-31,missing entry price
+H5a,2022-01-17,missing entry price
+H5a,2022-01-24,missing entry price
+H5a,2022-02-21,missing entry price
+H5a,2022-03-28,missing entry price
+H5a,2022-03-29,missing entry price
+H5a,2022-03-30,missing entry price
+H5a,2022-04-15,missing entry price
+H5a,2022-05-30,missing entry price
+H5a,2022-06-20,missing entry price
+H5a,2022-07-04,missing entry price
+H5a,2022-09-05,missing entry price
+H5a,2022-11-24,missing entry price
+H5a,2022-11-25,missing entry price
+H5a,2022-12-26,missing entry price
+H5a,2023-01-02,missing entry price
+H5a,2023-01-16,missing entry price
+H5a,2023-02-20,missing entry price
+H5a,2023-03-27,missing entry price
+H5a,2023-04-07,missing entry price
+H5a,2023-05-29,missing entry price
+H5a,2023-06-19,missing entry price
+H5a,2023-07-03,missing entry price
+H5a,2023-07-04,missing entry price
+H5a,2023-09-04,missing entry price
+H5a,2023-11-23,missing entry price
+H5a,2023-11-24,missing entry price
+H5a,2023-12-25,missing entry price
+H5b,2019-07-16,signal unavailable (warm-up or missing input)
+H5b,2019-07-17,signal unavailable (warm-up or missing input)
+H5b,2019-07-18,signal unavailable (warm-up or missing input)
+H5b,2019-07-19,signal unavailable (warm-up or missing input)
+H5b,2019-07-22,signal unavailable (warm-up or missing input)
+H5b,2019-07-23,signal unavailable (warm-up or missing input)
+H5b,2019-07-24,signal unavailable (warm-up or missing input)
+H5b,2019-07-25,signal unavailable (warm-up or missing input)
+H5b,2019-07-26,signal unavailable (warm-up or missing input)
+H5b,2019-07-29,signal unavailable (warm-up or missing input)
+H5b,2019-07-30,signal unavailable (warm-up or missing input)
+H5b,2019-07-31,signal unavailable (warm-up or missing input)
+H5b,2019-08-01,signal unavailable (warm-up or missing input)
+H5b,2019-08-02,signal unavailable (warm-up or missing input)
+H5b,2019-08-05,signal unavailable (warm-up or missing input)
+H5b,2019-08-06,signal unavailable (warm-up or missing input)
+H5b,2019-08-07,signal unavailable (warm-up or missing input)
+H5b,2019-08-08,signal unavailable (warm-up or missing input)
+H5b,2019-08-09,signal unavailable (warm-up or missing input)
+H5b,2019-08-12,signal unavailable (warm-up or missing input)
+H5b,2019-08-13,signal unavailable (warm-up or missing input)
+H5b,2019-08-14,signal unavailable (warm-up or missing input)
+H5b,2019-08-15,signal unavailable (warm-up or missing input)
+H5b,2019-08-16,signal unavailable (warm-up or missing input)
+H5b,2019-08-19,signal unavailable (warm-up or missing input)
+H5b,2019-08-20,signal unavailable (warm-up or missing input)
+H5b,2019-08-21,signal unavailable (warm-up or missing input)
+H5b,2019-08-22,signal unavailable (warm-up or missing input)
+H5b,2019-08-23,signal unavailable (warm-up or missing input)
+H5b,2019-08-26,signal unavailable (warm-up or missing input)
+H5b,2019-08-27,signal unavailable (warm-up or missing input)
+H5b,2019-08-28,signal unavailable (warm-up or missing input)
+H5b,2019-08-29,signal unavailable (warm-up or missing input)
+H5b,2019-08-30,signal unavailable (warm-up or missing input)
+H5b,2019-09-02,missing entry price
+H5b,2019-09-03,signal unavailable (warm-up or missing input)
+H5b,2019-09-04,signal unavailable (warm-up or missing input)
+H5b,2019-09-05,signal unavailable (warm-up or missing input)
+H5b,2019-09-06,signal unavailable (warm-up or missing input)
+H5b,2019-09-09,signal unavailable (warm-up or missing input)
+H5b,2019-09-10,signal unavailable (warm-up or missing input)
+H5b,2019-09-11,signal unavailable (warm-up or missing input)
+H5b,2019-09-12,signal unavailable (warm-up or missing input)
+H5b,2019-09-13,signal unavailable (warm-up or missing input)
+H5b,2019-09-16,signal unavailable (warm-up or missing input)
+H5b,2019-09-17,signal unavailable (warm-up or missing input)
+H5b,2019-09-18,signal unavailable (warm-up or missing input)
+H5b,2019-09-19,signal unavailable (warm-up or missing input)
+H5b,2019-09-20,signal unavailable (warm-up or missing input)
+H5b,2019-09-23,signal unavailable (warm-up or missing input)
+H5b,2019-09-24,signal unavailable (warm-up or missing input)
+H5b,2019-09-25,signal unavailable (warm-up or missing input)
+H5b,2019-09-26,signal unavailable (warm-up or missing input)
+H5b,2019-09-27,signal unavailable (warm-up or missing input)
+H5b,2019-09-30,signal unavailable (warm-up or missing input)
+H5b,2019-10-01,signal unavailable (warm-up or missing input)
+H5b,2019-10-02,signal unavailable (warm-up or missing input)
+H5b,2019-10-03,signal unavailable (warm-up or missing input)
+H5b,2019-10-04,signal unavailable (warm-up or missing input)
+H5b,2019-10-07,signal unavailable (warm-up or missing input)
+H5b,2019-10-08,signal unavailable (warm-up or missing input)
+H5b,2019-10-09,signal unavailable (warm-up or missing input)
+H5b,2019-11-28,missing entry price
+H5b,2019-11-29,missing entry price
+H5b,2019-12-24,missing entry price
+H5b,2019-12-26,missing entry price
+H5b,2019-12-31,missing entry price
+H5b,2020-01-01,missing entry price
+H5b,2020-01-20,missing entry price
+H5b,2020-02-17,missing entry price
+H5b,2020-05-25,missing entry price
+H5b,2020-07-03,missing entry price
+H5b,2020-09-07,missing entry price
+H5b,2020-11-26,missing entry price
+H5b,2020-11-27,missing entry price
+H5b,2020-12-24,missing entry price
+H5b,2021-01-18,missing entry price
+H5b,2021-02-15,missing entry price
+H5b,2021-04-02,missing entry price
+H5b,2021-05-31,missing entry price
+H5b,2021-06-07,missing entry price
+H5b,2021-06-14,missing entry price
+H5b,2021-06-21,missing entry price
+H5b,2021-06-28,missing entry price
+H5b,2021-07-05,missing entry price
+H5b,2021-09-06,missing entry price
+H5b,2021-11-08,missing entry price
+H5b,2021-11-09,missing entry price
+H5b,2021-11-10,missing entry price
+H5b,2021-11-11,missing entry price
+H5b,2021-11-25,missing entry price
+H5b,2021-11-26,missing entry price
+H5b,2021-12-31,missing entry price
+H5b,2022-01-17,missing entry price
+H5b,2022-01-24,missing entry price
+H5b,2022-02-21,missing entry price
+H5b,2022-03-28,missing entry price
+H5b,2022-03-29,missing entry price
+H5b,2022-03-30,missing entry price
+H5b,2022-04-15,missing entry price
+H5b,2022-05-30,missing entry price
+H5b,2022-06-20,missing entry price
+H5b,2022-07-04,missing entry price
+H5b,2022-09-05,missing entry price
+H5b,2022-11-24,missing entry price
+H5b,2022-11-25,missing entry price
+H5b,2022-12-26,missing entry price
+H5b,2023-01-02,missing entry price
+H5b,2023-01-16,missing entry price
+H5b,2023-02-20,missing entry price
+H5b,2023-03-27,missing entry price
+H5b,2023-04-07,missing entry price
+H5b,2023-05-29,missing entry price
+H5b,2023-06-19,missing entry price
+H5b,2023-07-03,missing entry price
+H5b,2023-07-04,missing entry price
+H5b,2023-09-04,missing entry price
+H5b,2023-11-23,missing entry price
+H5b,2023-11-24,missing entry price
+H5b,2023-12-25,missing entry price
+C1,2019-09-02,missing exit price
+C1,2019-11-28,missing exit price
+C1,2019-11-29,missing exit price
+C1,2019-12-24,missing exit price
+C1,2019-12-26,missing entry price
+C1,2019-12-31,missing exit price
+C1,2020-01-01,missing entry price
+C1,2020-01-20,missing exit price
+C1,2020-02-17,missing exit price
+C1,2020-03-16,missing entry price
+C1,2020-03-18,missing entry price
+C1,2020-03-24,missing entry price
+C1,2020-05-25,missing exit price
+C1,2020-07-03,missing exit price
+C1,2020-09-07,missing exit price
+C1,2020-11-26,missing exit price
+C1,2020-11-27,missing exit price
+C1,2020-12-24,missing exit price
+C1,2021-01-18,missing exit price
+C1,2021-02-15,missing exit price
+C1,2021-04-02,missing entry price
+C1,2021-05-31,missing exit price
+C1,2021-06-07,missing exit price
+C1,2021-06-14,missing exit price
+C1,2021-06-21,missing exit price
+C1,2021-06-28,missing exit price
+C1,2021-07-05,missing exit price
+C1,2021-09-06,missing exit price
+C1,2021-11-08,missing exit price
+C1,2021-11-09,missing exit price
+C1,2021-11-10,missing exit price
+C1,2021-11-11,missing exit price
+C1,2021-11-25,missing exit price
+C1,2021-11-26,missing exit price
+C1,2021-12-31,missing exit price
+C1,2022-01-17,missing exit price
+C1,2022-01-24,missing exit price
+C1,2022-02-21,missing exit price
+C1,2022-03-28,missing exit price
+C1,2022-03-29,missing exit price
+C1,2022-03-30,missing exit price
+C1,2022-04-15,missing entry price
+C1,2022-05-30,missing exit price
+C1,2022-06-20,missing exit price
+C1,2022-07-04,missing exit price
+C1,2022-09-05,missing exit price
+C1,2022-11-24,missing exit price
+C1,2022-11-25,missing exit price
+C1,2022-12-26,missing entry price
+C1,2023-01-02,missing entry price
+C1,2023-01-16,missing exit price
+C1,2023-02-20,missing exit price
+C1,2023-03-27,missing exit price
+C1,2023-04-07,missing entry price
+C1,2023-05-29,missing exit price
+C1,2023-06-19,missing exit price
+C1,2023-07-03,missing exit price
+C1,2023-07-04,missing exit price
+C1,2023-09-04,missing exit price
+C1,2023-11-23,missing exit price
+C1,2023-11-24,missing exit price
+C1,2023-12-25,missing entry price
+C2,2019-09-02,missing entry price
+C2,2019-11-28,missing entry price
+C2,2019-11-29,missing entry price
+C2,2019-12-24,missing entry price
+C2,2019-12-26,missing entry price
+C2,2019-12-31,missing entry price
+C2,2020-01-01,missing entry price
+C2,2020-01-20,missing entry price
+C2,2020-02-17,missing entry price
+C2,2020-05-25,missing entry price
+C2,2020-07-03,missing entry price
+C2,2020-09-07,missing entry price
+C2,2020-11-26,missing entry price
+C2,2020-11-27,missing entry price
+C2,2020-12-24,missing entry price
+C2,2021-01-18,missing entry price
+C2,2021-02-15,missing entry price
+C2,2021-04-02,missing entry price
+C2,2021-05-31,missing entry price
+C2,2021-06-07,missing entry price
+C2,2021-06-14,missing entry price
+C2,2021-06-21,missing entry price
+C2,2021-06-28,missing entry price
+C2,2021-07-05,missing entry price
+C2,2021-09-06,missing entry price
+C2,2021-11-08,missing entry price
+C2,2021-11-09,missing entry price
+C2,2021-11-10,missing entry price
+C2,2021-11-11,missing entry price
+C2,2021-11-25,missing entry price
+C2,2021-11-26,missing entry price
+C2,2021-12-31,missing entry price
+C2,2022-01-17,missing entry price
+C2,2022-01-24,missing entry price
+C2,2022-02-21,missing entry price
+C2,2022-03-28,missing entry price
+C2,2022-03-29,missing entry price
+C2,2022-03-30,missing entry price
+C2,2022-04-15,missing entry price
+C2,2022-05-30,missing entry price
+C2,2022-06-20,missing entry price
+C2,2022-07-04,missing entry price
+C2,2022-09-05,missing entry price
+C2,2022-11-24,missing entry price
+C2,2022-11-25,missing entry price
+C2,2022-12-26,missing entry price
+C2,2023-01-02,missing entry price
+C2,2023-01-16,missing entry price
+C2,2023-02-20,missing entry price
+C2,2023-03-27,missing entry price
+C2,2023-04-07,missing entry price
+C2,2023-05-29,missing entry price
+C2,2023-06-19,missing entry price
+C2,2023-07-03,missing entry price
+C2,2023-07-04,missing entry price
+C2,2023-09-04,missing entry price
+C2,2023-11-23,missing entry price
+C2,2023-11-24,missing entry price
+C2,2023-12-25,missing entry price
